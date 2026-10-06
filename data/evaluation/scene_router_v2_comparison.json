@@ -1,0 +1,349 @@
+{
+  "v1": {
+    "total": 70,
+    "correct": 61,
+    "accuracy": 0.8714285714285714,
+    "contract_success": 69,
+    "macro": {
+      "precision": 0.920558608058608,
+      "recall": 0.8452380952380952,
+      "f1": 0.8554483611626468
+    },
+    "per_class": {
+      "consult_qa": {
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "troubleshooting": {
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "f1": 0.7857142857142857
+      },
+      "maintenance": {
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091
+      },
+      "maintenance_report": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "configuration_recommendation": {
+        "precision": 0.9230769230769231,
+        "recall": 1.0,
+        "f1": 0.9600000000000001
+      },
+      "clarify": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5
+      },
+      "human_handoff": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "confusion_matrix": {
+      "consult_qa": {
+        "consult_qa": 10,
+        "troubleshooting": 1,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 1,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "troubleshooting": {
+        "consult_qa": 0,
+        "troubleshooting": 11,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 1
+      },
+      "maintenance": {
+        "consult_qa": 2,
+        "troubleshooting": 0,
+        "maintenance": 10,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "maintenance_report": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 10,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "configuration_recommendation": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 12,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "clarify": {
+        "consult_qa": 0,
+        "troubleshooting": 4,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 2,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "human_handoff": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 6,
+        "ERROR": 0
+      }
+    },
+    "avg_latency": 1.2860668085723383,
+    "p95_latency": 2.8138349000073504
+  },
+  "v2": {
+    "total": 70,
+    "correct": 63,
+    "accuracy": 0.9,
+    "contract_success": 70,
+    "macro": {
+      "precision": 0.9294871794871795,
+      "recall": 0.880952380952381,
+      "f1": 0.8894619666048237
+    },
+    "per_class": {
+      "consult_qa": {
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "troubleshooting": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571
+      },
+      "maintenance": {
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091
+      },
+      "maintenance_report": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "configuration_recommendation": {
+        "precision": 0.9230769230769231,
+        "recall": 1.0,
+        "f1": 0.9600000000000001
+      },
+      "clarify": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "human_handoff": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "confusion_matrix": {
+      "consult_qa": {
+        "consult_qa": 10,
+        "troubleshooting": 1,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 1,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "troubleshooting": {
+        "consult_qa": 0,
+        "troubleshooting": 12,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "maintenance": {
+        "consult_qa": 2,
+        "troubleshooting": 0,
+        "maintenance": 10,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "maintenance_report": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 10,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "configuration_recommendation": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 12,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "clarify": {
+        "consult_qa": 0,
+        "troubleshooting": 3,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 3,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "human_handoff": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 6,
+        "ERROR": 0
+      }
+    },
+    "avg_latency": 0.8524404957150442,
+    "p95_latency": 1.8877450999862049
+  },
+  "fixed": [
+    {
+      "case_id": "S09",
+      "question": "怎样开始清扫？",
+      "gold": "consult_qa",
+      "v1": "configuration_recommendation",
+      "v2": "consult_qa"
+    },
+    {
+      "case_id": "S20",
+      "question": "机器一直漏水怎么办？",
+      "gold": "troubleshooting",
+      "v1": "ERROR",
+      "v2": "troubleshooting"
+    },
+    {
+      "case_id": "S63",
+      "question": "那个用不了。",
+      "gold": "clarify",
+      "v1": "troubleshooting",
+      "v2": "clarify"
+    },
+    {
+      "case_id": "S64",
+      "question": "怎么解决？",
+      "gold": "clarify",
+      "v1": "troubleshooting",
+      "v2": "clarify"
+    }
+  ],
+  "regressions": [
+    {
+      "case_id": "S06",
+      "question": "如何重置 WiFi 并重新添加设备？",
+      "gold": "consult_qa",
+      "v1": "consult_qa",
+      "v2": "configuration_recommendation"
+    },
+    {
+      "case_id": "S62",
+      "question": "不对劲，帮我看看。",
+      "gold": "clarify",
+      "v1": "clarify",
+      "v2": "troubleshooting"
+    }
+  ],
+  "remaining_errors": [
+    {
+      "case_id": "S06",
+      "question": "如何重置 WiFi 并重新添加设备？",
+      "gold": "consult_qa",
+      "v1": "consult_qa",
+      "v2": "configuration_recommendation"
+    },
+    {
+      "case_id": "S12",
+      "question": "如何让机器人返回充电座？",
+      "gold": "consult_qa",
+      "v1": "troubleshooting",
+      "v2": "troubleshooting"
+    },
+    {
+      "case_id": "S35",
+      "question": "滤网能用洗洁精洗吗？",
+      "gold": "maintenance",
+      "v1": "consult_qa",
+      "v2": "consult_qa"
+    },
+    {
+      "case_id": "S36",
+      "question": "没干的滤网能装回吗？",
+      "gold": "maintenance",
+      "v1": "consult_qa",
+      "v2": "consult_qa"
+    },
+    {
+      "case_id": "S60",
+      "question": "它坏了怎么办？",
+      "gold": "clarify",
+      "v1": "troubleshooting",
+      "v2": "troubleshooting"
+    },
+    {
+      "case_id": "S61",
+      "question": "机器人好像有问题，那怎么办？",
+      "gold": "clarify",
+      "v1": "troubleshooting",
+      "v2": "troubleshooting"
+    },
+    {
+      "case_id": "S62",
+      "question": "不对劲，帮我看看。",
+      "gold": "clarify",
+      "v1": "clarify",
+      "v2": "troubleshooting"
+    }
+  ],
+  "v1_contract_failure_evidence": {
+    "case_id": "S20",
+    "elapsed_seconds": 25.058410800003912,
+    "failure_type": "UNKNOWN_NOT_RECORDED",
+    "note": "Historical result retained only sanitized ERROR; latency alone cannot prove timeout."
+  }
+}

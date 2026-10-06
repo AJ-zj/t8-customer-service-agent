@@ -1,0 +1,1773 @@
+{
+  "evaluation_id": "answer_release_policy_v1",
+  "created_at": "2026-10-06T10:44:59.141116+00:00",
+  "golden_sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386",
+  "source": {
+    "generation_results": "data/evaluation/results/generation_eval_v1.json",
+    "generation_model": "deepseek-ai/DeepSeek-V4-Flash",
+    "cached_generation_reused": true,
+    "new_answer_generation_calls": 0
+  },
+  "rules": {
+    "eligible_scenes": [
+      "consult_qa",
+      "maintenance",
+      "troubleshooting"
+    ],
+    "program_blocked_statuses": [
+      "PROGRAM_BLOCKED_INVALID_CITATION",
+      "PROGRAM_BLOCKED_MISSING_CITATION",
+      "PROGRAM_BLOCKED_UNSUPPORTED_MONEY_CLAIM",
+      "PROGRAM_BLOCKED_UNSUPPORTED_PERSONAL_RUNTIME"
+    ],
+    "safe_abstention_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+    "safe_abstention_answer": "根据当前提供的说明书资料无法确认。",
+    "semantic_gate_model": "Qwen/Qwen2.5-7B-Instruct",
+    "live_auto_release_does_not_approve_or_publish": true
+  },
+  "machine_assisted_verification": {
+    "human_review_completed": false,
+    "notice": "LLM Gate is not human ground truth; auto-release cases include reference, gold relevant index, actual Evidence, and draft for inspection."
+  },
+  "gate_call_count": 29,
+  "gate_failure_count": 0,
+  "cases": [
+    {
+      "id": "T8-G001",
+      "question": "主刷缠了头发，怎么拆下来清理？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        14
+      ],
+      "actual_evidence_indices": [
+        14,
+        27,
+        15
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.516,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G002",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        14
+      ],
+      "actual_evidence_indices": [
+        27,
+        14,
+        15
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G003",
+      "question": "软胶主刷脏了能用消毒剂洗吗？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        14
+      ],
+      "actual_evidence_indices": [
+        14,
+        5,
+        29
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 0.886,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "提示：\n• 软胶主刷脏污建议用湿布擦拭。如果浸水，务必晾干防止暴晒。\n• 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷。",
+        "relevant_record_indices": [
+          14
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 14,
+            "pdf_page": 15,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n软胶主刷\n软胶主刷罩\n卡 扣\n软胶主刷\n软胶主刷\n轴承 软胶主刷盖\n1.翻转机器人，压下卡扣取下软胶主刷罩。\n2.取出软胶主刷，拔出软胶主刷轴承。\n3.按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两\n端缠绕的毛发或赃物后按锁定方向装回。\n4.将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插\n入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软\n胶主刷罩固定卡扣。\n提示：\n• 软胶主刷脏污建议用湿布擦拭。如果浸水，务必晾干防止暴晒。\n• 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷。"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 5,
+            "pdf_page": 6,
+            "title": "",
+            "section": "产品介绍",
+            "text": "产品介绍\n机器人及传感器\n沿墙传感器\n回充传感器\n悬崖传感器\n碰撞缓冲\n传感器 万向轮\n充电触片\n激光测距\n传感器 边 刷\n主 轮\n激光头压力\n软胶主刷\n传感器\n软胶主刷罩\n掀盖口\n06"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 29,
+            "pdf_page": 23,
+            "title": "清扫能力下降或出现掉灰",
+            "section": "常见问题",
+            "text": "问题：清扫能力下降或出现掉灰。解决方法：尘盒已满，请清理尘盒；滤网已被堵塞，请清理滤网；主刷被异物缠绕，请清理主刷。"
+          }
+        ],
+        "draft_answer": "根据说明书，软胶主刷不可以使用消毒剂清洗，因为说明书明确提示“请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷”。[E1]\n\n清洗软胶主刷时，建议用湿布擦拭；如果浸水，务必晾干并防止暴晒。[E1]",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G004",
+      "question": "主刷多久清理一次、多久更换？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        13
+      ],
+      "actual_evidence_indices": [
+        13,
+        14,
+        27
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.399,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G005",
+      "question": "边刷如何拆卸清理？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        15
+      ],
+      "actual_evidence_indices": [
+        15,
+        27,
+        13
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.669,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G006",
+      "question": "机器人主轮应该用什么擦？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        15
+      ],
+      "actual_evidence_indices": [
+        15,
+        18,
+        5
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 0.774,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "主 轮\n用柔软干布擦拭清理主轮。",
+        "relevant_record_indices": [
+          15
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 15,
+            "pdf_page": 16,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n边 刷 2.冲洗轮体和轮轴上的毛发或脏物。\n1.拆下边刷固定螺丝。\n2.清理边刷后装回并锁紧螺丝。\n3.晾干后装回轮体并压紧。\n主 轮\n用柔软干布擦拭清理主轮。\n万向轮\n1.借助小螺丝刀等工具撬出轮轴，拔出轮体。\n提示：万向轮支架不可取出。\n16"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 18,
+            "pdf_page": 19,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n机器人传感器 充电接触区\n用柔软干布擦拭机器人各传感器，包括： 用柔软干布擦拭清理充电座弹片和充电触片。\n1.机器人前端的回充传感器。\n2.机器人右侧的沿墙传感器。\n3.机器人底部的四个悬崖传感器。\n沿墙传感器\n回充传感器\n电 池\n机器人内置高性能锂离子充电电池组，为维持电池性能， 日\n常使用请将机器人保持充电状态。\n悬崖传感器 提示：如长时间不使用请关机存放，至少每三个月充电一次避免电池因过放受损。\n19"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 5,
+            "pdf_page": 6,
+            "title": "",
+            "section": "产品介绍",
+            "text": "产品介绍\n机器人及传感器\n沿墙传感器\n回充传感器\n悬崖传感器\n碰撞缓冲\n传感器 万向轮\n充电触片\n激光测距\n传感器 边 刷\n主 轮\n激光头压力\n软胶主刷\n传感器\n软胶主刷罩\n掀盖口\n06"
+          }
+        ],
+        "draft_answer": "根据说明书，机器人主轮应使用柔软干布擦拭清理 [E1]。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G007",
+      "question": "充电触片和充电座弹片怎么清洁？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        18
+      ],
+      "actual_evidence_indices": [
+        18,
+        23,
+        13
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 0.767,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "用柔软干布擦拭清理充电座弹片和充电触片。\n1.机器人前端的回充传感器。\n2.机器人右侧的",
+        "relevant_record_indices": [
+          18
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 18,
+            "pdf_page": 19,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n机器人传感器 充电接触区\n用柔软干布擦拭机器人各传感器，包括： 用柔软干布擦拭清理充电座弹片和充电触片。\n1.机器人前端的回充传感器。\n2.机器人右侧的沿墙传感器。\n3.机器人底部的四个悬崖传感器。\n沿墙传感器\n回充传感器\n电 池\n机器人内置高性能锂离子充电电池组，为维持电池性能， 日\n常使用请将机器人保持充电状态。\n悬崖传感器 提示：如长时间不使用请关机存放，至少每三个月充电一次避免电池因过放受损。\n19"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 23,
+            "pdf_page": 23,
+            "title": "无法充电",
+            "section": "常见问题",
+            "text": "问题：无法充电。解决方法：充电座未通电，请确认充电座电源线两头是否都已插好；接触不良，请清理充电座弹片与机器人充电触片；请确认充电座指示灯是否亮起。"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 13,
+            "pdf_page": 14,
+            "title": "",
+            "section": "使用说明 日常维护",
+            "text": "使用说明 日常维护\nAPP功能介绍 为使机器人保持最佳使用性能，建议参考下表进行日常维护：\n部 件 维护频率 更换频率\n清洁地图\n万向轮 按需清理 /\n多地图管理｜实时扫拖路线｜地图分区｜地图编辑\n二合一尘盒水箱 按需清理 /\n个性清洁方式\n软胶主刷 每 2 周清理 每 6-12 个月\n定时清洁｜选区清洁｜划区清洁｜禁区虚拟墙｜定制顺序｜ 地\n边 刷 每 1 个月清理 每 3-6 个月\n毯增压模式\n可水洗滤网 每 2 周清理 每 6-12 个月\n清洁模式调节 拖布 每次使用后 按需更换\n清扫吸力｜拖地水量｜定制模式 回充传感器 每 1 个月清理 /\n悬崖传感器 每 1 个月清理 /\n机器人信息\n沿墙传感器 每 1 个月清理 /\n清洁记录｜机器人电量｜保养与维护\n回充传感器 每 1 个月清理 /\n更多特色功能 主 轮 每 1 个月清理 /\n固件升级｜音量调节｜个性化语音｜勿扰模式｜智能音箱语 充电触片 每 1 个月清理 /\n控等更多功能 充电座充电弹片、\n信号发射区、电极自 每 1 个月清理 /\n提示：因 APP 持续开发升级，功能和细节可能有细微调整，请以实际版本为准。\n清洁毛束及机身\n提示：更换频率可能因实际情况而定，如出现异常磨损，应更换零件。\n14"
+          }
+        ],
+        "draft_answer": "根据说明书，清洁充电触片和充电座弹片的方法是：用柔软干布擦拭清理充电座弹片和充电触片 [E1]。另外，建议每 1 个月清理一次充电触片，以及充电座充电弹片、信号发射区、电极自 [E3]。如果遇到无法充电且怀疑接触不良，也可清理充电座弹片与机器人充电触片 [E2]。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G008",
+      "question": "传感器要用什么擦，哪些传感器要清理？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        18
+      ],
+      "actual_evidence_indices": [
+        18,
+        36,
+        13
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 4.183,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G009",
+      "question": "滤网能用洗洁精清洗吗？",
+      "answerable": true,
+      "category": "清洁限制",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        16
+      ],
+      "actual_evidence_indices": [
+        16,
+        17,
+        4
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 0.687,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "提示：请用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞。\n17",
+        "relevant_record_indices": [
+          16
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 16,
+            "pdf_page": 17,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n二合一尘盒水箱及滤网 3.按图示方法倒出水箱余水。\n1.打开机器人上盖，取出二合一尘盒水箱。\n4.尘盒中注入清水，左右摇晃，倒出脏水。\n2.取下滤网并倾倒垃圾。\n提示：请用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞。\n17"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 17,
+            "pdf_page": 18,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n5.反复冲洗滤网并将污垢轻敲出来，直至干净为止。 拖 布\n1.从拖布支架上移除拖布。\n提示：禁止用手、刷子或者尖锐物触碰滤网表面，以免损伤滤网。\n6.晾晒二合一尘盒水箱及可水洗滤网至干透，并装回使用。\n2.清洗拖布并晾晒。\n提示：\n• 如拖布较脏，会影响拖地效果，请先清洗后再使用。\n• 建议每3-6个月更换拖布，以保证清扫效果。\n提示：建议两个滤网轮换使用。\n18"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 4,
+            "pdf_page": 5,
+            "title": "",
+            "section": "产品介绍",
+            "text": "产品介绍\n主 机 二合一尘盒水箱\n水箱塞\nWiFi 指示灯\n系统重置键\n进水口滤网\n二合一尘盒水箱 可水洗滤网\n进尘口\n拖布支架\n排风口\n05"
+          }
+        ],
+        "draft_answer": "根据说明书资料，滤网不能用洗洁精清洗，应使用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞 [E1]。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G010",
+      "question": "滤网没干能装回使用吗？",
+      "answerable": true,
+      "category": "清洁限制",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        17
+      ],
+      "actual_evidence_indices": [
+        17,
+        16,
+        9
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G011",
+      "question": "可以用刷子刷滤网表面吗？",
+      "answerable": true,
+      "category": "清洁限制",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        17
+      ],
+      "actual_evidence_indices": [
+        17,
+        4,
+        29
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 2.348,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "提示：禁止用手、刷子或者尖锐物触碰滤网表面，以免损伤滤网。",
+        "relevant_record_indices": [
+          17
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 17,
+            "pdf_page": 18,
+            "title": "",
+            "section": "日常维护",
+            "text": "日常维护\n5.反复冲洗滤网并将污垢轻敲出来，直至干净为止。 拖 布\n1.从拖布支架上移除拖布。\n提示：禁止用手、刷子或者尖锐物触碰滤网表面，以免损伤滤网。\n6.晾晒二合一尘盒水箱及可水洗滤网至干透，并装回使用。\n2.清洗拖布并晾晒。\n提示：\n• 如拖布较脏，会影响拖地效果，请先清洗后再使用。\n• 建议每3-6个月更换拖布，以保证清扫效果。\n提示：建议两个滤网轮换使用。\n18"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 4,
+            "pdf_page": 5,
+            "title": "",
+            "section": "产品介绍",
+            "text": "产品介绍\n主 机 二合一尘盒水箱\n水箱塞\nWiFi 指示灯\n系统重置键\n进水口滤网\n二合一尘盒水箱 可水洗滤网\n进尘口\n拖布支架\n排风口\n05"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 29,
+            "pdf_page": 23,
+            "title": "清扫能力下降或出现掉灰",
+            "section": "常见问题",
+            "text": "问题：清扫能力下降或出现掉灰。解决方法：尘盒已满，请清理尘盒；滤网已被堵塞，请清理滤网；主刷被异物缠绕，请清理主刷。"
+          }
+        ],
+        "draft_answer": "根据说明书资料，**禁止用手、刷子或者尖锐物触碰滤网表面，以免损伤滤网** [E1]。因此，不可以用刷子刷滤网表面。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G012",
+      "question": "拖布怎么清洗和晾晒？",
+      "answerable": true,
+      "category": "维护",
+      "scene": "maintenance",
+      "relevant_record_indices": [
+        17
+      ],
+      "actual_evidence_indices": [
+        17,
+        10,
+        12
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G013",
+      "question": "长期不用机器人，应该怎么保存和补充电？",
+      "answerable": true,
+      "category": "注意事项",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        18
+      ],
+      "actual_evidence_indices": [
+        18,
+        12,
+        21
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G014",
+      "question": "放充电座时两边和前面需要留多少空间？",
+      "answerable": true,
+      "category": "充电回充",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        8
+      ],
+      "actual_evidence_indices": [
+        8,
+        25,
+        18
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 2.27,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G015",
+      "question": "充电座能放太阳直晒的地方吗？",
+      "answerable": true,
+      "category": "注意事项",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        8
+      ],
+      "actual_evidence_indices": [
+        8,
+        25,
+        31
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.727,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G016",
+      "question": "水箱能装热水吗？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        9
+      ],
+      "actual_evidence_indices": [
+        9,
+        37,
+        4
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 2.717,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G017",
+      "question": "安装拖布前要不要弄湿、怎么固定？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        9
+      ],
+      "actual_evidence_indices": [
+        9,
+        10,
+        17
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 2.207,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G018",
+      "question": "拖地完成回充后怎么取下拖布支架？",
+      "answerable": true,
+      "category": "配件部件",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        10
+      ],
+      "actual_evidence_indices": [
+        10,
+        17,
+        9
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G019",
+      "question": "T8 支持哪些手机 APP？",
+      "answerable": true,
+      "category": "WiFiApp",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        10
+      ],
+      "actual_evidence_indices": [
+        10,
+        11,
+        28
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 1.115,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "本产品支持石头APP和米家APP操控，请根据需要选择。",
+        "relevant_record_indices": [
+          10
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 10,
+            "pdf_page": 11,
+            "title": "",
+            "section": "产品安装 使用说明",
+            "text": "产品安装 使用说明\n5.装入拖布支架 连接手机 APP\n将拖布支架平行推入机器人底部，听到“咔嗒”声即安装\n本产品支持石头APP和米家APP操控，请根据需要选择。\n到位。\n1 下载APP\n在应用商店搜索“Roborock”或扫描下方二维码下载安\n装石头 APP。\n提示：建议60分钟清洗一次拖布，以保证出水速度和清洁效果。\n6.移除拖布支架\n当机器人完成工作回到充电座以后，用手向内按住两侧卡\n扣，向后拖动并移除拖布支架。\n在应用商店搜索“米家”或扫描下方二维码下载安装米\n家 APP。\n提示：\n• 拖地完成后，建议倒出水箱内余水并清洗拖布。\n• 不使用拖地功能时，可保持水箱在位，只移除拖布支架即可。\n11"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 11,
+            "pdf_page": 12,
+            "title": "",
+            "section": "使用说明",
+            "text": "使用说明\n2 重置WiFi\n1.打开机器人上盖露出 WiFi 指示灯。\n2.同时按住 键与 键直到语音提示“重置 WiFi，进\n入配网模式”，并等待 WiFi 指示灯开始慢闪，表示机\n器人已进入配网模式。\n提示：当路由器修改配置、遗忘密码或其他原因导致手机无法连接机器人时，\n可以在重置 WiFi 进入配网模式后重新添加设备。\nWiFi 指示灯\n• 熄灭：WiFi 功能未激活\n• 慢闪：等待连接\n• 快闪：正在连接\n• 长亮：WiFi 已连接\n3 添加设备\n打开手机 APP 首页，在Roborock App点击“添加设备”按钮，\n或在米家App点击“+”，根据提示添加您的设备。\n提示：\n• 由于手机 APP 的升级与更新，实际操作可能与以上描述略有差异，请按照\n手机 APP 内引导进行操作。\n• WiFi 无线连接仅支持 2.4GHz 频段的网络，暂不支持 5GHz 频段。\n• 机器人处于等待连接状态超过 1 小时后，将自动关闭 WiFi 功能。如需再次\n连接，请重置 WiFi 后联网。\n使用说明\n开机 /关机\n长按 键开机，电源指示灯点亮，机器人进入待命状态。长\n按 键关机，本次清扫结束。\n提示：机器人在充电中无法关机。\n启动清扫\n短按 键机器人将按扫描生成的地图动态规划清扫路线，采\n用先沿墙后 Z 字形填充的方式逐一完成各分区的清扫，有序\n高效覆盖。\n提示：\n• 若电量过低请先充电再启动清扫。\n• 清扫前请将地上的各类线材（包括充电座的电源线）和贵重物品整理好，避免\n机器人清扫时拖拽引起电器断电、损坏物品或线材。\n• 清扫时间小于 10 分钟，将默认清扫两次。\n• 清扫过程中电量不足时，机器人将自动返回充电座充电，电量充足后自动回到\n中断处继续清扫。\n局部清扫\n短按 键启动局部清扫。\n清扫范围：机器人为中心1.5米×1.5米的方形区域。\n提示：清扫结束后机器人会自动返回起点位置，进入待命状态。"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 28,
+            "pdf_page": 23,
+            "title": "无法连接WiFi",
+            "section": "常见问题",
+            "text": "问题：无法连接WiFi。解决方法：WiFi功能未激活，请重置WiFi后再次尝试；WiFi信号不好，请确保机器人处于良好WiFi信号覆盖区内；WiFi连接异常，重置WiFi并下载最新手机客户端尝试再次连接；APP不支持当前型号的设备，请根据APP提示查看具体支持型号；WiFi突然无法连接，怀疑家庭路由器有设置错误，可及时联系石头客服帮助排查。"
+          }
+        ],
+        "draft_answer": "根据说明书，T8 支持 **石头 APP** 和 **米家 APP** 两种手机 APP 操控 [E1]。  \n下载方式分别为：在应用商店搜索“Roborock”下载石头 APP，或搜索“米家”下载米家 APP [E1]。  \n添加设备时，可在石头 APP 首页点击“添加设备”按钮，或在米家 APP 点击“+”进行操作 [E2]。  \n\n需要注意的是，由于手机 APP 升级更新，实际操作可能与说明书描述略有差异，请以 APP 内引导为准 [E2]。另外，WiFi 无线连接仅支持 2.4GHz 频段，暂不支持 5GHz 频段 [E2]。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G020",
+      "question": "WiFi 指示灯慢闪和快闪分别是什么意思？",
+      "answerable": true,
+      "category": "WiFiApp",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        11,
+        4,
+        3
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.539,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G021",
+      "question": "T8 能连 5GHz WiFi 吗？",
+      "answerable": true,
+      "category": "WiFiApp",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        11,
+        28,
+        19
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.718,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G022",
+      "question": "配网等超过一小时，WiFi 会怎么样？",
+      "answerable": true,
+      "category": "WiFiApp",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        11,
+        28,
+        19
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.383,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G023",
+      "question": "重置 WiFi 后怎么重新添加设备？",
+      "answerable": true,
+      "category": "WiFiApp",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        11,
+        28,
+        4
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G024",
+      "question": "局部清扫范围是多少？结束后去哪？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        35,
+        11,
+        12
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_latency_seconds": 0.712,
+      "delivery_status": "auto_released",
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": "局部清扫\n短按 键启动局部清扫。\n清扫范围：机器人为中心1.5米×1.5米的方形区域。\n提示：清扫结束后机器人会自动返回起点位置，进入待命状态。",
+        "relevant_record_indices": [
+          11
+        ],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 35,
+            "pdf_page": 23,
+            "title": "局部清扫或移动位置后无法返回充电座",
+            "section": "常见问题",
+            "text": "问题：局部清扫或移动位置后无法返回充电座。解决方法：局部清扫或者远距离移动位置后机器人将重新生成地图，如充电座距离较远可能无法自动回充，请手动将机器人放回充电座充电。"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 11,
+            "pdf_page": 12,
+            "title": "",
+            "section": "使用说明",
+            "text": "使用说明\n2 重置WiFi\n1.打开机器人上盖露出 WiFi 指示灯。\n2.同时按住 键与 键直到语音提示“重置 WiFi，进\n入配网模式”，并等待 WiFi 指示灯开始慢闪，表示机\n器人已进入配网模式。\n提示：当路由器修改配置、遗忘密码或其他原因导致手机无法连接机器人时，\n可以在重置 WiFi 进入配网模式后重新添加设备。\nWiFi 指示灯\n• 熄灭：WiFi 功能未激活\n• 慢闪：等待连接\n• 快闪：正在连接\n• 长亮：WiFi 已连接\n3 添加设备\n打开手机 APP 首页，在Roborock App点击“添加设备”按钮，\n或在米家App点击“+”，根据提示添加您的设备。\n提示：\n• 由于手机 APP 的升级与更新，实际操作可能与以上描述略有差异，请按照\n手机 APP 内引导进行操作。\n• WiFi 无线连接仅支持 2.4GHz 频段的网络，暂不支持 5GHz 频段。\n• 机器人处于等待连接状态超过 1 小时后，将自动关闭 WiFi 功能。如需再次\n连接，请重置 WiFi 后联网。\n使用说明\n开机 /关机\n长按 键开机，电源指示灯点亮，机器人进入待命状态。长\n按 键关机，本次清扫结束。\n提示：机器人在充电中无法关机。\n启动清扫\n短按 键机器人将按扫描生成的地图动态规划清扫路线，采\n用先沿墙后 Z 字形填充的方式逐一完成各分区的清扫，有序\n高效覆盖。\n提示：\n• 若电量过低请先充电再启动清扫。\n• 清扫前请将地上的各类线材（包括充电座的电源线）和贵重物品整理好，避免\n机器人清扫时拖拽引起电器断电、损坏物品或线材。\n• 清扫时间小于 10 分钟，将默认清扫两次。\n• 清扫过程中电量不足时，机器人将自动返回充电座充电，电量充足后自动回到\n中断处继续清扫。\n局部清扫\n短按 键启动局部清扫。\n清扫范围：机器人为中心1.5米×1.5米的方形区域。\n提示：清扫结束后机器人会自动返回起点位置，进入待命状态。"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 12,
+            "pdf_page": 13,
+            "title": "",
+            "section": "使用说明",
+            "text": "使用说明\n暂 停 充 电\n机器人工作中，水箱需要中途加水或清洗拖布时可按任意键 清扫结束后，机器人会自动返回充电座充电。\n暂停，按 键继续清扫，按 键将返回充电座。 暂停状态下，短按 键启动回充。\n提示：暂停时将机器人靠上充电座充电，将结束本次清扫。 充电时，电源指示灯呼吸闪烁。\n提示：如机器人未找到充电座将自动返回起点位置，请手动将机器人放回充电座充电。\n休 眠\n机器人超过10分钟无操作，自动进入休眠状态，电源指示 异常状态\n灯若干秒闪烁一次。按任意键即可唤醒。 电源指示灯红色快闪并语音提示，解决方法请参阅“常见问\n提示： 题及异常排除”。\n• 机器人充电时不会进入休眠。\n提示：\n• 休眠时间超过 12 小时自动关机。\n• 异常状态下 10 分钟无操作，机器人自动休眠。\n• 异常状态下机器人靠上充电座充电，将结束本次清扫 。\n勿扰模式\n出厂默认开启时间段为22:00-08:00。可使用手机 APP修改 重置系统\n勿扰时间段或关闭。 当按键无响应或无法关机时，请短按Reset键重置系统，机\n勿扰时间段内，机器人不会自动续扫及主动播放语音， 电源 器人将自动重启。\n指示灯亮度降低。\n提示：重置系统后定时清扫和 WiFi 等相关设置将恢复到出厂状态。\n童 锁\n恢复出厂设置\n童锁开启时，机器人静止状态下所有按键均被锁定。\n如重置系统后仍无法正常使用，请在开机状态下按住 键\n机器人清扫或回充状态下，可按任意键使其暂停。\n的同时按一次系统重置键直到语音提示“开始恢复初始设置，\n大约需要 5 分钟，请耐心等待”，机器人将恢复到出厂状态。\n13"
+          }
+        ],
+        "draft_answer": "局部清扫范围是以机器人为中心1.5米×1.5米的方形区域 [E2]。清扫结束后，机器人会自动返回起点位置并进入待命状态 [E2]。另外，如果局部清扫后无法返回充电座，请手动将机器人放回充电座充电 [E1]。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": true,
+        "delivery_status": "auto_released"
+      }
+    },
+    {
+      "id": "T8-G025",
+      "question": "清扫中电量不够会怎样，之后能继续清扫吗？",
+      "answerable": true,
+      "category": "充电回充",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        34,
+        12,
+        3
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G026",
+      "question": "充电时能不能关机？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        11
+      ],
+      "actual_evidence_indices": [
+        12,
+        11,
+        18
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G027",
+      "question": "童锁开启后，清扫或回充时还能暂停吗？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        12
+      ],
+      "actual_evidence_indices": [
+        3,
+        12,
+        35
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.569,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G028",
+      "question": "默认勿扰时间是什么，在哪里修改？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        12
+      ],
+      "actual_evidence_indices": [
+        12,
+        30,
+        34
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G029",
+      "question": "机器人多久无操作会休眠？充电时休眠吗？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        12
+      ],
+      "actual_evidence_indices": [
+        12,
+        18,
+        11
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.951,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G030",
+      "question": "按键没反应、不能关机时怎样重置系统？",
+      "answerable": true,
+      "category": "使用操作",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        12
+      ],
+      "actual_evidence_indices": [
+        12,
+        22,
+        4
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G031",
+      "question": "APP 可以查看哪些清洁地图功能？",
+      "answerable": true,
+      "category": "产品功能",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        13
+      ],
+      "actual_evidence_indices": [
+        13,
+        2,
+        10
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G032",
+      "question": "APP 能调节清扫吸力和拖地水量吗？",
+      "answerable": true,
+      "category": "产品功能",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        13
+      ],
+      "actual_evidence_indices": [
+        13,
+        10,
+        33
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.034,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G033",
+      "question": "能在室外开放阳台或沙发上使用吗？",
+      "answerable": true,
+      "category": "注意事项",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        2
+      ],
+      "actual_evidence_indices": [
+        2,
+        8,
+        31
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.583,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G034",
+      "question": "可以清扫还没熄灭的烟头吗？",
+      "answerable": true,
+      "category": "注意事项",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        2
+      ],
+      "actual_evidence_indices": [
+        2,
+        34,
+        29
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 2.212,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G035",
+      "question": "长毛地毯能清扫吗？",
+      "answerable": true,
+      "category": "注意事项",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        2
+      ],
+      "actual_evidence_indices": [
+        2,
+        29,
+        7
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.755,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G036",
+      "question": "可以使用第三方电池或充电座吗？",
+      "answerable": true,
+      "category": "充电回充",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        2
+      ],
+      "actual_evidence_indices": [
+        2,
+        31,
+        22
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G037",
+      "question": "机器人无法开机怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        22
+      ],
+      "actual_evidence_indices": [
+        39,
+        11,
+        22
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G038",
+      "question": "机器人放上充电座也不充电怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        23
+      ],
+      "actual_evidence_indices": [
+        23,
+        25,
+        34
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.465,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G039",
+      "question": "充电速度很慢怎么处理？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        24
+      ],
+      "actual_evidence_indices": [
+        24,
+        23,
+        31
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G040",
+      "question": "机器人无法回充怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        25
+      ],
+      "actual_evidence_indices": [
+        25,
+        35,
+        34
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G041",
+      "question": "机器人行为异常怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        26
+      ],
+      "actual_evidence_indices": [
+        26,
+        21,
+        12
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G042",
+      "question": "清扫时有异响怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        27
+      ],
+      "actual_evidence_indices": [
+        27,
+        29,
+        34
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.165,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G043",
+      "question": "WiFi 无法连接怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        28
+      ],
+      "actual_evidence_indices": [
+        28,
+        11,
+        4
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G044",
+      "question": "清扫能力下降还掉灰，应该检查哪里？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        29
+      ],
+      "actual_evidence_indices": [
+        29,
+        27,
+        34
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 0.999,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G045",
+      "question": "定时清扫为什么不生效？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        30
+      ],
+      "actual_evidence_indices": [
+        30,
+        34,
+        27
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 1.313,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G046",
+      "question": "头三次使用需要充电十六小时吗？",
+      "answerable": true,
+      "category": "充电回充",
+      "scene": "consult_qa",
+      "relevant_record_indices": [
+        32
+      ],
+      "actual_evidence_indices": [
+        32,
+        19,
+        31
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "unsupported",
+      "gate_reason_code": "INSUFFICIENT_EVIDENCE",
+      "gate_latency_seconds": 0.937,
+      "delivery_status": "review_required"
+    },
+    {
+      "id": "T8-G047",
+      "question": "拖地模组不出水或者水量少怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        33
+      ],
+      "actual_evidence_indices": [
+        33,
+        9,
+        39
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G048",
+      "question": "电量不足回充后不继续清扫是什么原因？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        34
+      ],
+      "actual_evidence_indices": [
+        34,
+        35,
+        30
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G049",
+      "question": "机器人突然漏扫应该清理哪里？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        36
+      ],
+      "actual_evidence_indices": [
+        36,
+        34,
+        7
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G050",
+      "question": "水箱加水太慢怎么办？",
+      "answerable": true,
+      "category": "故障",
+      "scene": "troubleshooting",
+      "relevant_record_indices": [
+        37
+      ],
+      "actual_evidence_indices": [
+        37,
+        33,
+        9
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G051",
+      "question": "现在 T8 官方卖多少钱？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        40,
+        19,
+        1
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G052",
+      "question": "今年双十一 T8 有什么优惠？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        1,
+        40,
+        0
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G053",
+      "question": "我家 T8 昨晚清扫用了多久？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        12,
+        3,
+        30
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "MISSING",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G054",
+      "question": "我家机器人现在电量是多少？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        3,
+        8,
+        21
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G055",
+      "question": "我的机器人现在在哪个房间？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        2,
+        7,
+        11
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "MISSING",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G056",
+      "question": "我的 T8 序列号是多少？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        39,
+        3,
+        40
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G057",
+      "question": "这台 T8 什么时候购买的？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        39,
+        19,
+        40
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "MISSING",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G058",
+      "question": "T8 现在最新固件版本号是多少？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        13,
+        40,
+        1
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G059",
+      "question": "T8 的主刷电机维修螺丝拧紧扭矩是多少？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        15,
+        14,
+        39
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    },
+    {
+      "id": "T8-G060",
+      "question": "我家机器人上一次错误日志是什么？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        39,
+        28,
+        2
+      ],
+      "program_audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "citation_status": "MISSING",
+      "gate_status": null,
+      "gate_reason_code": null,
+      "gate_latency_seconds": 0.0,
+      "delivery_status": "safe_abstention"
+    }
+  ],
+  "summary": {
+    "total_cases": 60,
+    "answerable": {
+      "count": 50,
+      "auto_release_count": 7,
+      "review_required_count": 22,
+      "safe_abstention_count": 21
+    },
+    "unanswerable": {
+      "count": 10,
+      "safe_abstention_count": 10,
+      "incorrect_auto_release_count": 0
+    },
+    "auto_release_rate": 0.11666666666666667,
+    "safe_abstention_rate_unanswerable": 1.0,
+    "incorrect_auto_release_count": 0,
+    "gate_call_count": 29,
+    "gate_failure_count": 0,
+    "review_required_count": 22
+  },
+  "real_e2e": {
+    "completed": true,
+    "path": "React static app served by Nginx; POST /api/agent/chat sent to same-origin Nginx proxy",
+    "isolated_compose_project": "zhisaotong-answer-release-v1-e2e",
+    "database_name": "roborock (fresh isolated PostgreSQL volume)",
+    "frontend_landing_http_status": 200,
+    "cases": [
+      {
+        "case_id": "A_maintenance",
+        "question": "主刷多久清理一次？",
+        "http_status": 200,
+        "intent": "maintenance",
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "delivery_status": "review_required",
+        "answer": null,
+        "answer_nonempty": false,
+        "published": false,
+        "safety_notice_present": true,
+        "safe_response_shape": true,
+        "review_count_before": 0,
+        "review_count_after": 1,
+        "review_count_delta": 1,
+        "elapsed_seconds": 13.446,
+        "expected_delivery_status": [
+          "auto_released"
+        ],
+        "delivery_matches_expected": false,
+        "published_false_for_live_delivery": true
+      },
+      {
+        "case_id": "B_brush_cleaning",
+        "question": "主刷怎么清理？",
+        "http_status": 200,
+        "intent": "maintenance",
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "delivery_status": "review_required",
+        "answer": null,
+        "answer_nonempty": false,
+        "published": false,
+        "safety_notice_present": true,
+        "safe_response_shape": true,
+        "review_count_before": 1,
+        "review_count_after": 2,
+        "review_count_delta": 1,
+        "elapsed_seconds": 11.753,
+        "expected_delivery_status": [
+          "auto_released",
+          "review_required"
+        ],
+        "delivery_matches_expected": true,
+        "published_false_for_live_delivery": true
+      },
+      {
+        "case_id": "C_unsupported_code",
+        "question": "错误码401是什么意思？",
+        "http_status": 200,
+        "intent": "troubleshooting",
+        "generation_status": "generated",
+        "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+        "delivery_status": "safe_abstention",
+        "answer": "根据当前提供的说明书资料无法确认。",
+        "answer_nonempty": true,
+        "published": false,
+        "safety_notice_present": false,
+        "safe_response_shape": true,
+        "review_count_before": 2,
+        "review_count_after": 3,
+        "review_count_delta": 1,
+        "elapsed_seconds": 4.741,
+        "expected_delivery_status": [
+          "safe_abstention"
+        ],
+        "delivery_matches_expected": true,
+        "published_false_for_live_delivery": true
+      },
+      {
+        "case_id": "D_vague_fault",
+        "question": "机器人有问题，怎么办？",
+        "http_status": 200,
+        "intent": "clarify",
+        "generation_status": null,
+        "audit_status": null,
+        "delivery_status": "clarification",
+        "answer": "请再描述一下具体异常现象，例如是否有语音提示、错误码，或者出现了什么行为异常。",
+        "answer_nonempty": true,
+        "published": false,
+        "safety_notice_present": false,
+        "safe_response_shape": true,
+        "review_count_before": 3,
+        "review_count_after": 3,
+        "review_count_delta": 0,
+        "elapsed_seconds": 0.733,
+        "expected_delivery_status": [
+          "clarification"
+        ],
+        "delivery_matches_expected": true,
+        "published_false_for_live_delivery": true
+      },
+      {
+        "case_id": "E_handoff",
+        "question": "我要人工客服",
+        "http_status": 200,
+        "intent": "human_handoff",
+        "generation_status": null,
+        "audit_status": null,
+        "delivery_status": "human_handoff",
+        "answer": "已为你转入人工处理流程。",
+        "answer_nonempty": true,
+        "published": false,
+        "safety_notice_present": false,
+        "safe_response_shape": true,
+        "review_count_before": 3,
+        "review_count_after": 3,
+        "review_count_delta": 0,
+        "elapsed_seconds": 0.013,
+        "expected_delivery_status": [
+          "human_handoff"
+        ],
+        "delivery_matches_expected": true,
+        "published_false_for_live_delivery": true
+      },
+      {
+        "case_id": "F_maintenance_report",
+        "question": "帮我生成一份日常维护报告。",
+        "http_status": 200,
+        "intent": "maintenance_report",
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "delivery_status": "review_required",
+        "answer": null,
+        "answer_nonempty": false,
+        "published": false,
+        "safety_notice_present": true,
+        "safe_response_shape": true,
+        "review_count_before": 3,
+        "review_count_after": 4,
+        "review_count_delta": 1,
+        "elapsed_seconds": 5.07,
+        "expected_delivery_status": [
+          "review_required"
+        ],
+        "delivery_matches_expected": true,
+        "published_false_for_live_delivery": true
+      },
+      {
+        "case_id": "G_configuration",
+        "question": "我家有宠物和地毯，怎么设置？",
+        "http_status": 200,
+        "intent": "configuration_recommendation",
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "delivery_status": "review_required",
+        "answer": null,
+        "answer_nonempty": false,
+        "published": false,
+        "safety_notice_present": true,
+        "safe_response_shape": true,
+        "review_count_before": 4,
+        "review_count_after": 5,
+        "review_count_delta": 1,
+        "elapsed_seconds": 14.402,
+        "expected_delivery_status": [
+          "review_required"
+        ],
+        "delivery_matches_expected": true,
+        "published_false_for_live_delivery": true
+      }
+    ],
+    "database_before": {
+      "count": 0,
+      "states": []
+    },
+    "database_after": {
+      "count": 5,
+      "states": [
+        {
+          "review_status": "pending_review",
+          "publication_status": "unpublished"
+        },
+        {
+          "review_status": "pending_review",
+          "publication_status": "unpublished"
+        },
+        {
+          "review_status": "pending_review",
+          "publication_status": "unpublished"
+        },
+        {
+          "review_status": "pending_review",
+          "publication_status": "unpublished"
+        },
+        {
+          "review_status": "pending_review",
+          "publication_status": "unpublished"
+        }
+      ]
+    },
+    "review_state_invariants": true,
+    "all_review_records_pending_and_unpublished": true,
+    "passed": false
+  },
+  "complete": true
+}

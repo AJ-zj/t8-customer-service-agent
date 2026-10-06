@@ -1,0 +1,898 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "temperature": 0,
+  "dataset_sha256": "50224ddbcd5428161b5ededc1dad3f1e03add1231e1682e544df0a5a431c6a3d",
+  "attempts": [
+    {
+      "case_id": "I01",
+      "question": "机器人一直卡住怎么办？",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "机器人一直卡住怎么办？",
+        "latest_user_question": null,
+        "contextual_question": "机器人一直卡住怎么办？"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "清扫中途自行停止",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.8894637000048533
+    },
+    {
+      "case_id": "I02",
+      "question": "机器人无法回充。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "机器人无法回充。",
+        "latest_user_question": null,
+        "contextual_question": "机器人无法回充。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "无法回充",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 1.288916000019526
+    },
+    {
+      "case_id": "I03",
+      "question": "机器一直漏水怎么办？",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "机器一直漏水怎么办？",
+        "latest_user_question": null,
+        "contextual_question": "机器一直漏水怎么办？"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体漏水位置和情况"
+        ],
+        "clarifying_question": "请描述漏水的具体位置和情况。"
+      },
+      "elapsed_seconds": 0.9598575000127312
+    },
+    {
+      "case_id": "I04",
+      "question": "出现 E4 怎么处理？",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "出现 E4 怎么处理？",
+        "latest_user_question": null,
+        "contextual_question": "出现 E4 怎么处理？"
+      },
+      "status": "ERROR",
+      "failure_kind": "RESPONSE_OR_SCHEMA_ERROR",
+      "effective_status": "needs_clarification",
+      "elapsed_seconds": 0.8583814000012353
+    },
+    {
+      "case_id": "I05",
+      "question": "提示 E2。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "提示 E2。",
+        "latest_user_question": null,
+        "contextual_question": "提示 E2。"
+      },
+      "status": "ERROR",
+      "failure_kind": "RESPONSE_OR_SCHEMA_ERROR",
+      "effective_status": "needs_clarification",
+      "elapsed_seconds": 0.9981054999807384
+    },
+    {
+      "case_id": "I06",
+      "question": "清扫时有异常声音。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "清扫时有异常声音。",
+        "latest_user_question": null,
+        "contextual_question": "清扫时有异常声音。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "清扫时有异常声音",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.7860146999883
+    },
+    {
+      "case_id": "I07",
+      "question": "扫着扫着停了。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "扫着扫着停了。",
+        "latest_user_question": null,
+        "contextual_question": "扫着扫着停了。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "清扫中途自行停止",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.763881599996239
+    },
+    {
+      "case_id": "I08",
+      "question": "主刷不转了。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "主刷不转了。",
+        "latest_user_question": null,
+        "contextual_question": "主刷不转了。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "主刷不转",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.7273979000165127
+    },
+    {
+      "case_id": "I09",
+      "question": "按开机键无法启动。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "按开机键无法启动。",
+        "latest_user_question": null,
+        "contextual_question": "按开机键无法启动。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "按开机键无法启动",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.8353434999880847
+    },
+    {
+      "case_id": "I10",
+      "question": "放到充电座不充电。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "放到充电座不充电。",
+        "latest_user_question": null,
+        "contextual_question": "放到充电座不充电。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.7857479999947827
+    },
+    {
+      "case_id": "I11",
+      "question": "WiFi 无法连接。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "WiFi 无法连接。",
+        "latest_user_question": null,
+        "contextual_question": "WiFi 无法连接。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.75514180000755
+    },
+    {
+      "case_id": "I12",
+      "question": "清扫吸力突然变小。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "清扫吸力突然变小。",
+        "latest_user_question": null,
+        "contextual_question": "清扫吸力突然变小。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "清扫吸力突然变小",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.6586153999960516
+    },
+    {
+      "case_id": "I13",
+      "question": "机器人清扫时一直撞墙。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "机器人清扫时一直撞墙。",
+        "latest_user_question": null,
+        "contextual_question": "机器人清扫时一直撞墙。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "清扫时一直撞墙",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.6183110999991186
+    },
+    {
+      "case_id": "I14",
+      "question": "拖地时不出水。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "拖地时不出水。",
+        "latest_user_question": null,
+        "contextual_question": "拖地时不出水。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "拖地时不出水",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.8696382000052836
+    },
+    {
+      "case_id": "I15",
+      "question": "边刷停止转动。",
+      "expected_status": "ready",
+      "input": {
+        "current_question": "边刷停止转动。",
+        "latest_user_question": null,
+        "contextual_question": "边刷停止转动。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "ready",
+      "decision": {
+        "status": "ready",
+        "symptom_summary": "边刷停止转动",
+        "error_code": null,
+        "missing_information": [],
+        "clarifying_question": null
+      },
+      "elapsed_seconds": 0.866043299989542
+    },
+    {
+      "case_id": "I16",
+      "question": "机器人无法正常工作怎么办？",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "机器人无法正常工作怎么办？",
+        "latest_user_question": null,
+        "contextual_question": "机器人无法正常工作怎么办？"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.8239152999885846
+    },
+    {
+      "case_id": "I17",
+      "question": "机器运行异常。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "机器运行异常。",
+        "latest_user_question": null,
+        "contextual_question": "机器运行异常。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 1.0271395000163466
+    },
+    {
+      "case_id": "I18",
+      "question": "T8 故障了，怎么办？",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "T8 故障了，怎么办？",
+        "latest_user_question": null,
+        "contextual_question": "T8 故障了，怎么办？"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.7121765000047162
+    },
+    {
+      "case_id": "I19",
+      "question": "机器人工作不正常。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "机器人工作不正常。",
+        "latest_user_question": null,
+        "contextual_question": "机器人工作不正常。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.6917116999975406
+    },
+    {
+      "case_id": "I20",
+      "question": "石头 T8 好像坏了。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "石头 T8 好像坏了。",
+        "latest_user_question": null,
+        "contextual_question": "石头 T8 好像坏了。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 1.8372633999970276
+    },
+    {
+      "case_id": "I21",
+      "question": "T8 清扫有问题。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "T8 清扫有问题。",
+        "latest_user_question": null,
+        "contextual_question": "T8 清扫有问题。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.6343242999864742
+    },
+    {
+      "case_id": "I22",
+      "question": "T8 运行出现异常。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "T8 运行出现异常。",
+        "latest_user_question": null,
+        "contextual_question": "T8 运行出现异常。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.7232846999831963
+    },
+    {
+      "case_id": "I23",
+      "question": "机器好像有故障。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "机器好像有故障。",
+        "latest_user_question": null,
+        "contextual_question": "机器好像有故障。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.6828309000120498
+    },
+    {
+      "case_id": "I24",
+      "question": "我的机器人出问题了。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "我的机器人出问题了。",
+        "latest_user_question": null,
+        "contextual_question": "我的机器人出问题了。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.9185452999954578
+    },
+    {
+      "case_id": "I25",
+      "question": "T8 工作异常。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "T8 工作异常。",
+        "latest_user_question": null,
+        "contextual_question": "T8 工作异常。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.7947946000203956
+    },
+    {
+      "case_id": "I26",
+      "question": "我的石头 T8 不太正常。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "我的石头 T8 不太正常。",
+        "latest_user_question": null,
+        "contextual_question": "我的石头 T8 不太正常。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 1.7015745000098832
+    },
+    {
+      "case_id": "I27",
+      "question": "机器人发生故障了。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "机器人发生故障了。",
+        "latest_user_question": null,
+        "contextual_question": "机器人发生故障了。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.94206440000562
+    },
+    {
+      "case_id": "I28",
+      "question": "石头 T8 运行不正常，请帮忙。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "石头 T8 运行不正常，请帮忙。",
+        "latest_user_question": null,
+        "contextual_question": "石头 T8 运行不正常，请帮忙。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 1.2415379000012763
+    },
+    {
+      "case_id": "I29",
+      "question": "我的 T8 故障了，需要排查。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "我的 T8 故障了，需要排查。",
+        "latest_user_question": null,
+        "contextual_question": "我的 T8 故障了，需要排查。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.7986918000096921
+    },
+    {
+      "case_id": "I30",
+      "question": "机器人不能正常运行，帮我看看。",
+      "expected_status": "needs_clarification",
+      "input": {
+        "current_question": "机器人不能正常运行，帮我看看。",
+        "latest_user_question": null,
+        "contextual_question": "机器人不能正常运行，帮我看看。"
+      },
+      "status": "SUCCESS",
+      "predicted_status": "needs_clarification",
+      "decision": {
+        "status": "needs_clarification",
+        "symptom_summary": null,
+        "error_code": null,
+        "missing_information": [
+          "具体异常现象"
+        ],
+        "clarifying_question": "请描述机器人出现的具体异常。"
+      },
+      "elapsed_seconds": 0.9868148999812547
+    }
+  ],
+  "multi_turn_results": [
+    {
+      "case_id": "M01",
+      "turn1": {
+        "case_id": "M01-T1",
+        "question": "机器人无法正常工作怎么办？",
+        "expected_status": "needs_clarification",
+        "input": {
+          "current_question": "机器人无法正常工作怎么办？",
+          "latest_user_question": null,
+          "contextual_question": "机器人无法正常工作怎么办？"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "needs_clarification",
+        "decision": {
+          "status": "needs_clarification",
+          "symptom_summary": null,
+          "error_code": null,
+          "missing_information": [
+            "具体异常现象"
+          ],
+          "clarifying_question": "请描述机器人出现的具体异常。"
+        },
+        "elapsed_seconds": 2.034250800003065
+      },
+      "turn2": {
+        "case_id": "M01-T2",
+        "question": "扫着扫着会自己停下来。",
+        "expected_status": "ready",
+        "input": {
+          "current_question": "扫着扫着会自己停下来。",
+          "latest_user_question": "机器人无法正常工作怎么办？",
+          "contextual_question": "机器人无法正常工作怎么办？ 扫着扫着会自己停下来。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "ready",
+        "decision": {
+          "status": "ready",
+          "symptom_summary": "清扫中途自行停止",
+          "error_code": null,
+          "missing_information": [],
+          "clarifying_question": null
+        },
+        "elapsed_seconds": 0.7120185999956448
+      },
+      "passed": true
+    },
+    {
+      "case_id": "M02",
+      "turn1": {
+        "case_id": "M02-T1",
+        "question": "机器人出问题了。",
+        "expected_status": "needs_clarification",
+        "input": {
+          "current_question": "机器人出问题了。",
+          "latest_user_question": null,
+          "contextual_question": "机器人出问题了。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "needs_clarification",
+        "decision": {
+          "status": "needs_clarification",
+          "symptom_summary": null,
+          "error_code": null,
+          "missing_information": [
+            "具体异常现象"
+          ],
+          "clarifying_question": "请描述机器人出现的具体异常。"
+        },
+        "elapsed_seconds": 0.8778241000254638
+      },
+      "turn2": {
+        "case_id": "M02-T2",
+        "question": "提示 E4。",
+        "expected_status": "ready",
+        "input": {
+          "current_question": "提示 E4。",
+          "latest_user_question": "机器人出问题了。",
+          "contextual_question": "机器人出问题了。 提示 E4。"
+        },
+        "status": "ERROR",
+        "failure_kind": "RESPONSE_OR_SCHEMA_ERROR",
+        "effective_status": "needs_clarification",
+        "elapsed_seconds": 0.7050490999827161
+      },
+      "passed": false
+    },
+    {
+      "case_id": "M03",
+      "turn1": {
+        "case_id": "M03-T1",
+        "question": "T8 运行异常。",
+        "expected_status": "needs_clarification",
+        "input": {
+          "current_question": "T8 运行异常。",
+          "latest_user_question": null,
+          "contextual_question": "T8 运行异常。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "needs_clarification",
+        "decision": {
+          "status": "needs_clarification",
+          "symptom_summary": null,
+          "error_code": null,
+          "missing_information": [
+            "具体异常现象"
+          ],
+          "clarifying_question": "请描述机器人出现的具体异常。"
+        },
+        "elapsed_seconds": 0.8500543000118341
+      },
+      "turn2": {
+        "case_id": "M03-T2",
+        "question": "它一直回不了充电座。",
+        "expected_status": "ready",
+        "input": {
+          "current_question": "它一直回不了充电座。",
+          "latest_user_question": "T8 运行异常。",
+          "contextual_question": "T8 运行异常。 它一直回不了充电座。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "ready",
+        "decision": {
+          "status": "ready",
+          "symptom_summary": "无法回充",
+          "error_code": null,
+          "missing_information": [],
+          "clarifying_question": null
+        },
+        "elapsed_seconds": 2.6258342000073753
+      },
+      "passed": true
+    },
+    {
+      "case_id": "M04",
+      "turn1": {
+        "case_id": "M04-T1",
+        "question": "机器人工作不对劲。",
+        "expected_status": "needs_clarification",
+        "input": {
+          "current_question": "机器人工作不对劲。",
+          "latest_user_question": null,
+          "contextual_question": "机器人工作不对劲。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "needs_clarification",
+        "decision": {
+          "status": "needs_clarification",
+          "symptom_summary": null,
+          "error_code": null,
+          "missing_information": [
+            "具体异常现象"
+          ],
+          "clarifying_question": "请描述机器人出现的具体异常。"
+        },
+        "elapsed_seconds": 0.8957301999907941
+      },
+      "turn2": {
+        "case_id": "M04-T2",
+        "question": "主刷不转了。",
+        "expected_status": "ready",
+        "input": {
+          "current_question": "主刷不转了。",
+          "latest_user_question": "机器人工作不对劲。",
+          "contextual_question": "机器人工作不对劲。 主刷不转了。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "ready",
+        "decision": {
+          "status": "ready",
+          "symptom_summary": "主刷不转",
+          "error_code": null,
+          "missing_information": [],
+          "clarifying_question": null
+        },
+        "elapsed_seconds": 0.8965587999846321
+      },
+      "passed": true
+    },
+    {
+      "case_id": "M05",
+      "turn1": {
+        "case_id": "M05-T1",
+        "question": "我的 T8 似乎有故障。",
+        "expected_status": "needs_clarification",
+        "input": {
+          "current_question": "我的 T8 似乎有故障。",
+          "latest_user_question": null,
+          "contextual_question": "我的 T8 似乎有故障。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "needs_clarification",
+        "decision": {
+          "status": "needs_clarification",
+          "symptom_summary": null,
+          "error_code": null,
+          "missing_information": [
+            "具体异常现象"
+          ],
+          "clarifying_question": "请描述机器人出现的具体异常。"
+        },
+        "elapsed_seconds": 0.8049837999860756
+      },
+      "turn2": {
+        "case_id": "M05-T2",
+        "question": "它清扫时发出异响。",
+        "expected_status": "ready",
+        "input": {
+          "current_question": "它清扫时发出异响。",
+          "latest_user_question": "我的 T8 似乎有故障。",
+          "contextual_question": "我的 T8 似乎有故障。 它清扫时发出异响。"
+        },
+        "status": "SUCCESS",
+        "predicted_status": "ready",
+        "decision": {
+          "status": "ready",
+          "symptom_summary": "清扫时发出异响",
+          "error_code": null,
+          "missing_information": [],
+          "clarifying_question": null
+        },
+        "elapsed_seconds": 1.5478285000135656
+      },
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "correct": 25,
+    "accuracy": 0.8333333333333334,
+    "contract_success": 28,
+    "per_class": {
+      "ready": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8
+      },
+      "needs_clarification": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091
+      }
+    },
+    "false_ready": 0,
+    "false_clarify": 3,
+    "fail_closed_ready_errors": 2,
+    "confusion_matrix": {
+      "ready": {
+        "ready": 10,
+        "needs_clarification": 3,
+        "ERROR": 2
+      },
+      "needs_clarification": {
+        "ready": 0,
+        "needs_clarification": 15,
+        "ERROR": 0
+      }
+    },
+    "avg_latency": 0.9059176433336689,
+    "p95_latency": 1.7015745000098832
+  },
+  "total_model_calls": 40,
+  "session_isolation_input_check": {
+    "current_question": "机器人无法正常工作怎么办？",
+    "latest_user_question": null,
+    "contextual_question": "机器人无法正常工作怎么办？"
+  }
+}

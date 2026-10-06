@@ -1,0 +1,650 @@
+{
+  "dataset_id": "t8_retrieval_candidates_v1",
+  "title": "石头 T8 说明书 RAG 检索测试候选集",
+  "dataset_status": "candidate_pending_human_review",
+  "is_final_golden_dataset": false,
+  "source": {
+    "model": "石头 T8",
+    "official_pdf_path": "data/raw/roborock/Roborock_T8_User_Manual_ZH.pdf",
+    "official_pdf_url": "https://files.roborock.com/uploadImages/images/upload/File/%E7%9F%B3%E5%A4%B4%E6%89%AB%E6%8B%96%E6%9C%BA%E5%99%A8%E4%BA%BAT8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf",
+    "pdf_sha256": "308f4e710ee18e1b670bf3b1448f854eb2edbe29d1f119b027fcc4880ea92b1f",
+    "pdf_pages": 26,
+    "corpus_path": "data/processed/t8_pages.jsonl",
+    "corpus_sha256": "a8be9a479c1bfc7438d79cbc03c954b18fd52b4863468ff0bbfcbf40eaad7d12",
+    "corpus_records": 41,
+    "page_numbering": "按PDF物理页从1开始；封面没有页脚页码，其余页面页脚编号与PDF物理页序一致。"
+  },
+  "evaluation_guidance": {
+    "answerable_case_count": 13,
+    "unanswerable_case_count": 2,
+    "answerable_top3_denominator": "只统计 answerability=answerable 的候选题；无答案题单独评估拒答，不进入普通 Top-3 命中率。",
+    "core_matching": "any_of 表示命中任一核心记录即可；all_of 表示问题含多个必须分别检索到的子问题，所有核心记录都应进入Top-3。",
+    "supporting_knowledge": "仅用于扩展回答或后续追问；不作为命中判定条件。",
+    "candidate_notice": "全题仍待人工核验；候选题通过人工确认后才能形成 Golden Dataset。",
+    "evidence_normalization": "仅移除PDF排版空白与换行以便逐字核对；引号中的内容未做意译。"
+  },
+  "source_quote_verification": {
+    "result": "passed_with_visual_icon_review",
+    "quote_count": 44,
+    "method": "可抽取文字片段逐字核对对应PDF页整页文本、左右栏裁剪文本或原表格单元格，并以空白归一；第12页部分按键图标未保留在纯文本提取中，候选集不推断按键名称映射，需人工对照原PDF图像核验。"
+  },
+  "review_items": [
+    "逐题确认用户表达是否自然、核心记录是否足以回答问题。",
+    "第4题仅第12页为核心知识，第4页按键图例为辅助知识；第12页部分按键图标在PDF纯文本提取中丢失，候选集不预设具体按键对应关系，需人工对照原PDF图像核验。",
+    "第8题是两个子问题，all_of 要求第17页和第18页两条核心记录同时命中。",
+    "第13题第3页和第19页是替代证据，any_of只要求任一条命中。",
+    "第14和第15题是无答案候选题，不计入普通Top-3检索命中率。"
+  ],
+  "cases": [
+    {
+      "case_id": "T8-C01",
+      "topic": "主刷维护",
+      "question": "主刷缠了头发，怎么拆下来清理？",
+      "answerability": "answerable",
+      "origin": "existing_verified_regression",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 14,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 15,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "ec3b7c307445bc8856892a01b60cb111d2f89e1f8583ef9f5c4920c93675e33e"
+          },
+          "pdf_location": "第15页，日常维护 / 软胶主刷",
+          "evidence_quotes": [
+            "1.翻转机器人，压下卡扣取下软胶主刷罩。",
+            "2.取出软胶主刷，拔出软胶主刷轴承。",
+            "按解锁标志方向旋转并取下软胶主刷盖",
+            "清除软胶主刷两端缠绕的毛发",
+            "软胶主刷罩4齿插入对应卡槽中，4齿未露出即代表安装到位"
+          ]
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 13,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 14,
+            "section": "使用说明 日常维护",
+            "title": "",
+            "text_sha256": "20b01c88b461e03f43b2fc1f889549b1d1e448863b0817561173a81077e1abc8"
+          },
+          "pdf_location": "第14页，日常维护频率表",
+          "evidence_quotes": [
+            "软胶主刷 每 2 周清理 每 6-12 个月"
+          ],
+          "annotation_note": "保养周期是补充信息，不作为回答拆卸步骤的必需证据。"
+        }
+      ],
+      "expected_answer_points": [
+        "翻转机器人拆下主刷罩；取出主刷并拔出轴承；按解锁方向取下刷盖，清理两端毛发；按卡槽方向装回并确认卡扣到位。"
+      ]
+    },
+    {
+      "case_id": "T8-C02",
+      "topic": "异响排查",
+      "question": "清扫时有异响怎么办？",
+      "answerability": "answerable",
+      "origin": "existing_verified_regression",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 27,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "清扫时有异响",
+            "text_sha256": "84b72a97694642f348041590440054a9151b952d012ddb3257fc10e4d4f749d6"
+          },
+          "pdf_location": "第23页，常见问题表 / 清扫时有异响",
+          "evidence_quotes": [
+            "主刷、边刷或主轮可能缠绕异物，请停机后清理；",
+            "万向轮清扫中进灰或被缠绕，建议使用螺丝刀撬出并冲洗干净。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 15,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 16,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "9f786bf4ffbbf03bed11f9c8c757b2440b77f7c238952f924be4b21a6e86d9bc"
+          },
+          "pdf_location": "第16页，日常维护 / 万向轮",
+          "evidence_quotes": [
+            "借助小螺丝刀等工具撬出轮轴，拔出轮体。",
+            "冲洗轮体和轮轴上的毛发或脏物。",
+            "晾干后装回轮体并压紧。"
+          ],
+          "annotation_note": "第23页已经足够说明排查方向；第16页只补充万向轮清理步骤。"
+        }
+      ],
+      "expected_answer_points": [
+        "先停机检查主刷、边刷、主轮是否缠绕异物；万向轮积灰或缠绕时按说明清理。"
+      ]
+    },
+    {
+      "case_id": "T8-C03",
+      "topic": "WiFi故障",
+      "question": "WiFi 无法连接怎么办？",
+      "answerability": "answerable",
+      "origin": "existing_verified_regression",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 28,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "无法连接WiFi",
+            "text_sha256": "a952100d604cd1edcc3437495752430572eb5c91f9493d2f19b33a2f3e761c04"
+          },
+          "pdf_location": "第23页，常见问题表 / 无法连接WiFi",
+          "evidence_quotes": [
+            "WiFi功能未激活，请重置WiFi后再次尝试；",
+            "WiFi信号不好，请确保机器人处于良好WiFi信号覆盖区内；",
+            "WiFi连接异常，重置WiFi并下载最新手机客户端尝试再次连接；",
+            "APP不支持当前型号的设备，请根据APP提示查看具体支持型号；",
+            "WiFi突然无法连接，怀疑家庭路由器有设置错误，可及时联系石头客服帮助排查。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 11,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 12,
+            "section": "使用说明",
+            "title": "",
+            "text_sha256": "42b3181d9e2505cea8daa7f7ee96e9319a058e313c9f23c2360a9f50be8285f5"
+          },
+          "pdf_location": "第12页，使用说明 / 添加设备提示",
+          "evidence_quotes": [
+            "WiFi无线连接仅支持2.4GHz频段的网络，暂不支持5GHz频段。"
+          ],
+          "annotation_note": "频段限制可辅助排查，但不是第23页故障条目的必命中项。"
+        }
+      ],
+      "expected_answer_points": [
+        "按故障情况先确认 WiFi 功能和信号覆盖；仍异常则重置 WiFi 并尝试最新版客户端；若疑似路由器设置问题，联系官方客服排查。"
+      ]
+    },
+    {
+      "case_id": "T8-C04",
+      "topic": "WiFi重置与配网",
+      "question": "如何重置 WiFi 并重新添加设备？",
+      "answerability": "answerable",
+      "origin": "existing_verified_regression",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 11,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 12,
+            "section": "使用说明",
+            "title": "",
+            "text_sha256": "42b3181d9e2505cea8daa7f7ee96e9319a058e313c9f23c2360a9f50be8285f5"
+          },
+          "pdf_location": "第12页，使用说明 / 重置WiFi、添加设备",
+          "evidence_quotes": [
+            "重置WiFi，进入配网模式",
+            "等待WiFi指示灯开始慢闪",
+            "Roborock App点击“添加设备”按钮",
+            "米家App点击“+”，根据提示添加您的设备"
+          ],
+          "annotation_note": "第12页原文包含重置WiFi与添加设备步骤；两个按键以图标呈现，但部分图标在PDF纯文本提取中丢失。候选集不推断具体按键名称，需对照原PDF图像人工核验。"
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 3,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 4,
+            "section": "产品介绍",
+            "title": "",
+            "text_sha256": "3b8d61dac2032f86fda7f565b1ca34e8a190692c280f9032d95eb2d86026b92b"
+          },
+          "pdf_location": "第4页，产品介绍 / 机器人按键图例",
+          "evidence_quotes": [
+            "局部清扫 / 童锁",
+            "回充键"
+          ],
+          "annotation_note": "辅助参考第4页按键图例；不作为核心命中要求。第12页图标与按键名称的具体对应关系需人工查看原PDF图像，候选集不依据纯文本提取作推断。"
+        }
+      ],
+      "expected_answer_points": [
+        "打开机器人上盖露出WiFi指示灯；按第12页图示同时按住两个按键，直到语音提示“重置WiFi，进入配网模式”，并等待WiFi指示灯慢闪；在Roborock App点击“添加设备”，或在米家App点击“+”按提示添加。纯文本提取未保留部分按键图标，本题不指定具体按键名称，需回看原PDF图像核验。"
+      ],
+      "review_note": "第12页是唯一核心记录，覆盖重置WiFi与添加设备；第4页按键图例仅为辅助知识。第12页部分按键图标在PDF纯文本提取中丢失，候选集不推断具体按键名称，需对照原PDF图像人工核验。"
+    },
+    {
+      "case_id": "T8-C05",
+      "topic": "局部清扫",
+      "question": "局部清扫会扫多大一块？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 11,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 12,
+            "section": "使用说明",
+            "title": "",
+            "text_sha256": "42b3181d9e2505cea8daa7f7ee96e9319a058e313c9f23c2360a9f50be8285f5"
+          },
+          "pdf_location": "第12页，使用说明 / 局部清扫",
+          "evidence_quotes": [
+            "清扫范围：机器人为中心1.5米×1.5米的方形区域。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [],
+      "expected_answer_points": [
+        "清扫范围是以机器人为中心的1.5米×1.5米方形区域。"
+      ]
+    },
+    {
+      "case_id": "T8-C06",
+      "topic": "童锁",
+      "question": "小孩老是乱按机器上的键，童锁怎么开关？开了以后按键还能用吗？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "all_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 3,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 4,
+            "section": "产品介绍",
+            "title": "",
+            "text_sha256": "3b8d61dac2032f86fda7f565b1ca34e8a190692c280f9032d95eb2d86026b92b"
+          },
+          "pdf_location": "第4页，产品介绍 / 机器人按键图例",
+          "evidence_quotes": [
+            "长按3S开启/关闭童锁功能"
+          ],
+          "annotation_note": "回答童锁开启与关闭方法的核心依据；完整回答还需要第13页关于童锁开启后按键行为的核心记录。"
+        },
+        {
+          "record_index_zero_based": 12,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 13,
+            "section": "使用说明",
+            "title": "",
+            "text_sha256": "87c400a1ad8f1fc19a769dc06b37c42b1c85106aa47bb2db410cb54d930e9642"
+          },
+          "pdf_location": "第13页，使用说明 / 童锁",
+          "evidence_quotes": [
+            "童锁开启时，机器人静止状态下所有按键均被锁定。",
+            "机器人清扫或回充状态下，可按任意键使其暂停。"
+          ],
+          "annotation_note": "回答童锁开启后按键能否使用的核心依据；与第4页童锁开关方法共同构成完整答案。"
+        }
+      ],
+      "supporting_knowledge": [],
+      "expected_answer_points": [
+        "长按第4页标注的局部清扫/童锁键3秒开启或关闭童锁；童锁开启时，机器人静止状态下所有按键均被锁定；机器人清扫或回充状态下，按任意键可以暂停。"
+      ],
+      "review_note": "本题包含童锁开关方法与开启后的按键行为两个必要部分。第4页和第13页两条核心知识必须共同命中（all_of）；只命中其中一条不算完整通过。"
+    },
+    {
+      "case_id": "T8-C07",
+      "topic": "拖地与水箱",
+      "question": "拖地水箱应该加什么水？能不能直接加热水？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 9,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 10,
+            "section": "产品安装",
+            "title": "",
+            "text_sha256": "1e42507748928e7bfb2bfb686ac5d3b78b695ccb19e9edf649e77d58fc7d958c"
+          },
+          "pdf_location": "第10页，产品安装 / 水箱装水提示",
+          "evidence_quotes": [
+            "打开水箱塞，装满自来水后塞回水箱塞。",
+            "请勿装入热水，可能造成水箱变形。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [],
+      "expected_answer_points": [
+        "加自来水；不要加热水，以免水箱变形。"
+      ]
+    },
+    {
+      "case_id": "T8-C08",
+      "topic": "滤网清洁",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "all_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 16,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 17,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "6af1476966bc3421465e16715626449a87bc8d2a852b458fcec1248819f19c90"
+          },
+          "pdf_location": "第17页，日常维护 / 二合一尘盒水箱及滤网",
+          "evidence_quotes": [
+            "请用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞。"
+          ]
+        },
+        {
+          "record_index_zero_based": 17,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 18,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "2eef720a6116e9822dc2051ba9166656402d4cd2ba0151a2024d309e75a8bb5b"
+          },
+          "pdf_location": "第18页，日常维护 / 二合一尘盒水箱及滤网",
+          "evidence_quotes": [
+            "晾晒二合一尘盒水箱及可水洗滤网至干透，并装回使用。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [],
+      "expected_answer_points": [
+        "只用清水冲洗，不加洗涤剂；滤网和尘盒晾至干透后再装回。"
+      ],
+      "review_note": "问题包含两个独立子问；第17页回答是否用洗涤剂，第18页回答装回前需否干透。Top-3 评估建议要求两条核心记录都进入候选前3。"
+    },
+    {
+      "case_id": "T8-C09",
+      "topic": "充电座安装",
+      "question": "充电座靠墙摆好了，两边和前面要留多大空位？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 8,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 9,
+            "section": "产品安装",
+            "title": "",
+            "text_sha256": "94cef95893f5dc20f80e32e7a5e0ac0211436d2b7015cd3d0251812ff2d28a67"
+          },
+          "pdf_location": "第9页，产品安装 / 放置充电座",
+          "evidence_quotes": [
+            "确保充电座两侧有0.5米以上、前方有1.5米以上空间。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 25,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "无法回充",
+            "text_sha256": "449b07d161c9ae9f666c77edfe1d0d43dad04b312e986f825cc89740d8ff30a7"
+          },
+          "pdf_location": "第23页，常见问题表 / 无法回充",
+          "evidence_quotes": [
+            "充电座附近障碍物太多，请将充电座放到开阔区域；"
+          ],
+          "annotation_note": "该故障条目可辅助解释障碍物影响，但安装尺寸以第9页为核心依据。"
+        }
+      ],
+      "expected_answer_points": [
+        "充电座两侧各留0.5米以上，前方留1.5米以上。"
+      ]
+    },
+    {
+      "case_id": "T8-C10",
+      "topic": "无法充电",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 23,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "无法充电",
+            "text_sha256": "9e294a2c242df0349a7c7baceafb1d559a15cce3fa5c485f67f073582f8c54b2"
+          },
+          "pdf_location": "第23页，常见问题表 / 无法充电",
+          "evidence_quotes": [
+            "充电座未通电，请确认充电座电源线两头是否都已插好；",
+            "接触不良，请清理充电座弹片与机器人充电触片；",
+            "请确认充电座指示灯是否亮起。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 18,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 19,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "1458c19e67259b1acd3959a98a45195d99f538c6affe2256a09fb618c6f4f264"
+          },
+          "pdf_location": "第19页，日常维护 / 充电接触区",
+          "evidence_quotes": [
+            "用柔软干布擦拭清理充电座弹片和充电触片。"
+          ],
+          "annotation_note": "补充接触区清洁方式；第23页本身已包含核心排查信息。"
+        }
+      ],
+      "expected_answer_points": [
+        "检查充电座电源线两端和指示灯；清理充电座弹片及机器人充电触片。"
+      ]
+    },
+    {
+      "case_id": "T8-C11",
+      "topic": "定时清扫",
+      "question": "我在 App 里设了定时清扫，到点却没启动，电量要满足什么条件？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 30,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "定时清扫不生效",
+            "text_sha256": "0476b6f4fb87596f6c2490f6e7b05b471fbe26cc736d289ca419c7fbed347935"
+          },
+          "pdf_location": "第23页，常见问题表 / 定时清扫不生效",
+          "evidence_quotes": [
+            "使机器人保持充电状态，剩余电量大于20%才会启动定时清扫。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [],
+      "expected_answer_points": [
+        "机器人需保持充电状态，剩余电量大于20%才会启动定时清扫。"
+      ]
+    },
+    {
+      "case_id": "T8-C12",
+      "topic": "断点续扫",
+      "question": "清扫到一半没电回去充，充满后它没接着扫，可能是什么原因？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 34,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "清扫中途电量不足回充但未续扫",
+            "text_sha256": "fd1775c9c841872218df7cd6cadb22ebc4e05b36ef08f097254441c6c01b5924"
+          },
+          "pdf_location": "第23页，常见问题表 / 清扫中途电量不足回充但未续扫",
+          "evidence_quotes": [
+            "请确认机器人未处于勿扰模式下，该模式下不会续扫；",
+            "手动回充或将机器人放回充电座不会续扫。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 12,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 13,
+            "section": "使用说明",
+            "title": "",
+            "text_sha256": "87c400a1ad8f1fc19a769dc06b37c42b1c85106aa47bb2db410cb54d930e9642"
+          },
+          "pdf_location": "第13页，使用说明 / 勿扰模式",
+          "evidence_quotes": [
+            "勿扰时间段内，机器人不会自动续扫及主动播放语音"
+          ],
+          "annotation_note": "说明勿扰模式的行为细节，是第23页故障条目的补充。"
+        }
+      ],
+      "expected_answer_points": [
+        "检查是否处于勿扰模式；手动触发回充或手动把机器人放回充电座后不会自动续扫。"
+      ]
+    },
+    {
+      "case_id": "T8-C13",
+      "topic": "长期存放",
+      "question": "接下来几个月都不用它，放着期间多久要充一次电？",
+      "answerability": "answerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "any_of",
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 2,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 3,
+            "section": "安全信息",
+            "title": "",
+            "text_sha256": "9c23cf5aeea4d312f9c5978862aefc656566077a2d2f042a78234e014e19cefd"
+          },
+          "pdf_location": "第3页，安全信息 / 电池及充电",
+          "evidence_quotes": [
+            "如长时间不使用本产品，请充满电后关闭机器人并放置于阴凉干燥处，至少每3个月充电一次避免电池出现过放。"
+          ]
+        },
+        {
+          "record_index_zero_based": 18,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 19,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "1458c19e67259b1acd3959a98a45195d99f538c6affe2256a09fb618c6f4f264"
+          },
+          "pdf_location": "第19页，日常维护 / 电池",
+          "evidence_quotes": [
+            "如长时间不使用请关机存放，至少每三个月充电一次避免电池因过放受损。"
+          ]
+        }
+      ],
+      "supporting_knowledge": [],
+      "expected_answer_points": [
+        "长期不用时关机存放；至少每3个月充电一次，避免电池过放。"
+      ],
+      "review_note": "第3页和第19页各自都足以回答充电间隔；两条记录属于可替代核心证据，任一命中即可。"
+    },
+    {
+      "case_id": "T8-C14",
+      "topic": "价格与促销",
+      "question": "现在石头 T8 官方卖多少钱？双十一有优惠吗？",
+      "answerability": "unanswerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "not_applicable",
+      "core_knowledge": [],
+      "supporting_knowledge": [],
+      "unanswerable_reason": "当前版本的26页说明书不提供 T8 当前零售价或双十一促销信息；文档的规格与三包内容不能推出实时价格或优惠。",
+      "expected_response_behavior": "明确说明这份说明书没有当前售价或促销信息；建议查询官方销售渠道，不编造金额或优惠。",
+      "absence_check": {
+        "searched_terms": [
+          "售价",
+          "价格",
+          "双十一",
+          "优惠"
+        ],
+        "hits_in_processed_manual": 0,
+        "scope": "已核对本地26页官方说明书及对应提取文本；该结论仅针对这份说明书。"
+      }
+    },
+    {
+      "case_id": "T8-C15",
+      "topic": "用户设备历史数据",
+      "question": "我家 T8 昨晚那次清扫用了多久，结束时还剩多少电？",
+      "answerability": "unanswerable",
+      "origin": "new_candidate",
+      "review_status": "pending_human_review",
+      "core_match_policy": "not_applicable",
+      "core_knowledge": [],
+      "supporting_knowledge": [
+        {
+          "record_index_zero_based": 13,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 14,
+            "section": "使用说明 日常维护",
+            "title": "",
+            "text_sha256": "20b01c88b461e03f43b2fc1f889549b1d1e448863b0817561173a81077e1abc8"
+          },
+          "pdf_location": "第14页，APP功能介绍 / 机器人信息",
+          "evidence_quotes": [
+            "清洁记录｜机器人电量｜保养与维护"
+          ],
+          "annotation_note": "说明书只指出 App 提供清洁记录和机器人电量入口，不含这台用户设备昨晚的时长或结束电量。"
+        }
+      ],
+      "unanswerable_reason": "问题询问特定用户设备某次历史任务的实际数据；说明书不包含用户的个人设备运行记录。",
+      "expected_response_behavior": "不要编造时长或电量。可说明当前没有该设备的历史遥测数据，并提示用户查看 App 的清洁记录和机器人电量信息；不要承诺 App 一定保存每次结束电量。"
+    }
+  ]
+}

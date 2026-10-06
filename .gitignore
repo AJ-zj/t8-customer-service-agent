@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Project virtual environments
+.venv/
+.venv-ragas/
+venv/
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Temporary and log files
+tmp/
+*.log
+data/vector_store/chroma/
+data/evaluation/chunk_ablation/*/chroma/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+node_modules/
+frontend/dist/

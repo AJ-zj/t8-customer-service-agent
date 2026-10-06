@@ -1,0 +1,462 @@
+{
+  "golden_sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386",
+  "cases": 60,
+  "answerable": 50,
+  "unanswerable": 10,
+  "retrieval": {
+    "BM25": {
+      "eligible": 50,
+      "successful": 50,
+      "failed": 0,
+      "hit@1": 0.74,
+      "hit@3": 0.9,
+      "recall@3": 0.9,
+      "ndcg@3": 0.8357115704285749,
+      "hit@5": 0.94,
+      "recall@5": 0.94,
+      "ndcg@5": 0.8529386327515106,
+      "mrr": 0.8311904761904761
+    },
+    "Dense": {
+      "eligible": 50,
+      "successful": 50,
+      "failed": 0,
+      "hit@1": 0.66,
+      "hit@3": 0.84,
+      "recall@3": 0.84,
+      "ndcg@3": 0.7683301655000041,
+      "hit@5": 0.86,
+      "recall@5": 0.86,
+      "ndcg@5": 0.7769436966614719,
+      "mrr": 0.7606969582704877
+    },
+    "RRF": {
+      "eligible": 50,
+      "successful": 50,
+      "failed": 0,
+      "hit@1": 0.74,
+      "hit@3": 0.88,
+      "recall@3": 0.88,
+      "ndcg@3": 0.8178557852142875,
+      "hit@5": 0.88,
+      "recall@5": 0.88,
+      "ndcg@5": 0.8178557852142875,
+      "mrr": 0.8130952380952381
+    },
+    "Reranker": {
+      "eligible": 50,
+      "successful": 50,
+      "failed": 0,
+      "hit@1": 0.88,
+      "hit@3": 0.98,
+      "recall@3": 0.98,
+      "ndcg@3": 0.9404743802857166,
+      "hit@5": 1,
+      "recall@5": 1.0,
+      "ndcg@5": 0.9482114364304074,
+      "mrr": 0.9306666666666666
+    }
+  },
+  "chunk_configs": [
+    {
+      "chunk_size": 256,
+      "overlap": 32,
+      "unit": "Unicode characters",
+      "chunk_count": 63,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.98,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 0.98,
+        "recall@5": 0.98,
+        "ndcg@5": 0.9504743802857166,
+        "mrr": 0.9433333333333334
+      }
+    },
+    {
+      "chunk_size": 256,
+      "overlap": 64,
+      "unit": "Unicode characters",
+      "chunk_count": 66,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9478557852142875,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9564693163757553,
+        "mrr": 0.9416666666666667
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.979954954954955,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9478557852142875,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9555928413589783,
+        "mrr": 0.9406666666666667
+      }
+    },
+    {
+      "chunk_size": 512,
+      "overlap": 32,
+      "unit": "Unicode characters",
+      "chunk_count": 48,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.98,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      }
+    },
+    {
+      "chunk_size": 512,
+      "overlap": 96,
+      "unit": "Unicode characters",
+      "chunk_count": 48,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9590879114471844,
+        "mrr": 0.945
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.98,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      }
+    },
+    {
+      "chunk_size": 768,
+      "overlap": 96,
+      "unit": "Unicode characters",
+      "chunk_count": 44,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.88,
+        "hit@3": 1,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9530929753571458,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9530929753571458,
+        "mrr": 0.9366666666666666
+      },
+      "actual_chunk_top3_parent_hit": 1,
+      "reference_coverage_top3": 1.0,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.88,
+        "hit@3": 1,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9530929753571458,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9530929753571458,
+        "mrr": 0.9366666666666666
+      }
+    }
+  ],
+  "generation_successful": 60,
+  "generation_failed": 0,
+  "citation_number_validity": 1,
+  "strict_citation_requirement_validity": 0.9333333333333333,
+  "answerable_citation_presence": 1,
+  "generation_judge_all_samples": {
+    "faithfulness": {
+      "mean": 0.866658969699847,
+      "successful": 59,
+      "failed": 1
+    },
+    "answer_relevance": {
+      "mean": 0.7329893157673592,
+      "successful": 60,
+      "failed": 0
+    },
+    "abstention": {
+      "successful": 10,
+      "failed": 0,
+      "accuracy": 1.0,
+      "false_answer_rate": 0.0
+    },
+    "complete_samples": 59,
+    "metric_failures": 1,
+    "api_request_count": 439,
+    "chat_request_count": 319,
+    "embedding_request_count": 120
+  },
+  "generation_judge_answerable_only": {
+    "faithfulness": {
+      "mean": 0.9008977617020835,
+      "successful": 49,
+      "failed": 1
+    },
+    "answer_relevance": {
+      "mean": 0.8105496630501501,
+      "successful": 50,
+      "failed": 0
+    }
+  },
+  "ragas_version": "0.4.3",
+  "judge_model": "deepseek-ai/DeepSeek-V4-Flash",
+  "initial_adapter_failure_excluded_from_semantic_scores": {
+    "faithfulness": {
+      "mean": null,
+      "successful": 0,
+      "failed": 60
+    },
+    "answer_relevance": {
+      "mean": null,
+      "successful": 0,
+      "failed": 60
+    },
+    "abstention": {
+      "successful": 0,
+      "failed": 10,
+      "accuracy": null,
+      "false_answer_rate": null
+    },
+    "complete_samples": 0,
+    "metric_failures": 130,
+    "api_request_count": 130,
+    "chat_request_count": 130,
+    "embedding_request_count": 0
+  },
+  "bad_cases": [
+    {
+      "id": "T8-G002",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G018",
+      "question": "拖地完成回充后怎么取下拖布支架？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G019",
+      "question": "T8 支持哪些手机 APP？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G021",
+      "question": "T8 能连 5GHz WiFi 吗？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G025",
+      "question": "清扫中电量不够会怎样，之后能继续清扫吗？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)",
+        "retrieval miss"
+      ]
+    },
+    {
+      "id": "T8-G026",
+      "question": "充电时能不能关机？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G028",
+      "question": "默认勿扰时间是什么，在哪里修改？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G031",
+      "question": "APP 可以查看哪些清洁地图功能？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G036",
+      "question": "可以使用第三方电池或充电座吗？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G038",
+      "question": "机器人放上充电座也不充电怎么办？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G039",
+      "question": "充电速度很慢怎么处理？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G040",
+      "question": "机器人无法回充怎么办？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G043",
+      "question": "WiFi 无法连接怎么办？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G048",
+      "question": "电量不足回充后不继续清扫是什么原因？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G049",
+      "question": "机器人突然漏扫应该清理哪里？",
+      "bad_case_tags": [
+        "judge/API failure"
+      ]
+    },
+    {
+      "id": "T8-G051",
+      "question": "现在 T8 官方卖多少钱？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G053",
+      "question": "我家 T8 昨晚清扫用了多久？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)",
+        "missing citation"
+      ]
+    },
+    {
+      "id": "T8-G055",
+      "question": "我的机器人现在在哪个房间？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)",
+        "missing citation"
+      ]
+    },
+    {
+      "id": "T8-G057",
+      "question": "这台 T8 什么时候购买的？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)",
+        "missing citation"
+      ]
+    },
+    {
+      "id": "T8-G058",
+      "question": "T8 现在最新固件版本号是多少？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G059",
+      "question": "T8 的主刷电机维修螺丝拧紧扭矩是多少？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)"
+      ]
+    },
+    {
+      "id": "T8-G060",
+      "question": "我家机器人上一次错误日志是什么？",
+      "bad_case_tags": [
+        "answer hallucination / unsupported claim (judge flagged; human review required)",
+        "missing citation"
+      ]
+    }
+  ],
+  "limitations": [
+    "Single-record atomic questions; Recall equals Hit in V1.",
+    "RAGAS is a model estimate, not human ground truth; manually inspect known contradictory low-score samples.",
+    "Top5 measures the diagnostic reranker ranking, not production evidence count.",
+    "Chunk record hit is a proxy; inspect exact source coverage.",
+    "Production chunk optimality cannot be established from these five settings."
+  ],
+  "production_changed": false,
+  "database_writes": 0
+}

@@ -1,0 +1,355 @@
+{
+  "status": "frozen_before_model_evaluation",
+  "cases": [
+    {
+      "case_id": "S01",
+      "question": "T8 支持地毯功能吗？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S02",
+      "question": "T8 支持地毯增压吗？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S03",
+      "question": "尘盒在哪里？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S04",
+      "question": "拖地模式怎么开启？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S05",
+      "question": "机器人怎么开机？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S06",
+      "question": "如何重置 WiFi 并重新添加设备？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S07",
+      "question": "怎么开启童锁？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S08",
+      "question": "说明书里的 WiFi 指示灯是什么意思？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S09",
+      "question": "怎样开始清扫？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S10",
+      "question": "怎么暂停清扫？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S11",
+      "question": "石头 T8 的按键有什么作用？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S12",
+      "question": "如何让机器人返回充电座？",
+      "expected_intent": "consult_qa"
+    },
+    {
+      "case_id": "S13",
+      "question": "机器人一直卡住怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S14",
+      "question": "出现 E4 怎么处理？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S15",
+      "question": "扫着扫着停了。",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S16",
+      "question": "清扫时有异响怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S17",
+      "question": "WiFi 无法连接怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S18",
+      "question": "放上充电座也不充电怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S19",
+      "question": "机器人无法回充怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S20",
+      "question": "机器一直漏水怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S21",
+      "question": "启动后不工作怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S22",
+      "question": "清扫时吸力突然变小怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S23",
+      "question": "机器人一直提示主刷卡住。",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S24",
+      "question": "地图突然不见了怎么办？",
+      "expected_intent": "troubleshooting"
+    },
+    {
+      "case_id": "S25",
+      "question": "主刷怎么清理？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S26",
+      "question": "主刷多久清理一次？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S27",
+      "question": "滤网怎么维护？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S28",
+      "question": "尘盒怎么清洁？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S29",
+      "question": "边刷怎么拆下清理？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S30",
+      "question": "轮子缠了头发怎么清理？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S31",
+      "question": "传感器要怎么擦？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S32",
+      "question": "充电触点怎么清洁？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S33",
+      "question": "拖布多久洗一次？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S34",
+      "question": "软胶主刷怎么装回？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S35",
+      "question": "滤网能用洗洁精洗吗？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S36",
+      "question": "没干的滤网能装回吗？",
+      "expected_intent": "maintenance"
+    },
+    {
+      "case_id": "S37",
+      "question": "帮我生成日常维护清单。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S38",
+      "question": "帮我整理一份 T8 维护清单。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S39",
+      "question": "生成一份日常维护报告。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S40",
+      "question": "给我列一份保养计划。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S41",
+      "question": "整理主刷和滤网的维护汇总。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S42",
+      "question": "做一份机器人清洁保养报告。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S43",
+      "question": "请输出维护项目和注意事项清单。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S44",
+      "question": "帮我把说明书保养要求整理成报告。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S45",
+      "question": "给我一份每周维护计划。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S46",
+      "question": "生成 T8 耗材维护汇总表。",
+      "expected_intent": "maintenance_report"
+    },
+    {
+      "case_id": "S47",
+      "question": "我家有地毯和宠物，应该怎么设置？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S48",
+      "question": "晚上怕吵，清扫怎么设置？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S49",
+      "question": "我家是木地板，应该选什么清扫方式？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S50",
+      "question": "家里猫毛很多，怎么配置清扫？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S51",
+      "question": "我希望声音小一点，该选哪种模式？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S52",
+      "question": "我更偏好拖地，怎么安排使用？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S53",
+      "question": "家里有小孩，怎么设置更合适？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S54",
+      "question": "我家有多种地面，怎么选择清扫方案？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S55",
+      "question": "客厅有地毯，卧室是木地板，怎么配置？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S56",
+      "question": "我想每天定时清扫，应该怎么设置？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S57",
+      "question": "家里养狗，如何选择清扫方案？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S58",
+      "question": "我晚上想安静清扫，应该用什么设置？",
+      "expected_intent": "configuration_recommendation"
+    },
+    {
+      "case_id": "S59",
+      "question": "这个怎么弄？",
+      "expected_intent": "clarify"
+    },
+    {
+      "case_id": "S60",
+      "question": "它坏了怎么办？",
+      "expected_intent": "clarify"
+    },
+    {
+      "case_id": "S61",
+      "question": "机器人好像有问题，那怎么办？",
+      "expected_intent": "clarify"
+    },
+    {
+      "case_id": "S62",
+      "question": "不对劲，帮我看看。",
+      "expected_intent": "clarify"
+    },
+    {
+      "case_id": "S63",
+      "question": "那个用不了。",
+      "expected_intent": "clarify"
+    },
+    {
+      "case_id": "S64",
+      "question": "怎么解决？",
+      "expected_intent": "clarify"
+    },
+    {
+      "case_id": "S65",
+      "question": "我要人工客服。",
+      "expected_intent": "human_handoff"
+    },
+    {
+      "case_id": "S66",
+      "question": "请转人工。",
+      "expected_intent": "human_handoff"
+    },
+    {
+      "case_id": "S67",
+      "question": "帮我找人工客服。",
+      "expected_intent": "human_handoff"
+    },
+    {
+      "case_id": "S68",
+      "question": "我要真人客服。",
+      "expected_intent": "human_handoff"
+    },
+    {
+      "case_id": "S69",
+      "question": "我要人工服务。",
+      "expected_intent": "human_handoff"
+    },
+    {
+      "case_id": "S70",
+      "question": "联系人工处理。",
+      "expected_intent": "human_handoff"
+    }
+  ]
+}

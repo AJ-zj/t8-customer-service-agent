@@ -1,0 +1,743 @@
+{
+  "experiment": "t8_chat_model_rag_ablation_v1",
+  "run_status": "complete",
+  "dataset_id": "t8_retrieval_candidates_v1",
+  "generation_parameters": {
+    "temperature": 0.1,
+    "max_tokens": 1200,
+    "timeout_seconds": 25,
+    "retry_policy": "timeout only; one retry maximum"
+  },
+  "cases": [
+    {
+      "case_id": "RACE-01",
+      "golden_case_id": "T8-C01",
+      "question": "主刷怎么清理？",
+      "expected_answer_points": [
+        "翻转机器人拆下主刷罩；取出主刷并拔出轴承；按解锁方向取下刷盖，清理两端毛发；按卡槽方向装回并确认卡扣到位。"
+      ],
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 14,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 15,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "ec3b7c307445bc8856892a01b60cb111d2f89e1f8583ef9f5c4920c93675e33e"
+          },
+          "pdf_location": "第15页，日常维护 / 软胶主刷",
+          "evidence_quotes": [
+            "1.翻转机器人，压下卡扣取下软胶主刷罩。",
+            "2.取出软胶主刷，拔出软胶主刷轴承。",
+            "按解锁标志方向旋转并取下软胶主刷盖",
+            "清除软胶主刷两端缠绕的毛发",
+            "软胶主刷罩4齿插入对应卡槽中，4齿未露出即代表安装到位"
+          ]
+        }
+      ],
+      "retrieval_query": "主刷怎么清理？",
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "record_index": 27,
+          "pdf_page": 23,
+          "title": "清扫时有异响",
+          "section": "常见问题",
+          "text": "问题：清扫时有异响。解决方法：主刷、边刷或主轮可能缠绕异物，请停机后清理；万向轮清扫中进灰或被缠绕，建议使用螺丝刀撬出并冲洗干净。"
+        },
+        {
+          "evidence_id": "E2",
+          "record_index": 14,
+          "pdf_page": 15,
+          "title": "",
+          "section": "日常维护",
+          "text": "日常维护\n软胶主刷\n软胶主刷罩\n卡 扣\n软胶主刷\n软胶主刷\n轴承 软胶主刷盖\n1.翻转机器人，压下卡扣取下软胶主刷罩。\n2.取出软胶主刷，拔出软胶主刷轴承。\n3.按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两\n端缠绕的毛发或赃物后按锁定方向装回。\n4.将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插\n入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软\n胶主刷罩固定卡扣。\n提示：\n• 软胶主刷脏污建议用湿布擦拭。如果浸水，务必晾干防止暴晒。\n• 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷。"
+        },
+        {
+          "evidence_id": "E3",
+          "record_index": 15,
+          "pdf_page": 16,
+          "title": "",
+          "section": "日常维护",
+          "text": "日常维护\n边 刷 2.冲洗轮体和轮轴上的毛发或脏物。\n1.拆下边刷固定螺丝。\n2.清理边刷后装回并锁紧螺丝。\n3.晾干后装回轮体并压紧。\n主 轮\n用柔软干布擦拭清理主轮。\n万向轮\n1.借助小螺丝刀等工具撬出轮轴，拔出轮体。\n提示：万向轮支架不可取出。\n16"
+        }
+      ]
+    },
+    {
+      "case_id": "RACE-02",
+      "golden_case_id": "T8-C05",
+      "question": "局部清扫会扫多大一块？",
+      "expected_answer_points": [
+        "清扫范围是以机器人为中心的1.5米×1.5米方形区域。"
+      ],
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 11,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 12,
+            "section": "使用说明",
+            "title": "",
+            "text_sha256": "42b3181d9e2505cea8daa7f7ee96e9319a058e313c9f23c2360a9f50be8285f5"
+          },
+          "pdf_location": "第12页，使用说明 / 局部清扫",
+          "evidence_quotes": [
+            "清扫范围：机器人为中心1.5米×1.5米的方形区域。"
+          ]
+        }
+      ],
+      "retrieval_query": "局部清扫会扫多大一块？",
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "record_index": 11,
+          "pdf_page": 12,
+          "title": "",
+          "section": "使用说明",
+          "text": "使用说明\n2 重置WiFi\n1.打开机器人上盖露出 WiFi 指示灯。\n2.同时按住 键与 键直到语音提示“重置 WiFi，进\n入配网模式”，并等待 WiFi 指示灯开始慢闪，表示机\n器人已进入配网模式。\n提示：当路由器修改配置、遗忘密码或其他原因导致手机无法连接机器人时，\n可以在重置 WiFi 进入配网模式后重新添加设备。\nWiFi 指示灯\n• 熄灭：WiFi 功能未激活\n• 慢闪：等待连接\n• 快闪：正在连接\n• 长亮：WiFi 已连接\n3 添加设备\n打开手机 APP 首页，在Roborock App点击“添加设备”按钮，\n或在米家App点击“+”，根据提示添加您的设备。\n提示：\n• 由于手机 APP 的升级与更新，实际操作可能与以上描述略有差异，请按照\n手机 APP 内引导进行操作。\n• WiFi 无线连接仅支持 2.4GHz 频段的网络，暂不支持 5GHz 频段。\n• 机器人处于等待连接状态超过 1 小时后，将自动关闭 WiFi 功能。如需再次\n连接，请重置 WiFi 后联网。\n使用说明\n开机 /关机\n长按 键开机，电源指示灯点亮，机器人进入待命状态。长\n按 键关机，本次清扫结束。\n提示：机器人在充电中无法关机。\n启动清扫\n短按 键机器人将按扫描生成的地图动态规划清扫路线，采\n用先沿墙后 Z 字形填充的方式逐一完成各分区的清扫，有序\n高效覆盖。\n提示：\n• 若电量过低请先充电再启动清扫。\n• 清扫前请将地上的各类线材（包括充电座的电源线）和贵重物品整理好，避免\n机器人清扫时拖拽引起电器断电、损坏物品或线材。\n• 清扫时间小于 10 分钟，将默认清扫两次。\n• 清扫过程中电量不足时，机器人将自动返回充电座充电，电量充足后自动回到\n中断处继续清扫。\n局部清扫\n短按 键启动局部清扫。\n清扫范围：机器人为中心1.5米×1.5米的方形区域。\n提示：清扫结束后机器人会自动返回起点位置，进入待命状态。"
+        },
+        {
+          "evidence_id": "E2",
+          "record_index": 35,
+          "pdf_page": 23,
+          "title": "局部清扫或移动位置后无法返回充电座",
+          "section": "常见问题",
+          "text": "问题：局部清扫或移动位置后无法返回充电座。解决方法：局部清扫或者远距离移动位置后机器人将重新生成地图，如充电座距离较远可能无法自动回充，请手动将机器人放回充电座充电。"
+        },
+        {
+          "evidence_id": "E3",
+          "record_index": 3,
+          "pdf_page": 4,
+          "title": "",
+          "section": "产品介绍",
+          "text": "产品介绍\n配件清单 机器人\n局部清扫 / 童 锁\n• 短按启动局部清扫\n• 长按3S开启/\n关闭童锁功能\n清扫 / 开关机键\n• 长按开机或关机\n• 短按启动清扫\n充电座 防水垫\n电源指示灯\n• 白 色：电量≥20%\n• 红 色：电量＜20%\n• 呼吸闪烁：充电或启动中\n• 红色快闪：异常状态\n电源线\n回充键\n• 短按启动回充\n拖布支架 拖 布\n提示：在清扫或回充时按任意键暂停。\n04"
+        }
+      ]
+    },
+    {
+      "case_id": "RACE-03",
+      "golden_case_id": "T8-C10",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "expected_answer_points": [
+        "检查充电座电源线两端和指示灯；清理充电座弹片及机器人充电触片。"
+      ],
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 23,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 23,
+            "section": "常见问题",
+            "title": "无法充电",
+            "text_sha256": "9e294a2c242df0349a7c7baceafb1d559a15cce3fa5c485f67f073582f8c54b2"
+          },
+          "pdf_location": "第23页，常见问题表 / 无法充电",
+          "evidence_quotes": [
+            "充电座未通电，请确认充电座电源线两头是否都已插好；",
+            "接触不良，请清理充电座弹片与机器人充电触片；",
+            "请确认充电座指示灯是否亮起。"
+          ]
+        }
+      ],
+      "retrieval_query": "机器人放上充电座也不充电，我先排查哪几处？",
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "record_index": 23,
+          "pdf_page": 23,
+          "title": "无法充电",
+          "section": "常见问题",
+          "text": "问题：无法充电。解决方法：充电座未通电，请确认充电座电源线两头是否都已插好；接触不良，请清理充电座弹片与机器人充电触片；请确认充电座指示灯是否亮起。"
+        },
+        {
+          "evidence_id": "E2",
+          "record_index": 25,
+          "pdf_page": 23,
+          "title": "无法回充",
+          "section": "常见问题",
+          "text": "问题：无法回充。解决方法：充电座附近障碍物太多，请将充电座放到开阔区域；机器人距离充电座太远，请将机器人放到充电座附近尝试。"
+        },
+        {
+          "evidence_id": "E3",
+          "record_index": 34,
+          "pdf_page": 23,
+          "title": "清扫中途电量不足回充但未续扫",
+          "section": "常见问题",
+          "text": "问题：清扫中途电量不足回充但未续扫。解决方法：请确认机器人未处于勿扰模式下，该模式下不会续扫；手动回充或将机器人放回充电座不会续扫。"
+        }
+      ]
+    },
+    {
+      "case_id": "RACE-04",
+      "golden_case_id": "T8-C08",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "expected_answer_points": [
+        "只用清水冲洗，不加洗涤剂；滤网和尘盒晾至干透后再装回。"
+      ],
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 16,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 17,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "6af1476966bc3421465e16715626449a87bc8d2a852b458fcec1248819f19c90"
+          },
+          "pdf_location": "第17页，日常维护 / 二合一尘盒水箱及滤网",
+          "evidence_quotes": [
+            "请用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞。"
+          ]
+        },
+        {
+          "record_index_zero_based": 17,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 18,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "2eef720a6116e9822dc2051ba9166656402d4cd2ba0151a2024d309e75a8bb5b"
+          },
+          "pdf_location": "第18页，日常维护 / 二合一尘盒水箱及滤网",
+          "evidence_quotes": [
+            "晾晒二合一尘盒水箱及可水洗滤网至干透，并装回使用。"
+          ]
+        }
+      ],
+      "retrieval_query": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "record_index": 17,
+          "pdf_page": 18,
+          "title": "",
+          "section": "日常维护",
+          "text": "日常维护\n5.反复冲洗滤网并将污垢轻敲出来，直至干净为止。 拖 布\n1.从拖布支架上移除拖布。\n提示：禁止用手、刷子或者尖锐物触碰滤网表面，以免损伤滤网。\n6.晾晒二合一尘盒水箱及可水洗滤网至干透，并装回使用。\n2.清洗拖布并晾晒。\n提示：\n• 如拖布较脏，会影响拖地效果，请先清洗后再使用。\n• 建议每3-6个月更换拖布，以保证清扫效果。\n提示：建议两个滤网轮换使用。\n18"
+        },
+        {
+          "evidence_id": "E2",
+          "record_index": 16,
+          "pdf_page": 17,
+          "title": "",
+          "section": "日常维护",
+          "text": "日常维护\n二合一尘盒水箱及滤网 3.按图示方法倒出水箱余水。\n1.打开机器人上盖，取出二合一尘盒水箱。\n4.尘盒中注入清水，左右摇晃，倒出脏水。\n2.取下滤网并倾倒垃圾。\n提示：请用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞。\n17"
+        },
+        {
+          "evidence_id": "E3",
+          "record_index": 4,
+          "pdf_page": 5,
+          "title": "",
+          "section": "产品介绍",
+          "text": "产品介绍\n主 机 二合一尘盒水箱\n水箱塞\nWiFi 指示灯\n系统重置键\n进水口滤网\n二合一尘盒水箱 可水洗滤网\n进尘口\n拖布支架\n排风口\n05"
+        }
+      ]
+    },
+    {
+      "case_id": "RACE-05",
+      "golden_case_id": "T8-C01",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "expected_answer_points": [
+        "翻转机器人拆下主刷罩；取出主刷并拔出轴承；按解锁方向取下刷盖，清理两端毛发；按卡槽方向装回并确认卡扣到位。"
+      ],
+      "core_knowledge": [
+        {
+          "record_index_zero_based": 14,
+          "record_locator": {
+            "model": "石头 T8",
+            "pdf_page": 15,
+            "section": "日常维护",
+            "title": "",
+            "text_sha256": "ec3b7c307445bc8856892a01b60cb111d2f89e1f8583ef9f5c4920c93675e33e"
+          },
+          "pdf_location": "第15页，日常维护 / 软胶主刷",
+          "evidence_quotes": [
+            "1.翻转机器人，压下卡扣取下软胶主刷罩。",
+            "2.取出软胶主刷，拔出软胶主刷轴承。",
+            "按解锁标志方向旋转并取下软胶主刷盖",
+            "清除软胶主刷两端缠绕的毛发",
+            "软胶主刷罩4齿插入对应卡槽中，4齿未露出即代表安装到位"
+          ]
+        }
+      ],
+      "retrieval_query": "的主刷怎么清理？",
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "record_index": 27,
+          "pdf_page": 23,
+          "title": "清扫时有异响",
+          "section": "常见问题",
+          "text": "问题：清扫时有异响。解决方法：主刷、边刷或主轮可能缠绕异物，请停机后清理；万向轮清扫中进灰或被缠绕，建议使用螺丝刀撬出并冲洗干净。"
+        },
+        {
+          "evidence_id": "E2",
+          "record_index": 14,
+          "pdf_page": 15,
+          "title": "",
+          "section": "日常维护",
+          "text": "日常维护\n软胶主刷\n软胶主刷罩\n卡 扣\n软胶主刷\n软胶主刷\n轴承 软胶主刷盖\n1.翻转机器人，压下卡扣取下软胶主刷罩。\n2.取出软胶主刷，拔出软胶主刷轴承。\n3.按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两\n端缠绕的毛发或赃物后按锁定方向装回。\n4.将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插\n入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软\n胶主刷罩固定卡扣。\n提示：\n• 软胶主刷脏污建议用湿布擦拭。如果浸水，务必晾干防止暴晒。\n• 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷。"
+        },
+        {
+          "evidence_id": "E3",
+          "record_index": 15,
+          "pdf_page": 16,
+          "title": "",
+          "section": "日常维护",
+          "text": "日常维护\n边 刷 2.冲洗轮体和轮轴上的毛发或脏物。\n1.拆下边刷固定螺丝。\n2.清理边刷后装回并锁紧螺丝。\n3.晾干后装回轮体并压紧。\n主 轮\n用柔软干布擦拭清理主轮。\n万向轮\n1.借助小螺丝刀等工具撬出轮轴，拔出轮体。\n提示：万向轮支架不可取出。\n16"
+        }
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "model": "Qwen/Qwen3.8-27B",
+      "case_id": "RACE-01",
+      "question": "主刷怎么清理？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 19.21,
+      "answer": "主刷清理步骤如下：\n\n1. 翻转机器人，压下卡扣取下软胶主刷罩 [E2]。  \n2. 取出软胶主刷，拔出软胶主刷轴承 [E2]。  \n3. 按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两端缠绕的毛发或赃物后，按锁定方向装回 [E2]。  \n4. 将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插入对应卡槽中；4 齿未露出即代表安装到位，然后压紧软胶主刷罩固定卡扣 [E2]。  \n\n提示：软胶主刷脏污建议用湿布擦拭；如果浸水，务必晾干并防止暴晒 [E2]。请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷 [E2]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "Qwen/Qwen3.8-27B",
+      "case_id": "RACE-02",
+      "question": "局部清扫会扫多大一块？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 5.08,
+      "answer": "局部清扫的清扫范围是以机器人为中心的 1.5 米 × 1.5 米方形区域 [E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "Qwen/Qwen3.8-27B",
+      "case_id": "RACE-03",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 15.03,
+      "answer": "根据当前说明书资料，机器人放上充电座不充电时，先排查以下三处 [E1]：\n\n1. 确认充电座电源线两头是否都已插好 [E1]。  \n2. 清理充电座弹片与机器人充电触片，排除接触不良 [E1]。  \n3. 确认充电座指示灯是否亮起 [E1]。  \n\n如果以上均正常仍不充电，根据当前提供的说明书资料无法确认具体原因，缺少当前充电座通电状态、指示灯状态和触片接触状态等设备现场信息。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "检测到拒答表述；仍需人工检查是否夹带无依据断言及引用是否相关。"
+        ]
+      }
+    },
+    {
+      "model": "Qwen/Qwen3.8-27B",
+      "case_id": "RACE-04",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 10.14,
+      "answer": "不能。说明书要求滤网用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞 [E2]。\n\n洗完没干不能马上装回，需要晾晒至干透后再装回使用 [E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2",
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "Qwen/Qwen3.8-27B",
+      "case_id": "RACE-05",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 24.02,
+      "answer": "根据当前说明书资料，软胶主刷清理方法如下 [E2]。\n\n- 翻转机器人，压下卡扣取下软胶主刷罩 [E2]。\n- 取出软胶主刷，拔出软胶主刷轴承 [E2]。\n- 按解锁标志方向旋转并取下软胶主刷盖 [E2]。\n- 清除软胶主刷两端缠绕的毛发或赃物后，按锁定方向装回软胶主刷盖 [E2]。\n- 将软胶主刷及主刷罩装回机器人 [E2]。\n- 确保软胶主刷罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位 [E2]。\n- 然后压紧软胶主刷罩固定卡扣 [E2]。\n- 软胶主刷脏污建议用湿布擦拭 [E2]。\n- 如果浸水，务必晾干并防止暴晒 [E2]。\n- 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷 [E2]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-01",
+      "question": "主刷怎么清理？",
+      "attempt": 1,
+      "status": "timeout",
+      "elapsed_seconds": 25.11,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-01",
+      "question": "主刷怎么清理？",
+      "attempt": 2,
+      "status": "timeout",
+      "elapsed_seconds": 25.08,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-02",
+      "question": "局部清扫会扫多大一块？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 10.35,
+      "answer": "局部清扫的范围是以机器人为中心的1.5米×1.5米方形区域。[E1]",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-03",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "attempt": 1,
+      "status": "timeout",
+      "elapsed_seconds": 25.07,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-03",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "attempt": 2,
+      "status": "timeout",
+      "elapsed_seconds": 25.1,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-04",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "attempt": 1,
+      "status": "timeout",
+      "elapsed_seconds": 25.23,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-04",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "attempt": 2,
+      "status": "timeout",
+      "elapsed_seconds": 25.1,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-05",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "attempt": 1,
+      "status": "timeout",
+      "elapsed_seconds": 25.11,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "Qwen/Qwen3.6-27B",
+      "case_id": "RACE-05",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "attempt": 2,
+      "status": "timeout",
+      "elapsed_seconds": 25.09,
+      "answer": null,
+      "has_valid_text": false,
+      "safe_error_code": "TimeoutError"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Flash",
+      "case_id": "RACE-01",
+      "question": "主刷怎么清理？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 3.16,
+      "answer": "根据说明书，软胶主刷的清理步骤如下：\n\n1. 翻转机器人，压下卡扣取下软胶主刷罩 [E2]。\n2. 取出软胶主刷，拔出软胶主刷轴承 [E2]。\n3. 按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两端缠绕的毛发或赃物后，按锁定方向装回 [E2]。\n4. 将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软胶主刷罩固定卡扣 [E2]。\n\n维护提示：\n- 软胶主刷脏污建议用湿布擦拭；如果浸水，务必晾干防止暴晒 [E2]。\n- 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷 [E2]。\n\n另外，如果清扫时有异响，可能是主刷缠绕异物，请停机后清理 [E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2",
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Flash",
+      "case_id": "RACE-02",
+      "question": "局部清扫会扫多大一块？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 1.9,
+      "answer": "根据说明书，局部清扫的清扫范围是：以机器人为中心1.5米×1.5米的方形区域 [E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Flash",
+      "case_id": "RACE-03",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 3.56,
+      "answer": "根据说明书，请依次排查以下三处：\n\n1. 确认充电座电源线两头是否都已插好 [E1]\n2. 确认充电座指示灯是否亮起 [E1]\n3. 清理充电座弹片与机器人充电触片，排除接触不良 [E1]\n\n另外，若机器人实际上无法回充到充电座附近，可检查充电座附近障碍物是否过多，或机器人距充电座是否太远 [E2]。\n\n超出上述范围的问题（如机器人电池本身状态、内部电路等），当前提供的说明书资料未提及，无法确认。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1",
+          "E2"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "检测到拒答表述；仍需人工检查是否夹带无依据断言及引用是否相关。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Flash",
+      "case_id": "RACE-04",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 3.04,
+      "answer": "根据说明书，滤网不能用洗洁精洗，必须用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞 [E2]。  \n另外，说明书要求将可水洗滤网晾晒至干透后再装回使用 [E1]。因此，洗完没干就装回去的做法不符合说明书要求。  \n关于“没干装回去”的具体后果，说明书未提及，无法确认。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2",
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "检测到拒答表述；仍需人工检查是否夹带无依据断言及引用是否相关。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Flash",
+      "case_id": "RACE-05",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 5.82,
+      "answer": "根据说明书，石头 T8 软胶主刷的清理步骤如下：\n\n1. 翻转机器人，压下卡扣取下软胶主刷罩 [E2]。\n2. 取出软胶主刷，拔出软胶主刷轴承 [E2]。\n3. 按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两端缠绕的毛发或赃物后按锁定方向装回 [E2]。\n4. 将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软胶主刷罩固定卡扣 [E2]。\n\n另外，说明书提示：软胶主刷脏污建议用湿布擦拭；如果浸水，务必晾干防止暴晒；请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷 [E2]。\n\n关于“清扫时有异响”的情况，说明书提到主刷可能缠绕异物，请停机后清理 [E1]。但该条未提供与上述步骤不同的额外清理方法。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2",
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "case_id": "RACE-01",
+      "question": "主刷怎么清理？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 6.48,
+      "answer": "根据说明书，清理主刷（软胶主刷）的步骤如下 [E2]：\n\n1. 翻转机器人，压下卡扣取下软胶主刷罩。\n2. 取出软胶主刷，拔出软胶主刷轴承。\n3. 按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两端缠绕的毛发或赃物后按锁定方向装回。\n4. 将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软胶主刷罩固定卡扣。\n\n日常维护提示：软胶主刷脏污建议用湿布擦拭；如果浸水，务必晾干防止暴晒；请勿使用具有腐蚀性的清洁液或消毒剂清洗 [E2]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "case_id": "RACE-02",
+      "question": "局部清扫会扫多大一块？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 3.71,
+      "answer": "根据说明书，局部清扫的范围是以机器人为中心、1.5米×1.5米的方形区域 [E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "case_id": "RACE-03",
+      "question": "机器人放上充电座也不充电，我先排查哪几处？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 16.4,
+      "answer": "根据说明书常见问题，建议按以下顺序排查：\n1. 确认充电座电源线两头是否都已插好 [E1]。\n2. 检查充电座指示灯是否亮起 [E1]。\n3. 清理充电座弹片与机器人充电触片，排除接触不良 [E1]。\n4. 若仍不充电，可检查充电座周围有无障碍物，并将机器人放到充电座附近重新尝试对接 [E2]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E1",
+          "E2"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "case_id": "RACE-04",
+      "question": "滤网脏了能用洗洁精洗吗？洗完没干能马上装回去吗？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 13.19,
+      "answer": "根据说明书，滤网不能用洗洁精清洗，因为说明书明确要求“请用清水清洗，不要添加任何洗涤剂，否则可能造成滤网堵塞”[E2]。洗完没干不能马上装回去，需要“晾晒二合一尘盒水箱及可水洗滤网至干透，并装回使用”[E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2",
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "case_id": "RACE-05",
+      "question": "请问石头 T8 的主刷怎么清理？",
+      "attempt": 1,
+      "status": "success",
+      "elapsed_seconds": 21.58,
+      "answer": "根据说明书，石头 T8 的主刷（软胶主刷）清理步骤如下 [E2]：\n1. 翻转机器人，压下卡扣取下软胶主刷罩。\n2. 取出软胶主刷，拔出软胶主刷轴承。\n3. 按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两端缠绕的毛发或赃物后按锁定方向装回。\n4. 将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软胶主刷罩固定卡扣。\n\n日常维护提示：软胶主刷脏污建议用湿布擦拭；如果浸水，务必晾干防止暴晒；请勿使用具有腐蚀性的清洁液或消毒剂清洗 [E2]。此外，若清扫时出现异响，可能是主刷缠绕异物，需停机后清理 [E1]。",
+      "has_valid_text": true,
+      "deterministic_audit": {
+        "status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "citation_ids": [
+          "E2",
+          "E1"
+        ],
+        "invalid_citations": [],
+        "semantic_support": "NOT_VERIFIED",
+        "reasons": [
+          "引用编号合法，但页面相关性和证据蕴含关系未由程序判定。"
+        ]
+      }
+    }
+  ],
+  "quality_note": "audit_answer provides deterministic risk checks only; citation validity does not prove semantic support. Groundedness, relevance, and completeness require manual review."
+}

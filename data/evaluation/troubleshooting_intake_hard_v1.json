@@ -1,0 +1,25 @@
+{
+  "status": "frozen_before_model_evaluation",
+  "cases": [
+    {"case_id":"H01","question":"机器提示 E4。","expected_status":"ready"},
+    {"case_id":"H02","question":"错误码 5。","expected_status":"ready"},
+    {"case_id":"H03","question":"机器人一直卡住。","expected_status":"ready"},
+    {"case_id":"H04","question":"它回不了充电座。","expected_status":"ready"},
+    {"case_id":"H05","question":"清扫时有异响。","expected_status":"ready"},
+    {"case_id":"H06","question":"主刷不转了。","expected_status":"ready"},
+    {"case_id":"H07","question":"机器漏水。","expected_status":"ready"},
+    {"case_id":"H08","question":"扫到一半自己停了。","expected_status":"ready"},
+    {"case_id":"H09","question":"按键后无法启动。","expected_status":"ready"},
+    {"case_id":"H10","question":"机器好像坏了。","expected_status":"needs_clarification"},
+    {"case_id":"H11","question":"机器人有问题。","expected_status":"needs_clarification"},
+    {"case_id":"H12","question":"T8 运行异常。","expected_status":"needs_clarification"},
+    {"case_id":"H13","question":"机器工作不正常。","expected_status":"needs_clarification"},
+    {"case_id":"H14","question":"机器用不了。","expected_status":"needs_clarification"},
+    {"case_id":"H15","question":"机器人故障了。","expected_status":"needs_clarification"},
+    {"case_id":"H16","question":"石头 T8 好像不对劲。","expected_status":"needs_clarification"},
+    {"case_id":"H17","question":"我的扫地机器人出故障了。","expected_status":"needs_clarification"},
+    {"case_id":"H18","question":"机器有点不正常。","expected_status":"needs_clarification"},
+    {"case_id":"H19","question":"T8 好像不能用了。","expected_status":"needs_clarification"},
+    {"case_id":"H20","question":"机器人似乎坏掉了。","expected_status":"needs_clarification"}
+  ]
+}

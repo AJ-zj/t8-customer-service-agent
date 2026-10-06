@@ -1,0 +1,125 @@
+{
+  "status": "frozen_before_v2_evaluation",
+  "cases": [
+    {
+      "case_id": "H01",
+      "question": "机器人有问题怎么办？",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H02",
+      "question": "机器人无法回充怎么办？",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H03",
+      "question": "怎么回事？",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H04",
+      "question": "扫到一半就停了。",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H05",
+      "question": "帮我看看这个",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H06",
+      "question": "主刷不转了怎么办？",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H07",
+      "question": "出现 E4。",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H08",
+      "question": "它不正常，怎么办？",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault"
+    },
+    {
+      "case_id": "H09",
+      "question": "滤网清洗后要晾多久？",
+      "expected_intent": "maintenance",
+      "boundary": "maintenance_vs_consult"
+    },
+    {
+      "case_id": "H10",
+      "question": "滤网在哪里？",
+      "expected_intent": "consult_qa",
+      "boundary": "maintenance_vs_consult"
+    },
+    {
+      "case_id": "H11",
+      "question": "主刷上的毛发怎么去掉？",
+      "expected_intent": "maintenance",
+      "boundary": "maintenance_vs_consult"
+    },
+    {
+      "case_id": "H12",
+      "question": "主刷是什么材质？",
+      "expected_intent": "consult_qa",
+      "boundary": "maintenance_vs_consult"
+    },
+    {
+      "case_id": "H13",
+      "question": "清扫模式怎么切换？",
+      "expected_intent": "consult_qa",
+      "boundary": "consult_vs_configuration"
+    },
+    {
+      "case_id": "H14",
+      "question": "我希望清扫声音更小，选什么设置？",
+      "expected_intent": "configuration_recommendation",
+      "boundary": "consult_vs_configuration"
+    },
+    {
+      "case_id": "H15",
+      "question": "T8 有没有定时清扫功能？",
+      "expected_intent": "consult_qa",
+      "boundary": "consult_vs_configuration"
+    },
+    {
+      "case_id": "H16",
+      "question": "我想每天晚上清扫，怎么安排设置？",
+      "expected_intent": "configuration_recommendation",
+      "boundary": "consult_vs_configuration"
+    },
+    {
+      "case_id": "H17",
+      "question": "边刷多久清理？",
+      "expected_intent": "maintenance",
+      "boundary": "maintenance_vs_report"
+    },
+    {
+      "case_id": "H18",
+      "question": "把边刷和滤网维护要求整理成清单。",
+      "expected_intent": "maintenance_report",
+      "boundary": "maintenance_vs_report"
+    },
+    {
+      "case_id": "H19",
+      "question": "整理日常保养报告。",
+      "expected_intent": "maintenance_report",
+      "boundary": "maintenance_vs_report"
+    },
+    {
+      "case_id": "H20",
+      "question": "我家有猫和地毯，推荐清扫配置。",
+      "expected_intent": "configuration_recommendation",
+      "boundary": "configuration_vs_consult"
+    }
+  ]
+}

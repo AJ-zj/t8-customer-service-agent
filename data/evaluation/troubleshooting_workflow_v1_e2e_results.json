@@ -1,0 +1,40 @@
+{
+  "case_id": "E",
+  "question": "机器好像坏了。",
+  "http": 200,
+  "response": {
+    "intent": "clarify",
+    "answer": "请再描述一下具体异常现象，例如是否有语音提示、错误码，或者出现了什么行为异常。",
+    "published": false
+  },
+  "before_count": 38,
+  "after_count": 38,
+  "events": {
+    "router_input": {
+      "question": "机器好像坏了。",
+      "conversation_context": null,
+      "ambiguity_guard": true
+    },
+    "router": {
+      "intent": "clarify",
+      "reason": "问题是极短泛化描述，缺少明确业务目标或具体症状。"
+    },
+    "state": {
+      "question": "机器好像坏了。",
+      "intent": "clarify",
+      "answer": "请再描述一下具体异常现象，例如是否有语音提示、错误码，或者出现了什么行为异常。",
+      "route_reason": "问题是极短泛化描述，缺少明确业务目标或具体症状。"
+    }
+  },
+  "memory": [
+    {
+      "role": "user",
+      "content": "机器好像坏了。"
+    },
+    {
+      "role": "assistant",
+      "content": "请再描述一下具体异常现象，例如是否有语音提示、错误码，或者出现了什么行为异常。"
+    }
+  ],
+  "passed": true
+}

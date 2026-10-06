@@ -1,0 +1,171 @@
+{
+  "golden_sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386",
+  "warning": "Record-projected Hit/Recall are proxies: partial chunks may not contain full answer. Actual chunk Top3 evidence coverage is reported separately. No production optimum claim.",
+  "configs": [
+    {
+      "chunk_size": 256,
+      "overlap": 32,
+      "unit": "Unicode characters",
+      "chunk_count": 63,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.98,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 0.98,
+        "recall@5": 0.98,
+        "ndcg@5": 0.9504743802857166,
+        "mrr": 0.9433333333333334
+      }
+    },
+    {
+      "chunk_size": 256,
+      "overlap": 64,
+      "unit": "Unicode characters",
+      "chunk_count": 66,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9478557852142875,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9564693163757553,
+        "mrr": 0.9416666666666667
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.979954954954955,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9478557852142875,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9555928413589783,
+        "mrr": 0.9406666666666667
+      }
+    },
+    {
+      "chunk_size": 512,
+      "overlap": 32,
+      "unit": "Unicode characters",
+      "chunk_count": 48,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.98,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      }
+    },
+    {
+      "chunk_size": 512,
+      "overlap": 96,
+      "unit": "Unicode characters",
+      "chunk_count": 48,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9590879114471844,
+        "mrr": 0.945
+      },
+      "actual_chunk_top3_parent_hit": 0.98,
+      "reference_coverage_top3": 0.98,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.9,
+        "hit@3": 0.98,
+        "recall@3": 0.98,
+        "ndcg@3": 0.9504743802857166,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9582114364304074,
+        "mrr": 0.944
+      }
+    },
+    {
+      "chunk_size": 768,
+      "overlap": 96,
+      "unit": "Unicode characters",
+      "chunk_count": 44,
+      "parent_record_proxy": {
+        "eligible": 50,
+        "successful": 50,
+        "failed": 0,
+        "hit@1": 0.88,
+        "hit@3": 1,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9530929753571458,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9530929753571458,
+        "mrr": 0.9366666666666666
+      },
+      "actual_chunk_top3_parent_hit": 1,
+      "reference_coverage_top3": 1.0,
+      "successful": 50,
+      "failed": 0,
+      "actual_chunk_slot_metrics": {
+        "hit@1": 0.88,
+        "hit@3": 1,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9530929753571458,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9530929753571458,
+        "mrr": 0.9366666666666666
+      }
+    }
+  ]
+}

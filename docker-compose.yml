@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: roborock
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    ports:
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5433}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d roborock"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  db-init:
+    image: ${COMPOSE_PROJECT_NAME:-zhisaotong}-api
+    build: .
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL with host postgres port 5432}
+    command: ["python", "scripts/50_initialize_database.py"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+  api:
+    image: ${COMPOSE_PROJECT_NAME:-zhisaotong}-api
+    build: .
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL with host postgres port 5432}
+      SILICONFLOW_API_KEY: ${SILICONFLOW_API_KEY:?Set SILICONFLOW_API_KEY}
+      REVIEW_ADMIN_TOKEN: ${REVIEW_ADMIN_TOKEN:?Set REVIEW_ADMIN_TOKEN}
+      ENABLE_LONG_TERM_MEMORY_INJECTION: "false"
+    ports:
+      - "127.0.0.1:${API_HOST_PORT:-8000}:8000"
+    volumes:
+      - ./data/vector_store/chroma:/opt/t8/data/vector_store/chroma
+    depends_on:
+      postgres:
+        condition: service_healthy
+      db-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      retries: 12
+      start_period: 10s
+  frontend:
+    image: ${COMPOSE_PROJECT_NAME:-zhisaotong}-frontend
+    build:
+      context: ./frontend
+    ports:
+      - "127.0.0.1:${FRONTEND_HOST_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+volumes:
+  postgres-data:

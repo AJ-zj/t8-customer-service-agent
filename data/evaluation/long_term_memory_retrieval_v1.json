@@ -1,0 +1,31 @@
+{
+  "dataset_status": "candidate_fixed_before_experiment",
+  "description": "Small manually labeled owner-scoped long-term-memory retrieval set; indices refer to fact_bank, not manual records.",
+  "fact_bank": [
+    {"category": "home_environment", "text": "我家有地毯"},
+    {"category": "device_profile", "text": "我现在用的是石头 T8"},
+    {"category": "home_environment", "text": "家里养猫"},
+    {"category": "usage_preference", "text": "我比较喜欢安静一点的清扫方式"},
+    {"category": "usage_preference", "text": "我更偏好拖地模式"}
+  ],
+  "cases": [
+    {"id": "M01", "facts": [0,1], "query": "地毯环境下，主刷多久清理一次？", "relevant_fact_indices": [0], "no_relevant": false},
+    {"id": "M02", "facts": [0,1,2,3,4], "query": "我家铺的地毯应该用什么清扫方式？", "relevant_fact_indices": [0], "no_relevant": false},
+    {"id": "M03", "facts": [0,1,2,3,4], "query": "地面有地毯时怎样安排扫拖？", "relevant_fact_indices": [0], "no_relevant": false},
+    {"id": "M04", "facts": [0,1,2,3,4], "query": "猫毛比较多时怎么清扫？", "relevant_fact_indices": [2], "no_relevant": false},
+    {"id": "M05", "facts": [0,1,2,3,4], "query": "宠物掉毛时应该怎样维护扫地机？", "relevant_fact_indices": [2], "no_relevant": false},
+    {"id": "M06", "facts": [0,1,2,3,4], "query": "我想清扫声音小一点", "relevant_fact_indices": [3], "no_relevant": false},
+    {"id": "M07", "facts": [0,1,2,3,4], "query": "晚上打扫时怎样尽量安静？", "relevant_fact_indices": [3], "no_relevant": false},
+    {"id": "M08", "facts": [0,1,2,3,4], "query": "如何按我的低噪音偏好安排清扫？", "relevant_fact_indices": [3], "no_relevant": false},
+    {"id": "M09", "facts": [0,1,2,3,4], "query": "按我常用的模式开始清扫应该怎么操作？", "relevant_fact_indices": [4], "no_relevant": false},
+    {"id": "M10", "facts": [0,1,2,3,4], "query": "沿用我的拖地习惯该怎样设置？", "relevant_fact_indices": [4], "no_relevant": false},
+    {"id": "M11", "facts": [0,1,2,3,4], "query": "我正在用的机型适合哪种滤网？", "relevant_fact_indices": [1], "no_relevant": false},
+    {"id": "M12", "facts": [0,1,2,3,4], "query": "给我现在用的扫地机器人介绍一下配件。", "relevant_fact_indices": [1], "no_relevant": false},
+    {"id": "M13", "facts": [0,1,2,3,4], "query": "主刷多久维护一次？", "relevant_fact_indices": [], "no_relevant": true},
+    {"id": "M14", "facts": [0,1,2,3,4], "query": "我要人工客服", "relevant_fact_indices": [], "no_relevant": true},
+    {"id": "M15", "facts": [0,1,2,3,4], "query": "现在机器电量多少？", "relevant_fact_indices": [], "no_relevant": true},
+    {"id": "M16", "facts": [0,1,2,3,4], "query": "这个机器多少钱？", "relevant_fact_indices": [], "no_relevant": true},
+    {"id": "M17", "facts": [0,1,2,3,4], "query": "昨晚机器人清扫用了多久？", "relevant_fact_indices": [], "no_relevant": true},
+    {"id": "M18", "facts": [0,1,2,3,4], "query": "滤网怎么拆下来清洗？", "relevant_fact_indices": [], "no_relevant": true}
+  ]
+}

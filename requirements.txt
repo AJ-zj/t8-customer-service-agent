@@ -1,0 +1,17 @@
+# PDF text and table extraction used by scripts/03_build_page_corpus.py
+pdfplumber==0.11.9
+jieba==0.42.1
+rank-bm25==0.2.2
+python-dotenv==1.2.4
+# Internal FastAPI review API and its TestClient dependencies
+fastapi==0.142.2
+pydantic==2.13.5
+uvicorn==0.54.0
+httpx2==2.13.1
+# Minimal conditional Agent graph
+langgraph==1.2.12
+# PostgreSQL ORM persistence for internal QA review records
+SQLAlchemy==2.1.3
+psycopg==3.3.6
+# Persistent Dense retrieval (direct official client; no LangChain wrapper)
+chromadb==1.5.9

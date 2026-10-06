@@ -1,0 +1,343 @@
+{
+  "production_business_modified": false,
+  "events": [
+    {
+      "label": "build",
+      "exit_code": 1,
+      "elapsed_seconds": 6.58,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.30kB 0.0s done\n#1 DONE 0.0s\n Image zhisaotong-deployment-e2e-api Building \n Image zhisaotong-deployment-e2e-api Building \n2026/10/06 16:12:43 http2: server: error reading preface from client //./pipe/dockerDesktopLinuxEngine: file has already been closed\n\nfailed to dial gRPC: rpc error: code = Internal desc = rpc error: code = Internal desc = header key \"x-docker-expose-session-sharedkey\" contains value with non-printable ASCII characters\n\n"
+    },
+    {
+      "label": "build_ascii",
+      "exit_code": 0,
+      "elapsed_seconds": 93.64,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.11kB 0.0s done\n#1 DONE 0.0s\n\n#2 [db-init internal] load build definition from Dockerfile\n#2 transferring dockerfile: 785B 0.0s done\n#2 DONE 0.1s\n\n#2 [api internal] load build definition from Dockerfile\n#2 DONE 0.1s\n\n#3 [api internal] load metadata for docker.io/library/python:3.12-slim\n#3 DONE 0.2s\n\n#4 [api internal] load .dockerignore\n#4 transferring context: 181B 0.0s done\n#4 DONE 0.0s\n\n#5 [db-init 1/9] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9\n#5 resolve docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9 0.0s done\n#5 CACHED\n\n#6 [db-init internal] load build context\n#6 ...\n\n#5 [api 1/9] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9\n#5 CACHED\n\n#7 [db-init 2/9] WORKDIR /opt/t8\n#7 DONE 0.0s\n\n#6 [db-init internal] load build context\n#6 transferring context: 1.15MB 0.2s done\n#6 DONE 0.3s\n\n#8 [api 3/9] COPY requirements-runtime.txt ./\n#8 DONE 0.0s\n\n#9 [db-init 4/9] RUN pip install --no-cache-dir -r requirements-runtime.txt\n#9 2.579 Collecting jieba==0.42.1 (from -r requirements-runtime.txt (line 2))\n#9 3.039   Downloading jieba-0.42.1.tar.gz (19.2 MB)\n#9 4.942      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.2/19.2 MB 11.3 MB/s eta 0:00:00\n#9 5.283   Installing build dependencies: started\n#9 7.847   Installing build dependencies: finished with status 'done'\n#9 7.848   Getting requirements to build wheel: started\n#9 8.238   Getting requirements to build wheel: finished with status 'done'\n#9 8.241   Preparing metadata (pyproject.toml): started\n#9 8.602   Preparing metadata (pyproject.toml): finished with status 'done'\n#9 8.710 Collecting rank-bm25==0.2.2 (from -r requirements-runtime.txt (line 3))\n#9 8.810   Downloading rank_bm25-0.2.2-py3-none-any.whl.metadata (3.2 kB)\n#9 8.941 Collecting python-dotenv==1.2.4 (from -r requirements-runtime.txt (line 4))\n#9 9.043   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)\n#9 9.266 Collecting fastapi==0.142.2 (from -r requirements-runtime.txt (line 5))\n#9 9.376   Downloading fastapi-0.142.2-py3-none-any.whl.metadata (27 kB)\n#9 9.621 Collecting pydantic==2.13.5 (from -r requirements-runtime.txt (line 6))\n#9 9.720   Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)\n#9 9.838 Collecting uvicorn==0.54.0 (from -r requirements-runtime.txt (line 7))\n#9 9.941   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)\n#9 10.12 Collecting langgraph==1.2.12 (from -r requirements-runtime.txt (line 8))\n#9 10.22   Downloading langgraph-1.2.12-py3-none-any.whl.metadata (4.9 kB)\n#9 10.54 Collecting SQLAlchemy==2.1.3 (from -r requirements-runtime.txt (line 9))\n#9 10.64   Downloading sqlalchemy-2.1.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.7 kB)\n#9 10.77 Collecting psycopg==3.3.6 (from psycopg[binary]==3.3.6->-r requirements-runtime.txt (line 10))\n#9 10.88   Downloading psycopg-3.3.6-py3-none-any.whl.metadata (4.4 kB)\n#9 11.03 Collecting chromadb==1.5.9 (from -r requirements-runtime.txt (line 11))\n#9 11.13   Downloading chromadb-1.5.9-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)\n#9 11.37 Collecting numpy (from rank-bm25==0.2.2->-r requirements-runtime.txt (line 3))\n#9 11.48   Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\n#9 11.61 Collecting starlette>=0.46.0 (from fastapi==0.142.2->-r requirements-runtime.txt (line 5))\n#9 11.70   Downloading starlette-1.7.0-py3-none-any.whl.metadata (6.6 kB)\n#9 11.82 Collecting typing-extensions>=4.8.0 (from fastapi==0.142.2->-r requirements-runtime.txt (line 5))\n#9 11.92   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\n#9 12.02 Collecting typing-inspection>=0.4.2 (from fastapi==0.142.2->-r requirements-runtime.txt (line 5))\n#9 12.12   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)\n#9 12.22 Collecting annotated-doc>=0.0.2 (from fastapi==0.142.2->-r requirements-runtime.txt (line 5))\n#9 12.32   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)\n#9 12.44 Collecting opentelemetry-api>=1.44.0 (from fastapi==0.142.2->-r requirements-runtime.txt (line 5))\n#9 12.54   Downloading opentelemetry_api-1.45.0-py3-none-any.whl.metadata (1.4 kB)\n#9 12.64 Collecting annotated-types>=0.6.0 (from pydantic==2.13.5->-r requirements-runtime.txt (line 6))\n#9 12.75   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)\n#9 13.32 Collecting pydantic-core==2.46.5 (from pydantic==2.13.5->-r requirements-runtime.txt (line 6))\n#9 13.42   Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)\n#9 13.55 Collecting click>=7.0 (from uvicorn==0.54.0->-r requirements-runtime.txt (line 7))\n#9 13.65   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)\n#9 13.75 Collecting h11>=0.8 (from uvicorn==0.54.0->-r requirements-runtime.txt (line 7))\n#9 13.84   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)\n#9 14.03 Collecting langchain-core<2,>=1.4.7 (from langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 14.12   Downloading langchain_core-1.6.6-py3-none-any.whl.metadata (4.8 kB)\n#9 14.23 Collecting langgraph-checkpoint<5.0.0,>=4.1.0 (from langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 14.32   Downloading langgraph_checkpoint-4.2.0-py3-none-any.whl.metadata (6.7 kB)\n#9 14.42 Collecting langgraph-prebuilt<1.2.0,>=1.1.0 (from langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 14.52   Downloading langgraph_prebuilt-1.1.0-py3-none-any.whl.metadata (5.2 kB)\n#9 14.63 Collecting langgraph-sdk<0.5.0,>=0.4.2 (from langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 14.73   Downloading langgraph_sdk-0.4.5-py3-none-any.whl.metadata (5.1 kB)\n#9 14.93 Collecting xxhash>=3.5.0 (from langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 15.03   Downloading xxhash-4.0.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (17 kB)\n#9 15.14 Collecting build>=1.0.3 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 15.25   Downloading build-1.6.1-py3-none-any.whl.metadata (5.6 kB)\n#9 15.35 Collecting pydantic-settings>=2.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 15.45   Downloading pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)\n#9 15.63 Collecting pybase64>=1.4.1 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 15.73   Downloading pybase64-1.5.1-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl.metadata (11 kB)\n#9 15.89 Collecting onnxruntime>=1.14.1 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 15.99   Downloading onnxruntime-1.30.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (5.7 kB)\n#9 16.10 Collecting opentelemetry-exporter-otlp-proto-grpc>=1.2.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 16.20   Downloading opentelemetry_exporter_otlp_proto_grpc-1.45.0-py3-none-any.whl.metadata (2.6 kB)\n#9 16.30 Collecting opentelemetry-sdk>=1.2.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 16.40   Downloading opentelemetry_sdk-1.45.0-py3-none-any.whl.metadata (1.6 kB)\n#9 16.59 Collecting tokenizers>=0.13.2 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 16.69   Downloading tokenizers-0.23.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.8 kB)\n#9 16.80 Collecting pypika>=0.48.9 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 16.90   Downloading pypika-0.51.1-py2.py3-none-any.whl.metadata (51 kB)\n#9 17.02 Collecting tqdm>=4.65.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 17.12   Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)\n#9 17.24 Collecting overrides>=7.3.1 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 17.34   Downloading overrides-7.7.0-py3-none-any.whl.metadata (5.8 kB)\n#9 17.45 Collecting importlib-resources (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 17.55   Downloading importlib_resources-7.1.0-py3-none-any.whl.metadata (4.0 kB)\n#9 17.98 Collecting grpcio>=1.58.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 18.07   Downloading grpcio-1.84.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)\n#9 18.20 Collecting bcrypt>=4.0.1 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 18.29   Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (10 kB)\n#9 18.40 Collecting typer>=0.9.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 18.50   Downloading typer-0.27.2-py3-none-any.whl.metadata (16 kB)\n#9 18.61 Collecting kubernetes>=28.1.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 18.71   Downloading kubernetes-36.0.3-py2.py3-none-any.whl.metadata (1.8 kB)\n#9 18.81 Collecting tenacity>=8.2.3 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 18.91   Downloading tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)\n#9 19.02 Collecting pyyaml>=6.0.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 19.11   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)\n#9 19.27 Collecting mmh3>=4.0.1 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 19.37   Downloading mmh3-5.3.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (13 kB)\n#9 19.66 Collecting orjson>=3.9.12 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 19.76   Downloading orjson-3.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)\n#9 19.88 Collecting httpx>=0.27.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 19.98   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)\n#9 20.10 Collecting rich>=10.11.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 20.21   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)\n#9 20.34 Collecting jsonschema>=4.19.0 (from chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 20.43   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)\n#9 20.63 Collecting psycopg-binary==3.3.6 (from psycopg[binary]==3.3.6->-r requirements-runtime.txt (line 10))\n#9 20.73   Downloading psycopg_binary-3.3.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)\n#9 20.84 Collecting packaging>=24.0 (from build>=1.0.3->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 20.93   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)\n#9 21.03 Collecting pyproject_hooks (from build>=1.0.3->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 21.13   Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)\n#9 21.25 Collecting anyio (from httpx>=0.27.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 21.34   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)\n#9 21.45 Collecting certifi (from httpx>=0.27.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 21.55   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)\n#9 21.65 Collecting httpcore==1.* (from httpx>=0.27.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 21.74   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)\n#9 21.86 Collecting idna (from httpx>=0.27.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 21.96   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)\n#9 22.06 Collecting attrs>=22.2.0 (from jsonschema>=4.19.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 22.15   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)\n#9 22.26 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.19.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 22.35   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)\n#9 22.47 Collecting referencing>=0.28.4 (from jsonschema>=4.19.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 22.57   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)\n#9 22.87 Collecting rpds-py>=0.25.0 (from jsonschema>=4.19.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 22.96   Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)\n#9 23.06 Collecting six>=1.9.0 (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 23.16   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)\n#9 23.26 Collecting python-dateutil>=2.5.3 (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 23.35   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)\n#9 23.47 Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 23.57   Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)\n#9 23.72 Collecting requests (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 23.82   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)\n#9 23.92 Collecting requests-oauthlib (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 24.01   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)\n#9 24.13 Collecting urllib3!=2.6.0,>=1.24.2 (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 24.23   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)\n#9 24.33 Collecting durationpy>=0.7 (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 24.42   Downloading durationpy-0.11-py3-none-any.whl.metadata (474 bytes)\n#9 24.87 Collecting aiohttp<4.0.0,>=3.13.5 (from kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 24.97   Downloading aiohttp-3.14.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)\n#9 25.09 Collecting jsonpatch<2.0.0,>=1.33.0 (from langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 25.19   Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)\n#9 25.29 Collecting langchain-protocol>=0.0.17 (from langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 25.39   Downloading langchain_protocol-0.0.19-py3-none-any.whl.metadata (2.4 kB)\n#9 25.60 Collecting langsmith<1.0.0,>=0.3.45 (from langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 25.70   Downloading langsmith-0.14.4-py3-none-any.whl.metadata (22 kB)\n#9 25.89 Collecting uuid-utils<1.0,>=0.12.0 (from langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 25.99   Downloading uuid_utils-0.17.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.4 kB)\n#9 26.14 Collecting ormsgpack>=1.12.0 (from langgraph-checkpoint<5.0.0,>=4.1.0->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 26.23   Downloading ormsgpack-1.12.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)\n#9 26.46 Collecting websockets<17,>=14 (from langgraph-sdk<0.5.0,>=0.4.2->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 26.55   Downloading websockets-16.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)\n#9 26.66 Collecting flatbuffers (from onnxruntime>=1.14.1->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 26.76   Downloading flatbuffers-25.12.19-py2.py3-none-any.whl.metadata (1.0 kB)\n#9 26.98 Collecting protobuf>=4.25.8 (from onnxruntime>=1.14.1->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 27.08   Downloading protobuf-7.36.2-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)\n#9 27.19 Collecting googleapis-common-protos~=1.57 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 27.29   Downloading googleapis_common_protos-1.75.5-py3-none-any.whl.metadata (8.5 kB)\n#9 27.41 Collecting opentelemetry-exporter-otlp-common==0.66b0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 27.51   Downloading opentelemetry_exporter_otlp_common-0.66b0-py3-none-any.whl.metadata (1.9 kB)\n#9 27.61 Collecting opentelemetry-exporter-otlp-proto-common==1.45.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 27.71   Downloading opentelemetry_exporter_otlp_proto_common-1.45.0-py3-none-any.whl.metadata (1.8 kB)\n#9 27.82 Collecting opentelemetry-proto==1.45.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 27.92   Downloading opentelemetry_proto-1.45.0-py3-none-any.whl.metadata (2.3 kB)\n#9 28.07 Collecting opentelemetry-semantic-conventions==0.66b0 (from opentelemetry-sdk>=1.2.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 28.18   Downloading opentelemetry_semantic_conventions-0.66b0-py3-none-any.whl.metadata (2.4 kB)\n#9 28.30 Collecting markdown-it-py>=2.2.0 (from rich>=10.11.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 28.40   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)\n#9 28.57 Collecting pygments<3.0.0,>=2.13.0 (from rich>=10.11.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 28.67   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)\n#9 28.82 Collecting huggingface-hub<2.0,>=0.16.4 (from tokenizers>=0.13.2->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 28.91   Downloading huggingface_hub-1.33.0-py3-none-any.whl.metadata (16 kB)\n#9 29.02 Collecting shellingham>=1.3.0 (from typer>=0.9.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 29.12   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)\n#9 29.24 Collecting httptools>=0.8.0 (from uvicorn[standard]>=0.18.3->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 29.33   Downloading httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)\n#9 29.53 Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.18.3->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 29.62   Downloading uvloop-0.23.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)\n#9 29.78 Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.18.3->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 29.88   Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)\n#9 30.01 Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4.0.0,>=3.13.5->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 30.11   Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)\n#9 30.20 Collecting aiosignal>=1.4.0 (from aiohttp<4.0.0,>=3.13.5->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 30.30   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)\n#9 30.43 Collecting frozenlist>=1.1.1 (from aiohttp<4.0.0,>=3.13.5->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 30.53   Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)\n#9 30.79 Collecting multidict<7.0,>=4.5 (from aiohttp<4.0.0,>=3.13.5->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 30.88   Downloading multidict-6.9.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)\n#9 31.04 Collecting propcache>=0.2.0 (from aiohttp<4.0.0,>=3.13.5->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 31.14   Downloading propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (25 kB)\n#9 31.50 Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.13.5->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 31.60   Downloading yarl-1.25.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (111 kB)\n#9 31.80 Collecting filelock>=3.10.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.13.2->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 31.90   Downloading filelock-4.0.12-py3-none-any.whl.metadata (2.0 kB)\n#9 32.00 Collecting fsspec>=2023.5.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.13.2->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 32.10   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)\n#9 32.27 Collecting hf-xet<2.0.0,>=1.6.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.13.2->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 32.37   Downloading hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)\n#9 32.49 Collecting jsonpointer>=1.9 (from jsonpatch<2.0.0,>=1.33.0->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 32.59   Downloading jsonpointer-3.1.1-py3-none-any.whl.metadata (2.4 kB)\n#9 32.74 Collecting distro>=1.7.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 32.84   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)\n#9 32.94 Collecting httpx2<3,>=2 (from langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 33.04   Downloading httpx2-2.13.1-py3-none-any.whl.metadata (9.8 kB)\n#9 33.17 Collecting requests-toolbelt>=1.0.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 33.27   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)\n#9 33.37 Collecting sniffio>=1.1 (from langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 33.47   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)\n#9 33.62 Collecting zstandard>=0.23.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 33.72   Downloading zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.3 kB)\n#9 33.82 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=10.11.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 33.92   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)\n#9 34.13 Collecting charset_normalizer<4,>=2 (from requests->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 34.23   Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)\n#9 34.39 Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes>=28.1.0->chromadb==1.5.9->-r requirements-runtime.txt (line 11))\n#9 34.49   Downloading oauthlib-4.0.0-py3-none-any.whl.metadata (8.6 kB)\n#9 34.64 Collecting httpcore2==2.13.1 (from httpx2<3,>=2->langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 34.74   Downloading httpcore2-2.13.1-py3-none-any.whl.metadata (26 kB)\n#9 34.85 Collecting truststore>=0.10 (from httpx2<3,>=2->langsmith<1.0.0,>=0.3.45->langchain-core<2,>=1.4.7->langgraph==1.2.12->-r requirements-runtime.txt (line 8))\n#9 34.96   Downloading truststore-0.10.4-py3-none-any.whl.metadata (4.4 kB)\n#9 35.18 Downloading rank_bm25-0.2.2-py3-none-any.whl (8.6 kB)\n#9 35.28 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)\n#9 35.38 Downloading fastapi-0.142.2-py3-none-any.whl (144 kB)\n#9 35.49 Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)\n#9 35.63 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)\n#9 35.74 Downloading langgraph-1.2.12-py3-none-any.whl (250 kB)\n#9 35.86 Downloading sqlalchemy-2.1.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)\n#9 36.31    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 10.7 MB/s eta 0:00:00\n#9 36.41 Downloading psycopg-3.3.6-py3-none-any.whl (215 kB)\n#9 36.53 Downloading chromadb-1.5.9-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23.3 MB)\n#9 38.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.3/23.3 MB 10.4 MB/s eta 0:00:00\n#9 38.87 Downloading psycopg_binary-3.3.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)\n#9 39.36    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 11.0 MB/s eta 0:00:00\n#9 39.47 Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)\n#9 39.64    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.4 MB/s eta 0:00:00\n#9 39.74 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)\n#9 39.84 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)\n#9 39.95 Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)\n#9 40.08 Downloading build-1.6.1-py3-none-any.whl (31 kB)\n#9 40.18 Downloading click-8.5.0-py3-none-any.whl (125 kB)\n#9 40.30 Downloading grpcio-1.84.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (7.2 MB)\n#9 40.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 11.7 MB/s eta 0:00:00\n#9 41.04 Downloading h11-0.16.0-py3-none-any.whl (37 kB)\n#9 41.15 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)\n#9 41.27 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)\n#9 41.38 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)\n#9 41.48 Downloading kubernetes-36.0.3-py2.py3-none-any.whl (4.6 MB)\n#9 41.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 10.3 MB/s eta 0:00:00\n#9 42.04 Downloading langchain_core-1.6.6-py3-none-any.whl (572 kB)\n#9 42.11    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 572.1/572.1 kB 10.4 MB/s eta 0:00:00\n#9 42.21 Downloading langgraph_checkpoint-4.2.0-py3-none-any.whl (56 kB)\n#9 42.31 Downloading langgraph_prebuilt-1.1.0-py3-none-any.whl (41 kB)\n#9 42.42 Downloading langgraph_sdk-0.4.5-py3-none-any.whl (162 kB)\n#9 42.54 Downloading mmh3-5.3.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (103 kB)\n#9 42.65 Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n#9 44.38    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 9.7 MB/s eta 0:00:00\n#9 44.48 Downloading onnxruntime-1.30.0-cp312-cp312-manylinux_2_28_x86_64.whl (23.6 MB)\n#9 46.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.6/23.6 MB 11.3 MB/s eta 0:00:00\n#9 46.67 Downloading opentelemetry_api-1.45.0-py3-none-any.whl (60 kB)\n#9 46.77 Downloading opentelemetry_exporter_otlp_proto_grpc-1.45.0-py3-none-any.whl (19 kB)\n#9 46.88 Downloading opentelemetry_exporter_otlp_common-0.66b0-py3-none-any.whl (12 kB)\n#9 46.98 Downloading opentelemetry_exporter_otlp_proto_common-1.45.0-py3-none-any.whl (15 kB)\n#9 47.08 Downloading opentelemetry_proto-1.45.0-py3-none-any.whl (72 kB)\n#9 47.20 Downloading opentelemetry_sdk-1.45.0-py3-none-any.whl (140 kB)\n#9 47.32 Downloading opentelemetry_semantic_conventions-0.66b0-py3-none-any.whl (206 kB)\n#9 47.43 Downloading orjson-3.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (131 kB)\n#9 47.54 Downloading overrides-7.7.0-py3-none-any.whl (17 kB)\n#9 47.65 Downloading pybase64-1.5.1-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl (94 kB)\n#9 47.76 Downloading pydantic_settings-2.15.0-py3-none-any.whl (69 kB)\n#9 47.87 Downloading pypika-0.51.1-py2.py3-none-any.whl (60 kB)\n#9 47.97 Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)\n#9 48.06    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 10.4 MB/s eta 0:00:00\n#9 48.16 Downloading rich-15.0.0-py3-none-any.whl (310 kB)\n#9 48.28 Downloading starlette-1.7.0-py3-none-any.whl (78 kB)\n#9 48.41 Downloading tenacity-9.1.4-py3-none-any.whl (28 kB)\n#9 48.51 Downloading tokenizers-0.23.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.4 MB)\n#9 48.87    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 9.5 MB/s eta 0:00:00\n#9 48.97 Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)\n#9 49.08 Downloading typer-0.27.2-py3-none-any.whl (123 kB)\n#9 49.20 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)\n#9 49.31 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)\n#9 49.41 Downloading xxhash-4.0.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (261 kB)\n#9 49.55 Downloading importlib_resources-7.1.0-py3-none-any.whl (37 kB)\n#9 49.65 Downloading aiohttp-3.14.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)\n#9 49.84    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 10.5 MB/s eta 0:00:00\n#9 49.94 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)\n#9 50.04 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)\n#9 50.15 Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)\n#9 50.27 Downloading durationpy-0.11-py3-none-any.whl (4.1 kB)\n#9 50.36 Downloading googleapis_common_protos-1.75.5-py3-none-any.whl (307 kB)\n#9 50.53 Downloading httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)\n#9 50.67 Downloading huggingface_hub-1.33.0-py3-none-any.whl (846 kB)\n#9 50.76    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 846.4/846.4 kB 10.5 MB/s eta 0:00:00\n#9 50.87 Downloading idna-3.20-py3-none-any.whl (69 kB)\n#9 50.97 Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)\n#9 51.08 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)\n#9 51.17 Downloading langchain_protocol-0.0.19-py3-none-any.whl (7.3 kB)\n#9 51.27 Downloading langsmith-0.14.4-py3-none-any.whl (813 kB)\n#9 51.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 813.1/813.1 kB 13.1 MB/s eta 0:00:00\n#9 51.45 Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)\n#9 51.57 Downloading ormsgpack-1.12.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (212 kB)\n#9 51.69 Downloading packaging-26.3-py3-none-any.whl (129 kB)\n#9 51.80 Downloading protobuf-7.36.2-cp310-abi3-manylinux2014_x86_64.whl (343 kB)\n#9 51.94 Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)\n#9 52.07    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 10.2 MB/s eta 0:00:00\n#9 52.17 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)\n#9 52.30 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)\n#9 52.41 Downloading requests-2.34.2-py3-none-any.whl (73 kB)\n#9 52.53 Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)\n#9 52.66 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)\n#9 52.76 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)\n#9 52.86 Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)\n#9 52.97 Downloading uuid_utils-0.17.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (323 kB)\n#9 53.11 Downloading uvloop-0.23.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.5 MB)\n#9 53.50    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 11.8 MB/s eta 0:00:00\n#9 53.60 Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)\n#9 53.75 Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)\n#9 53.86 Downloading websockets-16.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (187 kB)\n#9 53.98 Downloading flatbuffers-25.12.19-py2.py3-none-any.whl (26 kB)\n#9 54.09 Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)\n#9 54.20 Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)\n#9 54.30 Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)\n#9 54.41 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)\n#9 54.51 Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)\n#9 54.64 Downloading distro-1.9.0-py3-none-any.whl (20 kB)\n#9 54.75 Downloading filelock-4.0.12-py3-none-any.whl (111 kB)\n#9 54.85 Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (242 kB)\n#9 54.99 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)\n#9 55.12 Downloading hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.5 MB)\n#9 55.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 11.8 MB/s eta 0:00:00\n#9 55.60 Downloading httpx2-2.13.1-py3-none-any.whl (95 kB)\n#9 55.70 Downloading httpcore2-2.13.1-py3-none-any.whl (83 kB)\n#9 55.82 Downloading jsonpointer-3.1.1-py3-none-any.whl (7.7 kB)\n#9 55.92 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)\n#9 56.02 Downloading multidict-6.9.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (336 kB)\n#9 56.16 Downloading oauthlib-4.0.0-py3-none-any.whl (159 kB)\n#9 56.27 Downloading propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (250 kB)\n#9 56.39 Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)\n#9 56.50 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)\n#9 56.60 Downloading yarl-1.25.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)\n#9 56.71 Downloading zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.5 MB)\n#9 57.22    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 11.0 MB/s eta 0:00:00\n#9 57.32 Downloading truststore-0.10.4-py3-none-any.whl (18 kB)\n#9 57.48 Building wheels for collected packages: jieba\n#9 57.48   Building wheel for jieba (pyproject.toml): started\n#9 59.01   Building wheel for jieba (pyproject.toml): finished with status 'done'\n#9 59.02   Created wheel for jieba: filename=jieba-0.42.1-py3-none-any.whl size=19314509 sha256=6b0beacfa67128b59ba075317bd4b0f0b4d53b4d6647383435cfceff3539ca3b\n#9 59.02   Stored in directory: /tmp/pip-ephem-wheel-cache-0tu20qtg/wheels/08/a1/a3/5c8ac52cc2f5782ffffc34c95c57c8e5ecb3063dc69541ee7c\n#9 59.02 Successfully built jieba\n#9 59.14 Installing collected packages: pypika, jieba, flatbuffers, durationpy, zstandard, xxhash, websockets, websocket-client, uvloop, uuid-utils, urllib3, typing-extensions, truststore, tqdm, tenacity, sniffio, six, shellingham, rpds-py, pyyaml, python-dotenv, pyproject_hooks, pygments, pybase64, psycopg-binary, protobuf, propcache, packaging, overrides, ormsgpack, orjson, oauthlib, numpy, multidict, mmh3, mdurl, jsonpointer, importlib-resources, idna, httptools, hf-xet, h11, fsspec, frozenlist, filelock, distro, click, charset_normalizer, certifi, bcrypt, attrs, annotated-types, annotated-doc, aiohappyeyeballs, yarl, uvicorn, typing-inspection, SQLAlchemy, requests, referencing, rank-bm25, python-dateutil, pydantic-core, psycopg, opentelemetry-proto, opentelemetry-api, onnxruntime, markdown-it-py, langchain-protocol, jsonpatch, httpcore2, httpcore, grpcio, googleapis-common-protos, build, anyio, aiosignal, watchfiles, starlette, rich, requests-toolbelt, requests-oauthlib, pydantic, opentelemetry-semantic-conventions, opentelemetry-exporter-otlp-proto-common, jsonschema-specifications, httpx2, httpx, aiohttp, typer, pydantic-settings, opentelemetry-sdk, langsmith, kubernetes, jsonschema, huggingface-hub, fastapi, tokenizers, opentelemetry-exporter-otlp-common, langchain-core, opentelemetry-exporter-otlp-proto-grpc, langgraph-sdk, langgraph-checkpoint, langgraph-prebuilt, chromadb, langgraph\n#9 71.76 Successfully installed SQLAlchemy-2.1.3 aiohappyeyeballs-2.7.1 aiohttp-3.14.4 aiosignal-1.4.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 bcrypt-5.0.0 build-1.6.1 certifi-2026.7.22 charset_normalizer-3.5.2 chromadb-1.5.9 click-8.5.0 distro-1.9.0 durationpy-0.11 fastapi-0.142.2 filelock-4.0.12 flatbuffers-25.12.19 frozenlist-1.8.0 fsspec-2026.9.0 googleapis-common-protos-1.75.5 grpcio-1.84.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpcore2-2.13.1 httptools-0.8.0 httpx-0.28.1 httpx2-2.13.1 huggingface-hub-1.33.0 idna-3.20 importlib-resources-7.1.0 jieba-0.42.1 jsonpatch-1.33 jsonpointer-3.1.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 kubernetes-36.0.3 langchain-core-1.6.6 langchain-protocol-0.0.19 langgraph-1.2.12 langgraph-checkpoint-4.2.0 langgraph-prebuilt-1.1.0 langgraph-sdk-0.4.5 langsmith-0.14.4 markdown-it-py-4.2.0 mdurl-0.1.2 mmh3-5.3.1 multidict-6.9.1 numpy-2.5.3 oauthlib-4.0.0 onnxruntime-1.30.0 opentelemetry-api-1.45.0 opentelemetry-exporter-otlp-common-0.66b0 opentelemetry-exporter-otlp-proto-common-1.45.0 opentelemetry-exporter-otlp-proto-grpc-1.45.0 opentelemetry-proto-1.45.0 opentelemetry-sdk-1.45.0 opentelemetry-semantic-conventions-0.66b0 orjson-3.12.0 ormsgpack-1.12.2 overrides-7.7.0 packaging-26.3 propcache-0.5.4 protobuf-7.36.2 psycopg-3.3.6 psycopg-binary-3.3.6 pybase64-1.5.1 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 pygments-2.21.0 pypika-0.51.1 pyproject_hooks-1.3.3 python-dateutil-2.9.0.post0 python-dotenv-1.2.4 pyyaml-6.0.3 rank-bm25-0.2.2 referencing-0.37.0 requests-2.34.2 requests-oauthlib-2.0.0 requests-toolbelt-1.0.0 rich-15.0.0 rpds-py-2026.9.1 shellingham-1.5.4 six-1.17.0 sniffio-1.3.1 starlette-1.7.0 tenacity-9.1.4 tokenizers-0.23.2 tqdm-4.70.1 truststore-0.10.4 typer-0.27.2 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 uuid-utils-0.17.1 uvicorn-0.54.0 uvloop-0.23.0 watchfiles-1.3.0 websocket-client-1.9.2 websockets-16.1.1 xxhash-4.0.1 yarl-1.25.1 zstandard-0.25.0\n#9 71.76 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\n#9 72.18 \n#9 72.18 [notice] A new release of pip is available: 25.0.1 -> 26.2.1\n#9 72.18 [notice] To update, run: pip install --upgrade pip\n#9 DONE 73.1s\n\n#9 [api 4/9] RUN pip install --no-cache-dir -r requirements-runtime.txt\n#9 DONE 73.1s\n\n#10 [db-init 5/9] RUN groupadd --gid 10001 t8 && useradd --uid 10001 --gid t8 --create-home t8\n#10 DONE 0.6s\n\n#10 [api 5/9] RUN groupadd --gid 10001 t8 && useradd --uid 10001 --gid t8 --create-home t8\n#10 DONE 0.6s\n\n#11 [api 6/9] COPY --chown=t8:t8 app ./app\n#11 DONE 0.1s\n\n#12 [api 7/9] COPY --chown=t8:t8 scripts/14_create_review_table.py scripts/21_create_memory_facts_table.py scripts/32_upgrade_review_publication.py scripts/40_upgrade_memory_lifecycle.py scripts/50_initialize_database.py ./scripts/\n#12 DONE 0.1s\n\n#12 [db-init 7/9] COPY --chown=t8:t8 scripts/14_create_review_table.py scripts/21_create_memory_facts_table.py scripts/32_upgrade_review_publication.py scripts/40_upgrade_memory_lifecycle.py scripts/50_initialize_database.py ./scripts/\n#12 DONE 0.1s\n\n#13 [db-init 8/9] COPY --chown=t8:t8 data/processed/t8_pages.jsonl ./data/processed/t8_pages.jsonl\n#13 DONE 0.1s\n\n#14 [api 9/9] COPY --chown=t8:t8 data/vector_store/chroma ./data/vector_store/chroma\n#14 DONE 0.1s\n\n#14 [db-init 9/9] COPY --chown=t8:t8 data/vector_store/chroma ./data/vector_store/chroma\n#14 DONE 0.1s\n\n#15 [db-init] exporting to image\n#15 exporting layers\n#15 ...\n\n#16 [api] exporting to image\n#16 exporting layers 13.8s done\n#16 exporting manifest sha256:f9ee69653e79507a1530c39733c5b1f7c91fcb0cb92be155ec169854cd37d0e7 0.0s done\n#16 exporting config sha256:1aa6aefa3e99dfbde6e838a272b7be4871a7817a8d95ad638773cd216e37cacc 0.0s done\n#16 exporting attestation manifest sha256:d1f1335ae0cf2867a618ddf65271cbd663398bb1d6d4a0f5153f9c8aa3cd2e7f\n#16 ...\n\n#15 [db-init] exporting to image\n#15 exporting layers 13.8s done\n#15 exporting manifest sha256:f8ed037ff97653ceca0e69c9d2a6c83ed20802c3ee8d84600e5ce10d7cc0dd29 0.0s done\n#15 exporting config sha256:2cac7bbf1f9ac9f8fb0a92e910d2eb144efea232439969f89e06ec01eaa486e5 0.0s done\n#15 exporting attestation manifest sha256:d7a14863587c9e2ba2b0d91cf00358cef905f5a578dde346bf92b77310db5f9f 0.1s done\n#15 exporting manifest list sha256:4f67b2b96d44ee799ed3f4dcce04e8f4454f0eaa4bb6e86817474a9599f01027\n#15 exporting manifest list sha256:4f67b2b96d44ee799ed3f4dcce04e8f4454f0eaa4bb6e86817474a9599f01027 0.0s done\n#15 naming to docker.io/library/zhisaotong-deployment-e2e-api:latest done\n#15 unpacking to docker.io/library/zhisaotong-deployment-e2e-api:latest\n#15 unpacking to docker.io/library/zhisaotong-deployment-e2e-api:latest 3.6s done\n#15 DONE 17.7s\n\n#16 [api] exporting to image\n#16 exporting attestation manifest sha256:d1f1335ae0cf2867a618ddf65271cbd663398bb1d6d4a0f5153f9c8aa3cd2e7f 0.1s done\n#16 exporting manifest list sha256:ebbf0c432731c7d2b785686e56bfb0b7b12a05664fe256f1b04fd399c1a40735 0.0s done\n#16 naming to docker.io/library/zhisaotong-deployment-e2e-api:latest 0.0s done\n#16 unpacking to docker.io/library/zhisaotong-deployment-e2e-api:latest 3.6s done\n#16 DONE 17.7s\n\n#17 [api] resolving provenance for metadata file\n#17 DONE 0.0s\n\n#18 [db-init] resolving provenance for metadata file\n#18 DONE 0.0s\n Image zhisaotong-deployment-e2e-api Building \n Image zhisaotong-deployment-e2e-api Building \n Image zhisaotong-deployment-e2e-api Built \n Image zhisaotong-deployment-e2e-api Built \n"
+    },
+    {
+      "label": "build_no_bake",
+      "exit_code": 1,
+      "elapsed_seconds": 1.07,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.30kB 0.0s done\n#1 DONE 0.0s\n Image zhisaotong-deployment-e2e-api Building \n Image zhisaotong-deployment-e2e-api Building \nfailed to dial gRPC: rpc error: code = Internal desc = rpc error: code = Internal desc = header key \"x-docker-expose-session-sharedkey\" contains value with non-printable ASCII characters\n\n"
+    },
+    {
+      "label": "up",
+      "exit_code": 1,
+      "elapsed_seconds": 9.11,
+      "output": " Network zhisaotong-deployment-e2e_default Creating \n Network zhisaotong-deployment-e2e_default Created \n Volume zhisaotong-deployment-e2e_postgres-data Creating \n Volume zhisaotong-deployment-e2e_postgres-data Created \n Container zhisaotong-deployment-e2e-postgres-1 Creating \n Container zhisaotong-deployment-e2e-postgres-1 Created \n Container zhisaotong-deployment-e2e-db-init-1 Creating \n Container zhisaotong-deployment-e2e-db-init-1 Created \n Container zhisaotong-deployment-e2e-api-1 Creating \n Container zhisaotong-deployment-e2e-api-1 Created \n Container zhisaotong-deployment-e2e-postgres-1 Starting \n Container zhisaotong-deployment-e2e-postgres-1 Started \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-1 Starting \n Container zhisaotong-deployment-e2e-db-init-1 Started \n Container zhisaotong-deployment-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-1 Error service \"db-init\" didn't complete successfully: exit 1\nservice \"db-init\" didn't complete successfully: exit 1\n"
+    },
+    {
+      "label": "service_logs",
+      "exit_code": 0,
+      "elapsed_seconds": 0.56,
+      "output": "db-init-1  | 数据库初始化失败；未删除或重建已有表。请检查 roborock 配置。\n"
+    },
+    {
+      "label": "diagnose_init",
+      "exit_code": 0,
+      "elapsed_seconds": 2.44,
+      "output": "OperationalError None\n[('<module>', 2), ('initialize', 23), ('current_database_name', 40), ('connect', 3260), ('__init__', 151), ('_handle_dbapi_exception_noconnection', 2417), ('__init__', 149), ('raw_connection', 3284), ('connect', 445), ('_checkout', 1303), ('checkout', 709), ('_do_get', 176), ('__exit__', 166), ('_do_get', 174), ('_create_connection', 386), ('__init__', 671), ('__connect', 906), ('__exit__', 166), ('__connect', 902), ('connect', 645), ('connect', 869), ('connect', 126)]\n Container zhisaotong-deployment-e2e-postgres-1 Running \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-run-3cfdc129338d Creating \n Container zhisaotong-deployment-e2e-db-init-run-3cfdc129338d Created \n"
+    },
+    {
+      "label": "up",
+      "exit_code": 0,
+      "elapsed_seconds": 9.55,
+      "output": " Container zhisaotong-deployment-e2e-postgres-1 Running \n Container zhisaotong-deployment-e2e-db-init-1 Recreate \n Container zhisaotong-deployment-e2e-db-init-1 Recreated \n Container zhisaotong-deployment-e2e-api-1 Recreate \n Container zhisaotong-deployment-e2e-api-1 Recreated \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-1 Starting \n Container zhisaotong-deployment-e2e-db-init-1 Started \n Container zhisaotong-deployment-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-1 Exited \n Container zhisaotong-deployment-e2e-api-1 Starting \n Container zhisaotong-deployment-e2e-api-1 Started \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-e2e-api-1 Waiting \n Container zhisaotong-deployment-e2e-db-init-1 Exited \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-api-1 Healthy \n"
+    },
+    {
+      "label": "init_again",
+      "exit_code": 0,
+      "elapsed_seconds": 2.33,
+      "output": "完成：roborock.qa_review_records 已存在或已创建。\n已有表不会被删除或重建。\n完成：roborock.agent_memory_facts 已存在或已创建；未重建已有表。\n完成：roborock.qa_review_records 发布字段与约束已就绪；已有记录未删除。\n完成：roborock.agent_memory_facts 生命周期字段已就绪；已有事实未删除。\nSchema ready: roborock\n Container zhisaotong-deployment-e2e-postgres-1 Running \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-run-eed3eaf8e20b Creating \n Container zhisaotong-deployment-e2e-db-init-run-eed3eaf8e20b Created \n"
+    },
+    {
+      "label": "image_size_bytes",
+      "exit_code": 0,
+      "elapsed_seconds": 0.22,
+      "output": "212970355\n"
+    },
+    {
+      "label": "initial_chroma",
+      "exit_code": 0,
+      "elapsed_seconds": 2.09,
+      "output": "{\"collection_name\": \"t8_manual_qwen3_embedding_0_6b\", \"source_record_count\": 41, \"stored_record_count\": 41, \"embedding_dimension\": 1024, \"persist_path\": \"/opt/t8/data/vector_store/chroma\"}\nBuilding prefix dict from the default dictionary ...\nDumping model to file cache /tmp/jieba.cache\nLoading model cost 0.446 seconds.\nPrefix dict has been built successfully.\n"
+    },
+    {
+      "label": "db_before_smoke",
+      "exit_code": 0,
+      "elapsed_seconds": 1.08,
+      "output": "{\"database\": \"roborock\", \"count\": 0, \"records\": []}\n"
+    },
+    {
+      "label": "db_after_a",
+      "exit_code": 0,
+      "elapsed_seconds": 1.09,
+      "output": "{\"database\": \"roborock\", \"count\": 1, \"records\": [{\"id\": 1, \"question\": \"主刷多久清理一次？\", \"review_status\": \"pending_review\", \"publication_status\": \"unpublished\"}]}\n"
+    },
+    {
+      "label": "db_after_b",
+      "exit_code": 0,
+      "elapsed_seconds": 1.07,
+      "output": "{\"database\": \"roborock\", \"count\": 1, \"records\": [{\"id\": 1, \"question\": \"主刷多久清理一次？\", \"review_status\": \"pending_review\", \"publication_status\": \"unpublished\"}]}\n"
+    },
+    {
+      "label": "db_after_c",
+      "exit_code": 0,
+      "elapsed_seconds": 0.97,
+      "output": "{\"database\": \"roborock\", \"count\": 1, \"records\": [{\"id\": 1, \"question\": \"主刷多久清理一次？\", \"review_status\": \"pending_review\", \"publication_status\": \"unpublished\"}]}\n"
+    },
+    {
+      "label": "restart_api",
+      "exit_code": 0,
+      "elapsed_seconds": 2.18,
+      "output": " Container zhisaotong-deployment-e2e-api-1 Restarting \n Container zhisaotong-deployment-e2e-api-1 Started \n"
+    },
+    {
+      "label": "restart_chroma_and_real_query",
+      "exit_code": 0,
+      "elapsed_seconds": 2.68,
+      "output": "{\"collection_name\": \"t8_manual_qwen3_embedding_0_6b\", \"source_record_count\": 41, \"stored_record_count\": 41, \"embedding_dimension\": 1024, \"persist_path\": \"/opt/t8/data/vector_store/chroma\"}\n[[\"E1\", 13, 14], [\"E2\", 27, 23], [\"E3\", 15, 16]]\nBuilding prefix dict from the default dictionary ...\nLoading model from cache /tmp/jieba.cache\nLoading model cost 0.515 seconds.\nPrefix dict has been built successfully.\n"
+    },
+    {
+      "label": "down_without_volume_removal",
+      "exit_code": 0,
+      "elapsed_seconds": 2.45,
+      "output": " Container zhisaotong-deployment-e2e-api-1 Stopping \n Container zhisaotong-deployment-e2e-api-1 Stopped \n Container zhisaotong-deployment-e2e-api-1 Removing \n Container zhisaotong-deployment-e2e-api-1 Removed \n Container zhisaotong-deployment-e2e-db-init-1 Stopping \n Container zhisaotong-deployment-e2e-db-init-1 Stopped \n Container zhisaotong-deployment-e2e-db-init-1 Removing \n Container zhisaotong-deployment-e2e-db-init-1 Removed \n Container zhisaotong-deployment-e2e-postgres-1 Stopping \n Container zhisaotong-deployment-e2e-postgres-1 Stopped \n Container zhisaotong-deployment-e2e-postgres-1 Removing \n Container zhisaotong-deployment-e2e-postgres-1 Removed \n Network zhisaotong-deployment-e2e_default Removing \n Network zhisaotong-deployment-e2e_default Removed \n"
+    },
+    {
+      "label": "up_after_down",
+      "exit_code": 0,
+      "elapsed_seconds": 15.43,
+      "output": " Network zhisaotong-deployment-e2e_default Creating \n Network zhisaotong-deployment-e2e_default Created \n Container zhisaotong-deployment-e2e-postgres-1 Creating \n Container zhisaotong-deployment-e2e-postgres-1 Created \n Container zhisaotong-deployment-e2e-db-init-1 Creating \n Container zhisaotong-deployment-e2e-db-init-1 Created \n Container zhisaotong-deployment-e2e-api-1 Creating \n Container zhisaotong-deployment-e2e-api-1 Created \n Container zhisaotong-deployment-e2e-postgres-1 Starting \n Container zhisaotong-deployment-e2e-postgres-1 Started \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-1 Starting \n Container zhisaotong-deployment-e2e-db-init-1 Started \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-db-init-1 Exited \n Container zhisaotong-deployment-e2e-api-1 Starting \n Container zhisaotong-deployment-e2e-api-1 Started \n Container zhisaotong-deployment-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-e2e-api-1 Waiting \n Container zhisaotong-deployment-e2e-db-init-1 Exited \n Container zhisaotong-deployment-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-e2e-api-1 Healthy \n"
+    },
+    {
+      "label": "down_up_chroma",
+      "exit_code": 0,
+      "elapsed_seconds": 2.09,
+      "output": "{\"collection_name\": \"t8_manual_qwen3_embedding_0_6b\", \"source_record_count\": 41, \"stored_record_count\": 41, \"embedding_dimension\": 1024, \"persist_path\": \"/opt/t8/data/vector_store/chroma\"}\nBuilding prefix dict from the default dictionary ...\nDumping model to file cache /tmp/jieba.cache\nLoading model cost 0.470 seconds.\nPrefix dict has been built successfully.\n"
+    },
+    {
+      "label": "db_after_down_up",
+      "exit_code": 0,
+      "elapsed_seconds": 1.07,
+      "output": "{\"database\": \"roborock\", \"count\": 1, \"records\": [{\"id\": 1, \"question\": \"主刷多久清理一次？\", \"review_status\": \"approved\", \"publication_status\": \"published\"}]}\n"
+    },
+    {
+      "label": "compose_status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.37,
+      "output": "{\"Command\":\"\\\"uvicorn app.main:ap…\\\"\",\"CreatedAt\":\"2026-10-06 16:26:49 +0800 CST\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"f147f5fb9f12\",\"Image\":\"zhisaotong-deployment-e2e-api\",\"Labels\":\"com.docker.compose.depends_on=postgres:service_healthy:false,db-init:service_completed_successfully:false,desktop.docker.io/binds/0/Source=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\data\\\\vector_store\\\\chroma,desktop.docker.io/ports.scheme=v2,com.docker.compose.config-hash=0c15e06d29e4d8539dc374532ea759819d988951503f8696127575da658f7485,com.docker.compose.image=sha256:4f67b2b96d44ee799ed3f4dcce04e8f4454f0eaa4bb6e86817474a9599f01027,desktop.docker.io/ports/8000/tcp=127.0.0.1:18000,com.docker.compose.project=zhisaotong-deployment-e2e,com.docker.compose.project.environment_file=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\tmp\\\\deployment-v1.env,com.docker.compose.project.working_dir=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统,com.docker.compose.version=5.3.1,desktop.docker.io/binds/0/SourceKind=hostFile,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\docker-compose.yml,com.docker.compose.service=api,desktop.docker.io/binds/0/Target=/opt/t8/data/vector_store/chroma,com.docker.compose.container-number=1\",\"LocalVolumes\":\"0\",\"Mounts\":\"/run/desktop/m…\",\"Name\":\"zhisaotong-deployment-e2e-api-1\",\"Names\":\"zhisaotong-deployment-e2e-api-1\",\"Networks\":\"zhisaotong-deployment-e2e_default\",\"Ports\":\"127.0.0.1:18000-\\u003e8000/tcp\",\"Project\":\"zhisaotong-deployment-e2e\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8000,\"PublishedPort\":18000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"3 minutes ago\",\"Service\":\"api\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 3 minutes (healthy)\"}\n{\"Command\":\"\\\"python scripts/50_i…\\\"\",\"CreatedAt\":\"2026-10-06 16:26:49 +0800 CST\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"f1f313a34982\",\"Image\":\"zhisaotong-deployment-e2e-api\",\"Labels\":\"com.docker.compose.config-hash=d9a1218b2b90775310506c55ba01a010a9d509b735076dac3e6593356f80bc61,com.docker.compose.depends_on=postgres:service_healthy:false,com.docker.compose.image=sha256:4f67b2b96d44ee799ed3f4dcce04e8f4454f0eaa4bb6e86817474a9599f01027,com.docker.compose.project.config_files=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\docker-compose.yml,com.docker.compose.project.environment_file=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\tmp\\\\deployment-v1.env,com.docker.compose.service=db-init,desktop.docker.io/ports.scheme=v2,com.docker.compose.container-number=1,com.docker.compose.oneoff=False,com.docker.compose.project=zhisaotong-deployment-e2e,com.docker.compose.project.working_dir=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统,com.docker.compose.version=5.3.1\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"zhisaotong-deployment-e2e-db-init-1\",\"Names\":\"zhisaotong-deployment-e2e-db-init-1\",\"Networks\":\"zhisaotong-deployment-e2e_default\",\"Ports\":\"\",\"Project\":\"zhisaotong-deployment-e2e\",\"Publishers\":[],\"RunningFor\":\"3 minutes ago\",\"Service\":\"db-init\",\"Size\":\"0B\",\"State\":\"exited\",\"Status\":\"Exited (0) 3 minutes ago\"}\n{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-06 16:26:49 +0800 CST\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"7fafba24e61d\",\"Image\":\"postgres:16\",\"Labels\":\"com.docker.compose.image=sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54,com.docker.compose.oneoff=False,com.docker.compose.project=zhisaotong-deployment-e2e,com.docker.compose.project.environment_file=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\tmp\\\\deployment-v1.env,com.docker.compose.depends_on=,com.docker.compose.project.config_files=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统\\\\docker-compose.yml,com.docker.compose.project.working_dir=E:\\\\360MoveData\\\\Users\\\\zj\\\\Desktop\\\\项目\\\\求职项目\\\\01-智扫通-扫地机器人智能客服系统,com.docker.compose.service=postgres,com.docker.compose.version=5.3.1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/5432/tcp=127.0.0.1:15433,com.docker.compose.config-hash=a4c3cc819da8ce69b078af915820494c72c9838bfa1ea77ba149c9f84c18e40e,com.docker.compose.container-number=1\",\"LocalVolumes\":\"1\",\"Mounts\":\"zhisaotong-dep…\",\"Name\":\"zhisaotong-deployment-e2e-postgres-1\",\"Names\":\"zhisaotong-deployment-e2e-postgres-1\",\"Networks\":\"zhisaotong-deployment-e2e_default\",\"Ports\":\"127.0.0.1:15433-\\u003e5432/tcp\",\"Project\":\"zhisaotong-deployment-e2e\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":5432,\"PublishedPort\":15433,\"Protocol\":\"tcp\"}],\"RunningFor\":\"3 minutes ago\",\"Service\":\"postgres\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 3 minutes (healthy)\"}\n"
+    },
+    {
+      "label": "final_logs",
+      "exit_code": 0,
+      "elapsed_seconds": 0.44,
+      "output": "db-init-1  | 完成：roborock.qa_review_records 已存在或已创建。\ndb-init-1  | 已有表不会被删除或重建。\ndb-init-1  | 完成：roborock.agent_memory_facts 已存在或已创建；未重建已有表。\ndb-init-1  | 完成：roborock.qa_review_records 发布字段与约束已就绪；已有记录未删除。\ndb-init-1  | 完成：roborock.agent_memory_facts 生命周期字段已就绪；已有事实未删除。\ndb-init-1  | Schema ready: roborock\napi-1      | INFO:     Started server process [1]\napi-1      | INFO:     Waiting for application startup.\napi-1      | INFO:     Application startup complete.\napi-1      | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\napi-1      | INFO:     127.0.0.1:46376 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     172.19.0.1:47740 - \"GET /health HTTP/1.1\" 200 OK\napi-1      | INFO:     172.19.0.1:47750 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     172.19.0.1:47760 - \"GET /api/published/1 HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:58998 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:57328 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:43030 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:57812 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:54948 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:44716 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:51690 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:39852 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:55180 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:55870 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:58942 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:59490 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:42050 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:33476 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:55458 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:34602 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:51266 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:60294 - \"GET /ready HTTP/1.1\" 200 OK\napi-1      | INFO:     127.0.0.1:54940 - \"GET /ready HTTP/1.1\" 200 OK\n"
+    },
+    {
+      "label": "runtime_boundaries",
+      "exit_code": 0,
+      "elapsed_seconds": 0.69,
+      "output": "{\"uid\": 10001, \"env_file_in_image\": false, \"long_term_injection\": false}\n"
+    }
+  ],
+  "health": {
+    "http_status": 200,
+    "body": {
+      "status": "ok"
+    },
+    "elapsed_seconds": 0.078
+  },
+  "ready": {
+    "http_status": 200,
+    "body": {
+      "status": "ready"
+    },
+    "elapsed_seconds": 0.12
+  },
+  "smoke": {
+    "A": {
+      "http_status": 200,
+      "body": {
+        "intent": "maintenance",
+        "answer": null,
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "published": false,
+        "safety_notice": "模型已生成回答，但语义依据未自动核验；需人工审核，未作为正式答案发布。"
+      },
+      "elapsed_seconds": 8.975,
+      "review_delta": 1,
+      "pass": true
+    },
+    "B": {
+      "http_status": 200,
+      "body": {
+        "intent": "troubleshooting",
+        "answer": "请再描述一下具体异常现象，例如是否有错误码、语音提示，或机器人出现了什么行为异常。",
+        "published": false
+      },
+      "elapsed_seconds": 1.97,
+      "review_delta": 0,
+      "pass": true,
+      "tool_zero_basis": "Production needs_clarification branch returns before reasoner/manual tool; confirmed clarification response and no Review."
+    },
+    "C": {
+      "http_status": 200,
+      "body": {
+        "intent": "human_handoff",
+        "answer": "已为你转入人工处理流程。",
+        "published": false
+      },
+      "elapsed_seconds": 0.005,
+      "review_delta": 0,
+      "pass": true
+    },
+    "D": {
+      "http_status": 200,
+      "body": {
+        "id": 1,
+        "review_status": "approved",
+        "review_note": "Deployment V1 独立测试环境：核验审核与显式发布流程。",
+        "reviewed_at": "2026-10-06T08:25:55.152158Z",
+        "published": false
+      },
+      "elapsed_seconds": 0.016,
+      "pass": true
+    },
+    "E": {
+      "http_status": 404,
+      "body": {
+        "detail": "已发布答案不存在。"
+      },
+      "elapsed_seconds": 0.024,
+      "pass": true
+    },
+    "F": {
+      "http_status": 200,
+      "body": {
+        "record_id": 1,
+        "review_status": "approved",
+        "publication_status": "published",
+        "published_at": "2026-10-06T08:25:55.191353Z"
+      },
+      "elapsed_seconds": 0.011,
+      "pass": true
+    },
+    "G": {
+      "http_status": 200,
+      "body": {
+        "record_id": 1,
+        "question": "主刷多久清理一次？",
+        "answer": "根据官方说明书，以下是关于主刷清理的建议：\n\n**主刷清理频率**：建议**每 2 周清理一次**，以保持机器人最佳使用性能。[E1]\n\n**主刷更换频率**：建议**每 6-12 个月更换**，但更换频率可能因实际情况而定，如出现异常磨损，应及时更换零件。[E1]\n\n**其他相关提示**：\n- 如果清扫时出现异响，可能是主刷、边刷或主轮缠绕了异物，请停机后清理。[E2]\n- 主轮建议每 1 个月清理一次，可用柔软干布擦拭清理。[E1][E3]\n\n建议您按照上述周期定期清理主刷，避免毛发或杂物缠绕影响清扫效果。",
+        "published": true,
+        "published_at": "2026-10-06T08:25:55.191353Z"
+      },
+      "elapsed_seconds": 0.007,
+      "pass": true
+    }
+  },
+  "test_record_id": 1,
+  "smoke_pass": true,
+  "restart": {
+    "health": {
+      "http_status": 200,
+      "body": {
+        "status": "ok"
+      },
+      "elapsed_seconds": 0.115
+    },
+    "ready": {
+      "http_status": 200,
+      "body": {
+        "status": "ready"
+      },
+      "elapsed_seconds": 0.141
+    },
+    "published": {
+      "http_status": 200,
+      "body": {
+        "record_id": 1,
+        "question": "主刷多久清理一次？",
+        "answer": "根据官方说明书，以下是关于主刷清理的建议：\n\n**主刷清理频率**：建议**每 2 周清理一次**，以保持机器人最佳使用性能。[E1]\n\n**主刷更换频率**：建议**每 6-12 个月更换**，但更换频率可能因实际情况而定，如出现异常磨损，应及时更换零件。[E1]\n\n**其他相关提示**：\n- 如果清扫时出现异响，可能是主刷、边刷或主轮缠绕了异物，请停机后清理。[E2]\n- 主轮建议每 1 个月清理一次，可用柔软干布擦拭清理。[E1][E3]\n\n建议您按照上述周期定期清理主刷，避免毛发或杂物缠绕影响清扫效果。",
+        "published": true,
+        "published_at": "2026-10-06T08:25:55.191353Z"
+      },
+      "elapsed_seconds": 0.009
+    }
+  },
+  "down_up": {
+    "health": {
+      "http_status": 200,
+      "body": {
+        "status": "ok"
+      },
+      "elapsed_seconds": 0.004
+    },
+    "ready": {
+      "http_status": 200,
+      "body": {
+        "status": "ready"
+      },
+      "elapsed_seconds": 0.098
+    },
+    "published": {
+      "http_status": 200,
+      "body": {
+        "record_id": 1,
+        "question": "主刷多久清理一次？",
+        "answer": "根据官方说明书，以下是关于主刷清理的建议：\n\n**主刷清理频率**：建议**每 2 周清理一次**，以保持机器人最佳使用性能。[E1]\n\n**主刷更换频率**：建议**每 6-12 个月更换**，但更换频率可能因实际情况而定，如出现异常磨损，应及时更换零件。[E1]\n\n**其他相关提示**：\n- 如果清扫时出现异响，可能是主刷、边刷或主轮缠绕了异物，请停机后清理。[E2]\n- 主轮建议每 1 个月清理一次，可用柔软干布擦拭清理。[E1][E3]\n\n建议您按照上述周期定期清理主刷，避免毛发或杂物缠绕影响清扫效果。",
+        "published": true,
+        "published_at": "2026-10-06T08:25:55.191353Z"
+      },
+      "elapsed_seconds": 0.009
+    },
+    "database": {
+      "database": "roborock",
+      "count": 1,
+      "records": [
+        {
+          "id": 1,
+          "question": "主刷多久清理一次？",
+          "review_status": "approved",
+          "publication_status": "published"
+        }
+      ]
+    }
+  },
+  "original_environment": {
+    "database": "roborock",
+    "review_count": 48,
+    "not_modified_by_deployment": true
+  },
+  "unittest": {
+    "total": 354,
+    "new": 9,
+    "success": true
+  },
+  "deployment": {
+    "base_image": "python:3.12-slim",
+    "services": [
+      "postgres",
+      "db-init",
+      "api"
+    ],
+    "project_name": "zhisaotong-deployment-e2e",
+    "postgres_host_port": 15433,
+    "postgres_container_port": 5432,
+    "api_host_port": 18000,
+    "api_container_port": 8000,
+    "container_db_host": "postgres",
+    "init_idempotent": true,
+    "chroma_persistence": "bind mount",
+    "chroma_records": 41,
+    "chroma_dimension": 1024,
+    "ready_external_model_calls": false,
+    "long_term_injection": false,
+    "frozen_business_modified": false,
+    "schema_definition_duplicated": false,
+    "secret_leak_observed": false
+  },
+  "build_note": "Original Windows non-ASCII context failed in BuildKit session setup. Same Dockerfile and necessary files built successfully using a temporary ASCII context. Changing COMPOSE_BAKE did not resolve this local Docker compatibility issue.",
+  "init_note": "First isolated runner inherited local DATABASE_URL, overriding --env-file. Corrected only runner env precedence; Compose now connects to postgres:5432. No application DB code or existing database was changed.",
+  "result": "PASS"
+}

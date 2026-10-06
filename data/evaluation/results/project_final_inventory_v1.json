@@ -1,0 +1,3043 @@
+{
+  "project": {
+    "name": "智扫通——石头T8智能客服系统",
+    "version": "FINAL PROJECT TECHNICAL INVENTORY V1",
+    "generated_at": "2026-10-06T15:29:38.781364+00:00",
+    "positioning": "以石头T8官方说明书为知识源的多场景Agent/RAG客服，以可追溯证据、安全即时交付和独立人工审核/发布提供有依据的回答。",
+    "scope": "本地单机工程项目；非通用AGI、全自动客服平台或生产SaaS",
+    "production_business_modified": false,
+    "real_model_calls_this_task": 0,
+    "db_writes_this_task": 0
+  },
+  "stack": {
+    "python": {
+      "version": "3.12.3",
+      "source": "当前venv；Docker python:3.12-slim"
+    },
+    "backend": {
+      "fastapi": {
+        "version": "0.142.2",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "pydantic": {
+        "version": "2.13.5",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "langgraph": {
+        "version": "1.2.12",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "SQLAlchemy": {
+        "version": "2.1.3",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "psycopg": {
+        "version": "3.3.6",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "chromadb": {
+        "version": "1.5.9",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "jieba": {
+        "version": "0.42.1",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "rank-bm25": {
+        "version": "0.2.2",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "uvicorn": {
+        "version": "0.54.0",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "python-dotenv": {
+        "version": "1.2.4",
+        "source": "requirements-runtime.txt/current venv"
+      },
+      "langchain-core": {
+        "version": "1.6.6",
+        "source": "requirements-runtime.txt/current venv"
+      }
+    },
+    "frontend": {
+      "react": {
+        "version": "19.3.0",
+        "source": "frontend/package-lock.json"
+      },
+      "react-dom": {
+        "version": "19.3.0",
+        "source": "frontend/package-lock.json"
+      },
+      "react-router-dom": {
+        "version": "7.18.4",
+        "source": "frontend/package-lock.json"
+      },
+      "vite": {
+        "version": "7.3.7",
+        "source": "frontend/package-lock.json"
+      },
+      "vitest": {
+        "version": "3.2.7",
+        "source": "frontend/package-lock.json"
+      }
+    },
+    "language": "JavaScript/JSX",
+    "deployment": {
+      "DockerEngine": "29.6.2 current read-only",
+      "Compose": "5.3.1 current read-only",
+      "Postgres": "postgres:16 tag; patch UNVERIFIED",
+      "Nginx": "nginx:alpine; patch UNVERIFIED",
+      "NodeBuild": "node:20-alpine"
+    }
+  },
+  "models": {
+    "router": [
+      "Qwen/Qwen2.5-7B-Instruct",
+      "app/config.py"
+    ],
+    "generation": [
+      "deepseek-ai/DeepSeek-V4-Flash",
+      "app/config.py/app/agent/tool_calling.py"
+    ],
+    "backup": [
+      "Qwen/Qwen3.8-27B",
+      "record only, no fallback"
+    ],
+    "embedding": [
+      "Qwen/Qwen3-Embedding-0.6B",
+      "app/retrieval/t8_retrieval.py"
+    ],
+    "reranker": [
+      "Qwen/Qwen3-Reranker-0.6B",
+      "app/retrieval/t8_retrieval.py"
+    ],
+    "semantic_gate": [
+      "Qwen/Qwen2.5-7B-Instruct",
+      "app/config.py"
+    ]
+  },
+  "knowledge_base": {
+    "name": "Roborock T8 Chinese official manual",
+    "pdf": "data/raw/roborock/Roborock_T8_User_Manual_ZH.pdf",
+    "pages": 26,
+    "records": 41,
+    "pdf_sha256": "308f4e710ee18e1b670bf3b1448f854eb2edbe29d1f119b027fcc4880ea92b1f",
+    "corpus_sha256": "a8be9a479c1bfc7438d79cbc03c954b18fd52b4863468ff0bbfcbf40eaad7d12",
+    "golden": {
+      "total": 60,
+      "answerable": 50,
+      "unanswerable": 10,
+      "sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386",
+      "historical_expected_matches": true,
+      "source_file": "data/evaluation/t8_rag_golden_v1.json"
+    }
+  },
+  "modules": [
+    {
+      "module": "Scene Router",
+      "implemented": true,
+      "production_file": "app/agent/llm_router.py",
+      "responsibility": "五业务场景及clarify/handoff严格分类，上下文和fallback",
+      "default_enabled": "按请求",
+      "limitations": "25s模型；契约成功≠准确率"
+    },
+    {
+      "module": "Scene Policy",
+      "implemented": true,
+      "production_file": "app/agent/scene_policy.py",
+      "responsibility": "固定场景权限与输出模式",
+      "default_enabled": "是",
+      "limitations": "仅五个固定业务场景"
+    },
+    {
+      "module": "Troubleshooting Intake",
+      "implemented": true,
+      "production_file": "app/agent/troubleshooting.py",
+      "responsibility": "ready/needs clarification及错误码fast path",
+      "default_enabled": "故障时",
+      "limitations": "ready不说明故障码含义有据"
+    },
+    {
+      "module": "ReAct Agent",
+      "implemented": true,
+      "production_file": "app/agent/react_graph.py",
+      "responsibility": "有界Tool循环、单Evidence Snapshot、finalize一次",
+      "default_enabled": "是",
+      "limitations": "Tool最多两次，非通用自治"
+    },
+    {
+      "module": "Manual Search Tool",
+      "implemented": true,
+      "production_file": "app/agent/tools.py",
+      "responsibility": "只读T8说明书Top3证据",
+      "default_enabled": "是",
+      "limitations": "需外部Embedding/Reranker"
+    },
+    {
+      "module": "Query Normalization",
+      "implemented": true,
+      "production_file": "app/services/qa_service.py",
+      "responsibility": "删除开头请问/石头/T8及空格",
+      "default_enabled": "是",
+      "limitations": "不删除“的”，不语义改写"
+    },
+    {
+      "module": "BM25 Retrieval",
+      "implemented": true,
+      "production_file": "app/retrieval/t8_retrieval.py",
+      "responsibility": "jieba+BM25阈值Top10",
+      "default_enabled": "是",
+      "limitations": "最低分1.0"
+    },
+    {
+      "module": "Chroma Dense Retrieval",
+      "implemented": true,
+      "production_file": "app/retrieval/t8_vector_store.py",
+      "responsibility": "外部query向量、本地cosine索引",
+      "default_enabled": "是",
+      "limitations": "校验已有索引不自动重建"
+    },
+    {
+      "module": "RRF Fusion",
+      "implemented": true,
+      "production_file": "app/retrieval/t8_retrieval.py",
+      "responsibility": "RRF K60候选Top10",
+      "default_enabled": "是",
+      "limitations": "单独RRF未优于BM25"
+    },
+    {
+      "module": "Qwen Reranker",
+      "implemented": true,
+      "production_file": "app/retrieval/t8_retrieval.py",
+      "responsibility": "校验映射后排序Top3",
+      "default_enabled": "是",
+      "limitations": "分数非正确概率"
+    },
+    {
+      "module": "Grounded Generation",
+      "implemented": true,
+      "production_file": "app/agent/tool_calling.py",
+      "responsibility": "DeepSeek依据当轮Tool Evidence生成",
+      "default_enabled": "是",
+      "limitations": "provider stream false"
+    },
+    {
+      "module": "Citation Audit",
+      "implemented": true,
+      "production_file": "app/services/grounded_qa.py",
+      "responsibility": "引用编号和程序风险判定",
+      "default_enabled": "是",
+      "limitations": "编号合法不等于语义支持"
+    },
+    {
+      "module": "Program Safety Audit",
+      "implemented": true,
+      "production_file": "app/services/grounded_qa.py",
+      "responsibility": "金额/个人运行数据等规则",
+      "default_enabled": "是",
+      "limitations": "确定性规则非事实裁判"
+    },
+    {
+      "module": "Static Boundary",
+      "implemented": true,
+      "production_file": "app/services/static_knowledge_boundary.py",
+      "responsibility": "静态说明书与个人实时信息边界",
+      "default_enabled": "是",
+      "limitations": "小型规则，不是中文parser"
+    },
+    {
+      "module": "Semantic Grounding Gate",
+      "implemented": true,
+      "production_file": "app/services/semantic_grounding_gate.py",
+      "responsibility": "核验事实和核心问题，失败关闭",
+      "default_enabled": "条件",
+      "limitations": "LLM Judge，有限schema retry"
+    },
+    {
+      "module": "Answer Release Policy",
+      "implemented": true,
+      "production_file": "app/services/answer_release_policy.py",
+      "responsibility": "决定即时auto/review/abstain",
+      "default_enabled": "是",
+      "limitations": "仅部分scene可自动交付"
+    },
+    {
+      "module": "Review Workflow",
+      "implemented": true,
+      "production_file": "app/services/review_service.py",
+      "responsibility": "只读审核，pending原子决策",
+      "default_enabled": "是",
+      "limitations": "共享token非正式IAM"
+    },
+    {
+      "module": "Explicit Publication",
+      "implemented": true,
+      "production_file": "app/services/review_service.py",
+      "responsibility": "approved后单独显式发布",
+      "default_enabled": "是",
+      "limitations": "没有自动发布"
+    },
+    {
+      "module": "Session Memory",
+      "implemented": true,
+      "production_file": "app/agent/memory.py",
+      "responsibility": "6消息/100会话，按会话串行",
+      "default_enabled": "带session",
+      "limitations": "进程内"
+    },
+    {
+      "module": "Long-term Extraction",
+      "implemented": true,
+      "production_file": "app/memory/extractor.py",
+      "responsibility": "严格抽取原文候选",
+      "default_enabled": "有owner时",
+      "limitations": "失败安全降级"
+    },
+    {
+      "module": "Long-term Dedup",
+      "implemented": true,
+      "production_file": "app/memory/service.py",
+      "responsibility": "owner/hash+semantic去重、原子计数",
+      "default_enabled": "写事实时",
+      "limitations": "不同hash并发近重复不保证"
+    },
+    {
+      "module": "Memory Lifecycle",
+      "implemented": true,
+      "production_file": "app/memory/lifecycle.py",
+      "responsibility": "importance/TTL/decay/显式清理",
+      "default_enabled": "写入/清理时",
+      "limitations": "无后台scheduler"
+    },
+    {
+      "module": "React Chat Frontend",
+      "implemented": true,
+      "production_file": "frontend/src/pages/ChatPage.jsx",
+      "responsibility": "聊天、SSE和会话交互",
+      "default_enabled": "是",
+      "limitations": "Abort不保证取消后端"
+    },
+    {
+      "module": "Review Admin Frontend",
+      "implemented": true,
+      "production_file": "frontend/src/pages/ReviewPage.jsx",
+      "responsibility": "草稿/证据核对与决策/发布",
+      "default_enabled": "是",
+      "limitations": "token仅state"
+    },
+    {
+      "module": "Published Page",
+      "implemented": true,
+      "production_file": "frontend/src/pages/PublishedPage.jsx",
+      "responsibility": "公开显示已发布答案",
+      "default_enabled": "是",
+      "limitations": "未发布404"
+    },
+    {
+      "module": "Safe SSE",
+      "implemented": true,
+      "production_file": "app/main.py",
+      "responsibility": "共用编排、安全后再分块",
+      "default_enabled": "是",
+      "limitations": "不是provider token流"
+    },
+    {
+      "module": "Docker/Nginx",
+      "implemented": true,
+      "production_file": "docker-compose.yml",
+      "responsibility": "Postgres/db-init/API/Nginx UI",
+      "default_enabled": "Compose",
+      "limitations": "中文路径BuildKit受限"
+    }
+  ],
+  "data_flow": {
+    "source_file": [
+      "app/main.py",
+      "app/agent/react_graph.py",
+      "app/services/qa_service.py"
+    ],
+    "order": [
+      "React JSON/SSE→validate→session lock/context",
+      "Router→Scene Policy→conditional troubleshooting intake",
+      "bounded ReAct→search_t8_manual",
+      "contextual query from program→normalization",
+      "BM25 Top10+Chroma dense Top10→RRF60 Top10→Reranker Top3",
+      "fixed Tool Evidence observation→Draft",
+      "finalize_draft deterministic Audit→one Review commit",
+      "Static Boundary on original question→preliminary Release",
+      "Semantic Gate only when required→final Release",
+      "safe live response/SSE buffer_then_release→visible session exchange",
+      "optional owner extraction/filter/original quote persistence"
+    ],
+    "important": "Audit+Review happen inside Graph before Boundary/Gate/live release in API; no double process_question/retrieval."
+  },
+  "memory": {
+    "source_file": [
+      "app/agent/memory.py",
+      "app/memory/runtime.py",
+      "app/memory/service.py",
+      "app/memory/lifecycle.py",
+      "app/main.py",
+      "app/config.py"
+    ],
+    "working": "internal graph messages/Snapshot/Draft not session transcript",
+    "session": {
+      "messages": 6,
+      "sessions": 100,
+      "process_local": true,
+      "same_session_serialized": true,
+      "different_sessions_concurrent": true,
+      "visible_user_exchange_only": true,
+      "client_id_not_auth": true
+    },
+    "long_term": {
+      "categories": [
+        "device_profile",
+        "home_environment",
+        "usage_preference"
+      ],
+      "injection_default": false,
+      "storage": "when memory_owner_id supplied; extraction/filter/save",
+      "persisted": "validated source_quote.strip() only",
+      "dedup": "owner+hash uniqueness; cosine semantic .97; atomic SQL seen_count",
+      "similarity_threshold": 0.75,
+      "top_k": 3,
+      "explicit_injection_role": "user data; not system/evidence; excluded from Router/query",
+      "lifecycle": {
+        "category_importance_ttl_days": {
+          "device_profile": [
+            0.9,
+            180
+          ],
+          "home_environment": [
+            0.75,
+            90
+          ],
+          "usage_preference": [
+            0.65,
+            60
+          ],
+          "uncategorized": [
+            0.5,
+            30
+          ]
+        },
+        "repeat_bonus_step": 0.02,
+        "max": 0.1,
+        "decay": "importance*0.5**(age/(TTL/2))*(1+min(.20,.02*(seen-1))) cap 0..1, expired 0",
+        "refresh": "atomic seen_count/last_seen/expiry",
+        "search": "expired excluded; cosine only",
+        "cleanup": "explicit, no scheduler"
+      }
+    },
+    "summary": "长期事实抽取/存储/生命周期已实现；自动注入Agent默认关闭。"
+  },
+  "retrieval_config": {
+    "source_file": [
+      "app/retrieval/t8_retrieval.py",
+      "app/retrieval/t8_vector_store.py",
+      "app/services/readiness.py"
+    ],
+    "bm25_top10": 10,
+    "bm25_min_score": 1.0,
+    "dense_top10": 10,
+    "rrf_k": 60,
+    "rrf_output_top10": 10,
+    "reranker_top3": 3,
+    "embedding_dimension": 1024,
+    "collection": "t8_manual_qwen3_embedding_0_6b",
+    "distance": "cosine",
+    "records": 41,
+    "persist": "data/vector_store/chroma",
+    "production_chunk": "41 source/FAQ records, separate from char chunk ablations"
+  },
+  "metrics": {
+    "router": {
+      "source_file": "data/evaluation/scene_router_v2_guard_results.json",
+      "summary": {
+        "total": 70,
+        "correct": 65,
+        "accuracy": 0.9285714285714286,
+        "contract_success": 69,
+        "macro": {
+          "precision": 0.9542124542124543,
+          "recall": 0.9285714285714286,
+          "f1": 0.9387878787878787
+        },
+        "per_class": {
+          "consult_qa": {
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334,
+            "f1": 0.8333333333333334
+          },
+          "troubleshooting": {
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.9600000000000001
+          },
+          "maintenance": {
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091
+          },
+          "maintenance_report": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "configuration_recommendation": {
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.9600000000000001
+          },
+          "clarify": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "human_handoff": {
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091
+          }
+        },
+        "confusion_matrix": {
+          "consult_qa": {
+            "consult_qa": 10,
+            "troubleshooting": 1,
+            "maintenance": 0,
+            "maintenance_report": 0,
+            "configuration_recommendation": 1,
+            "clarify": 0,
+            "human_handoff": 0,
+            "ERROR": 0
+          },
+          "troubleshooting": {
+            "consult_qa": 0,
+            "troubleshooting": 12,
+            "maintenance": 0,
+            "maintenance_report": 0,
+            "configuration_recommendation": 0,
+            "clarify": 0,
+            "human_handoff": 0,
+            "ERROR": 0
+          },
+          "maintenance": {
+            "consult_qa": 2,
+            "troubleshooting": 0,
+            "maintenance": 10,
+            "maintenance_report": 0,
+            "configuration_recommendation": 0,
+            "clarify": 0,
+            "human_handoff": 0,
+            "ERROR": 0
+          },
+          "maintenance_report": {
+            "consult_qa": 0,
+            "troubleshooting": 0,
+            "maintenance": 0,
+            "maintenance_report": 10,
+            "configuration_recommendation": 0,
+            "clarify": 0,
+            "human_handoff": 0,
+            "ERROR": 0
+          },
+          "configuration_recommendation": {
+            "consult_qa": 0,
+            "troubleshooting": 0,
+            "maintenance": 0,
+            "maintenance_report": 0,
+            "configuration_recommendation": 12,
+            "clarify": 0,
+            "human_handoff": 0,
+            "ERROR": 0
+          },
+          "clarify": {
+            "consult_qa": 0,
+            "troubleshooting": 0,
+            "maintenance": 0,
+            "maintenance_report": 0,
+            "configuration_recommendation": 0,
+            "clarify": 6,
+            "human_handoff": 0,
+            "ERROR": 0
+          },
+          "human_handoff": {
+            "consult_qa": 0,
+            "troubleshooting": 0,
+            "maintenance": 0,
+            "maintenance_report": 0,
+            "configuration_recommendation": 0,
+            "clarify": 0,
+            "human_handoff": 5,
+            "ERROR": 1
+          }
+        },
+        "avg_latency": 1.086910138569822,
+        "p95_latency": 1.546624199982034
+      },
+      "contract_success_rate": 0.9857142857142858,
+      "hard_set": {
+        "source_file": "data/evaluation/scene_router_hard_v1_guard_results.json",
+        "summary": {
+          "total": 20,
+          "correct": 19,
+          "accuracy": 0.95,
+          "contract_success": 19,
+          "macro": {
+            "precision": 0.8571428571428571,
+            "recall": 0.8095238095238095,
+            "f1": 0.8285714285714285
+          },
+          "per_class": {
+            "consult_qa": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "troubleshooting": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "maintenance": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "maintenance_report": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "configuration_recommendation": {
+              "precision": 1.0,
+              "recall": 0.6666666666666666,
+              "f1": 0.8
+            },
+            "clarify": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "human_handoff": {
+              "precision": 0,
+              "recall": 0,
+              "f1": 0
+            }
+          },
+          "confusion_matrix": {
+            "consult_qa": {
+              "consult_qa": 4,
+              "troubleshooting": 0,
+              "maintenance": 0,
+              "maintenance_report": 0,
+              "configuration_recommendation": 0,
+              "clarify": 0,
+              "human_handoff": 0,
+              "ERROR": 0
+            },
+            "troubleshooting": {
+              "consult_qa": 0,
+              "troubleshooting": 4,
+              "maintenance": 0,
+              "maintenance_report": 0,
+              "configuration_recommendation": 0,
+              "clarify": 0,
+              "human_handoff": 0,
+              "ERROR": 0
+            },
+            "maintenance": {
+              "consult_qa": 0,
+              "troubleshooting": 0,
+              "maintenance": 3,
+              "maintenance_report": 0,
+              "configuration_recommendation": 0,
+              "clarify": 0,
+              "human_handoff": 0,
+              "ERROR": 0
+            },
+            "maintenance_report": {
+              "consult_qa": 0,
+              "troubleshooting": 0,
+              "maintenance": 0,
+              "maintenance_report": 2,
+              "configuration_recommendation": 0,
+              "clarify": 0,
+              "human_handoff": 0,
+              "ERROR": 0
+            },
+            "configuration_recommendation": {
+              "consult_qa": 0,
+              "troubleshooting": 0,
+              "maintenance": 0,
+              "maintenance_report": 0,
+              "configuration_recommendation": 2,
+              "clarify": 0,
+              "human_handoff": 0,
+              "ERROR": 1
+            },
+            "clarify": {
+              "consult_qa": 0,
+              "troubleshooting": 0,
+              "maintenance": 0,
+              "maintenance_report": 0,
+              "configuration_recommendation": 0,
+              "clarify": 4,
+              "human_handoff": 0,
+              "ERROR": 0
+            },
+            "human_handoff": {
+              "consult_qa": 0,
+              "troubleshooting": 0,
+              "maintenance": 0,
+              "maintenance_report": 0,
+              "configuration_recommendation": 0,
+              "clarify": 0,
+              "human_handoff": 0,
+              "ERROR": 0
+            }
+          },
+          "avg_latency": 1.8734485149994726,
+          "p95_latency": 1.4822259999928065
+        }
+      },
+      "fallback": "hard handoff规则；模型故障走确定性fallback"
+    },
+    "retrieval": {
+      "source_file": "data/evaluation/results/retrieval_ablation_v1.json",
+      "golden_sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386",
+      "summary": {
+        "BM25": {
+          "eligible": 50,
+          "successful": 50,
+          "failed": 0,
+          "hit@1": 0.74,
+          "hit@3": 0.9,
+          "recall@3": 0.9,
+          "ndcg@3": 0.8357115704285749,
+          "hit@5": 0.94,
+          "recall@5": 0.94,
+          "ndcg@5": 0.8529386327515106,
+          "mrr": 0.8311904761904761
+        },
+        "Dense": {
+          "eligible": 50,
+          "successful": 50,
+          "failed": 0,
+          "hit@1": 0.66,
+          "hit@3": 0.84,
+          "recall@3": 0.84,
+          "ndcg@3": 0.7683301655000041,
+          "hit@5": 0.86,
+          "recall@5": 0.86,
+          "ndcg@5": 0.7769436966614719,
+          "mrr": 0.7606969582704877
+        },
+        "RRF": {
+          "eligible": 50,
+          "successful": 50,
+          "failed": 0,
+          "hit@1": 0.74,
+          "hit@3": 0.88,
+          "recall@3": 0.88,
+          "ndcg@3": 0.8178557852142875,
+          "hit@5": 0.88,
+          "recall@5": 0.88,
+          "ndcg@5": 0.8178557852142875,
+          "mrr": 0.8130952380952381
+        },
+        "Reranker": {
+          "eligible": 50,
+          "successful": 50,
+          "failed": 0,
+          "hit@1": 0.88,
+          "hit@3": 0.98,
+          "recall@3": 0.98,
+          "ndcg@3": 0.9404743802857166,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "ndcg@5": 0.9482114364304074,
+          "mrr": 0.9306666666666666
+        }
+      },
+      "definition": "Hit=any relevant; Recall=fraction of required records; MRR=first relevant in actual candidate list (Reranker max10); NDCG=binary relevance",
+      "top5_diagnostic_only": true
+    },
+    "chunk_ablation": {
+      "source_file": "data/evaluation/results/chunk_ablation_v1.json",
+      "warning": "Record-projected Hit/Recall are proxies: partial chunks may not contain full answer. Actual chunk Top3 evidence coverage is reported separately. No production optimum claim.",
+      "configs": [
+        {
+          "chunk_size": 256,
+          "overlap": 32,
+          "unit": "Unicode characters",
+          "chunk_count": 63,
+          "parent_record_proxy": {
+            "eligible": 50,
+            "successful": 50,
+            "failed": 0,
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9504743802857166,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9582114364304074,
+            "mrr": 0.944
+          },
+          "actual_chunk_top3_parent_hit": 0.98,
+          "reference_coverage_top3": 0.98,
+          "successful": 50,
+          "failed": 0,
+          "actual_chunk_slot_metrics": {
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9504743802857166,
+            "hit@5": 0.98,
+            "recall@5": 0.98,
+            "ndcg@5": 0.9504743802857166,
+            "mrr": 0.9433333333333334
+          }
+        },
+        {
+          "chunk_size": 256,
+          "overlap": 64,
+          "unit": "Unicode characters",
+          "chunk_count": 66,
+          "parent_record_proxy": {
+            "eligible": 50,
+            "successful": 50,
+            "failed": 0,
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9478557852142875,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9564693163757553,
+            "mrr": 0.9416666666666667
+          },
+          "actual_chunk_top3_parent_hit": 0.98,
+          "reference_coverage_top3": 0.979954954954955,
+          "successful": 50,
+          "failed": 0,
+          "actual_chunk_slot_metrics": {
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9478557852142875,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9555928413589783,
+            "mrr": 0.9406666666666667
+          }
+        },
+        {
+          "chunk_size": 512,
+          "overlap": 32,
+          "unit": "Unicode characters",
+          "chunk_count": 48,
+          "parent_record_proxy": {
+            "eligible": 50,
+            "successful": 50,
+            "failed": 0,
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9504743802857166,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9582114364304074,
+            "mrr": 0.944
+          },
+          "actual_chunk_top3_parent_hit": 0.98,
+          "reference_coverage_top3": 0.98,
+          "successful": 50,
+          "failed": 0,
+          "actual_chunk_slot_metrics": {
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9504743802857166,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9582114364304074,
+            "mrr": 0.944
+          }
+        },
+        {
+          "chunk_size": 512,
+          "overlap": 96,
+          "unit": "Unicode characters",
+          "chunk_count": 48,
+          "parent_record_proxy": {
+            "eligible": 50,
+            "successful": 50,
+            "failed": 0,
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9504743802857166,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9590879114471844,
+            "mrr": 0.945
+          },
+          "actual_chunk_top3_parent_hit": 0.98,
+          "reference_coverage_top3": 0.98,
+          "successful": 50,
+          "failed": 0,
+          "actual_chunk_slot_metrics": {
+            "hit@1": 0.9,
+            "hit@3": 0.98,
+            "recall@3": 0.98,
+            "ndcg@3": 0.9504743802857166,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9582114364304074,
+            "mrr": 0.944
+          }
+        },
+        {
+          "chunk_size": 768,
+          "overlap": 96,
+          "unit": "Unicode characters",
+          "chunk_count": 44,
+          "parent_record_proxy": {
+            "eligible": 50,
+            "successful": 50,
+            "failed": 0,
+            "hit@1": 0.88,
+            "hit@3": 1,
+            "recall@3": 1.0,
+            "ndcg@3": 0.9530929753571458,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9530929753571458,
+            "mrr": 0.9366666666666666
+          },
+          "actual_chunk_top3_parent_hit": 1,
+          "reference_coverage_top3": 1.0,
+          "successful": 50,
+          "failed": 0,
+          "actual_chunk_slot_metrics": {
+            "hit@1": 0.88,
+            "hit@3": 1,
+            "recall@3": 1.0,
+            "ndcg@3": 0.9530929753571458,
+            "hit@5": 1,
+            "recall@5": 1.0,
+            "ndcg@5": 0.9530929753571458,
+            "mrr": 0.9366666666666666
+          }
+        }
+      ]
+    },
+    "generation_ragas": {
+      "source_file": [
+        "data/evaluation/results/generation_eval_v1.json",
+        "data/evaluation/results/ragas_eval_v1.json",
+        "data/evaluation/results/rag_evaluation_summary_v1.json"
+      ],
+      "generation_successful": 60,
+      "generation_failed": 0,
+      "ragas_version": "0.4.3",
+      "judge": "deepseek-ai/DeepSeek-V4-Flash",
+      "full_60": {
+        "faithfulness": {
+          "mean": 0.866658969699847,
+          "successful": 59,
+          "failed": 1
+        },
+        "answer_relevance": {
+          "mean": 0.7329893157673592,
+          "successful": 60,
+          "failed": 0
+        },
+        "abstention": {
+          "successful": 10,
+          "failed": 0,
+          "accuracy": 1.0,
+          "false_answer_rate": 0.0
+        },
+        "complete_samples": 59,
+        "metric_failures": 1,
+        "api_request_count": 439,
+        "chat_request_count": 319,
+        "embedding_request_count": 120
+      },
+      "answerable_50": {
+        "faithfulness": {
+          "mean": 0.9008977617020835,
+          "successful": 49,
+          "failed": 1
+        },
+        "answer_relevance": {
+          "mean": 0.8105496630501501,
+          "successful": 50,
+          "failed": 0
+        }
+      },
+      "citation_number_validity": 1.0,
+      "strict_citation_requirement": 0.9333333333333333,
+      "answerable_citation_presence": 1.0,
+      "faithfulness_timeout_count": 1,
+      "meaning": "LLM Judge非人工事实准确率"
+    },
+    "troubleshooting": {
+      "source_file": "data/evaluation/troubleshooting_intake_v1_2_results.json",
+      "original_30": {
+        "total": 30,
+        "correct": 30,
+        "accuracy": 1.0,
+        "per_class": {
+          "ready": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "needs_clarification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "false_ready": 0,
+        "false_clarify": 0,
+        "contract": {
+          "initial_success": 28,
+          "retry_success": 0,
+          "final_success": 28,
+          "retry_count": 0,
+          "deterministic_fast_path_count": 2,
+          "llm_intake_call_count": 28,
+          "failure_types": {
+            "TIMEOUT": 0,
+            "HTTP_ERROR": 0,
+            "NETWORK_ERROR": 0,
+            "CONTRACT_ERROR": 0
+          }
+        },
+        "confusion_matrix": {
+          "ready": {
+            "ready": 15,
+            "needs_clarification": 0,
+            "ERROR": 0
+          },
+          "needs_clarification": {
+            "ready": 0,
+            "needs_clarification": 15,
+            "ERROR": 0
+          }
+        }
+      },
+      "hard_20": {
+        "total": 20,
+        "correct": 20,
+        "accuracy": 1.0,
+        "per_class": {
+          "ready": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "needs_clarification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "false_ready": 0,
+        "false_clarify": 0,
+        "contract": {
+          "initial_success": 18,
+          "retry_success": 0,
+          "final_success": 18,
+          "retry_count": 0,
+          "deterministic_fast_path_count": 2,
+          "llm_intake_call_count": 18,
+          "failure_types": {
+            "TIMEOUT": 0,
+            "HTTP_ERROR": 0,
+            "NETWORK_ERROR": 0,
+            "CONTRACT_ERROR": 0
+          }
+        },
+        "confusion_matrix": {
+          "ready": {
+            "ready": 9,
+            "needs_clarification": 0,
+            "ERROR": 0
+          },
+          "needs_clarification": {
+            "ready": 0,
+            "needs_clarification": 11,
+            "ERROR": 0
+          }
+        }
+      },
+      "multi_turn_passed": 5,
+      "multi_turn_count": 5,
+      "error_code_fast_path": "original/hard各2题intake不调用LLM；不解释错误码"
+    },
+    "release": {
+      "source_file": [
+        "data/evaluation/results/answer_release_policy_v1_1_3.json",
+        "app/services/grounded_qa.py",
+        "app/services/static_knowledge_boundary.py",
+        "app/services/answer_release_policy.py"
+      ],
+      "method": "本次当前Audit/Boundary/Policy，复用历史Gate output；0模型/DB",
+      "distribution": {
+        "answerable": {
+          "auto_released": 49,
+          "review_required": 1,
+          "safe_abstention": 0
+        },
+        "unanswerable": {
+          "auto_released": 0,
+          "review_required": 0,
+          "safe_abstention": 10
+        }
+      },
+      "answerable_auto_delivery_rate": 0.98,
+      "false_boundary": 0,
+      "incorrect_auto_release": 0,
+      "per_case": [
+        {
+          "case_id": "T8-G001",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G002",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G003",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G004",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G005",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G006",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G007",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G008",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G009",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G010",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G011",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "review_required",
+          "reason_code": "SEMANTIC_GATE_FAILED_CLOSED"
+        },
+        {
+          "case_id": "T8-G012",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G013",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G014",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G015",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G016",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G017",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G018",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G019",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G020",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G021",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G022",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G023",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G024",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G025",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G026",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G027",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G028",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G029",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G030",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G031",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G032",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G033",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G034",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G035",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G036",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G037",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G038",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G039",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G040",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G041",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G042",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G043",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G044",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G045",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G046",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G047",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G048",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G049",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G050",
+          "answerable": true,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "auto_released",
+          "reason_code": "SEMANTICALLY_GROUNDED"
+        },
+        {
+          "case_id": "T8-G051",
+          "answerable": false,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "CORE_QUESTION_ABSTAINED"
+        },
+        {
+          "case_id": "T8-G052",
+          "answerable": false,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "CORE_QUESTION_ABSTAINED"
+        },
+        {
+          "case_id": "T8-G053",
+          "answerable": false,
+          "boundary": "personal_runtime_unavailable",
+          "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "STATIC_KNOWLEDGE_RUNTIME_UNAVAILABLE"
+        },
+        {
+          "case_id": "T8-G054",
+          "answerable": false,
+          "boundary": "personal_runtime_unavailable",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "STATIC_KNOWLEDGE_RUNTIME_UNAVAILABLE"
+        },
+        {
+          "case_id": "T8-G055",
+          "answerable": false,
+          "boundary": "personal_runtime_unavailable",
+          "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "STATIC_KNOWLEDGE_RUNTIME_UNAVAILABLE"
+        },
+        {
+          "case_id": "T8-G056",
+          "answerable": false,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "CORE_QUESTION_ABSTAINED"
+        },
+        {
+          "case_id": "T8-G057",
+          "answerable": false,
+          "boundary": "within_static_manual",
+          "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "MODEL_ABSTAINED"
+        },
+        {
+          "case_id": "T8-G058",
+          "answerable": false,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "CORE_QUESTION_ABSTAINED"
+        },
+        {
+          "case_id": "T8-G059",
+          "answerable": false,
+          "boundary": "within_static_manual",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "CORE_QUESTION_ABSTAINED"
+        },
+        {
+          "case_id": "T8-G060",
+          "answerable": false,
+          "boundary": "personal_runtime_unavailable",
+          "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+          "delivery_status": "safe_abstention",
+          "reason_code": "STATIC_KNOWLEDGE_RUNTIME_UNAVAILABLE"
+        }
+      ],
+      "historical_real_A_B": [
+        {
+          "case_id": "A",
+          "delivery_status": "auto_released"
+        },
+        {
+          "case_id": "B",
+          "delivery_status": "review_required"
+        }
+      ]
+    },
+    "final_e2e": {
+      "source_file": "data/evaluation/results/final_system_e2e_v1.json",
+      "result": "PASS",
+      "statistics": {
+        "business_cases": 12,
+        "first_attempt_pass_cases": 12,
+        "retry_pass_cases": 0,
+        "external_failure_attempts": 0,
+        "external_component_errors": [],
+        "business_failed_cases": 0
+      },
+      "case_summary": {
+        "A": true,
+        "B": true,
+        "C": true,
+        "D": true,
+        "E": true,
+        "F": true,
+        "G": true,
+        "H": true,
+        "I": true,
+        "J": true,
+        "K": true,
+        "L": true
+      },
+      "coverage": [
+        "consult",
+        "maintenance",
+        "troubleshooting",
+        "multi-turn",
+        "error-code",
+        "report",
+        "configuration",
+        "clarify",
+        "handoff",
+        "memory",
+        "approve/publish",
+        "reject"
+      ],
+      "rerun": false
+    }
+  },
+  "testing": {
+    "python": {
+      "total": 470,
+      "passed": 470,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 18.948,
+      "command": ".\\.venv\\Scripts\\python.exe -m unittest discover -s tests -v"
+    },
+    "frontend": {
+      "total": 48,
+      "passed": 48,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 36.64,
+      "command": "node node_modules/vitest/vitest.mjs run --configLoader runner --pool=threads --maxWorkers=1 --minWorkers=1",
+      "execution": "完整ASCII临时副本含node_modules，未重装；运行后清除",
+      "note": "首个复制命令误排除依赖dist无法启动；修正复制后全测试通过"
+    },
+    "classes": "unit/integration tests、离线benchmark、真实E2E分别统计"
+  },
+  "deployment": {
+    "source_file": [
+      "Dockerfile",
+      "docker-compose.yml",
+      "frontend/Dockerfile",
+      "frontend/nginx.conf",
+      "scripts/50_initialize_database.py",
+      "data/evaluation/results/deployment_v1_1_e2e.json"
+    ],
+    "services": [
+      "postgres",
+      "db-init",
+      "api",
+      "frontend"
+    ],
+    "binding": "127.0.0.1",
+    "ports": {
+      "frontend": 8080,
+      "api": 8000,
+      "postgres": 5433
+    },
+    "db": "roborock; shop_demo untouched",
+    "db_init": [
+      "14_create_review_table.py",
+      "21_create_memory_facts_table.py",
+      "32_upgrade_review_publication.py",
+      "40_upgrade_memory_lifecycle.py"
+    ],
+    "init": "additive/idempotent sequential; asserts actual DB name",
+    "volumes": "Postgres named; Chroma bind",
+    "uid_gid": 10001,
+    "health": "liveness only",
+    "ready": "DB/schema+41 corpus+same fingerprint Chroma+1024 dimension; no model/rebuild",
+    "historical_image_sizes": {
+      "api": 212971706,
+      "frontend": 26420107
+    },
+    "image_size_note": "historical Deployment V1.1, not current exact",
+    "build_limitation": "This Docker Desktop still fails BuildKit session setup for the non-ASCII project path. Identical Dockerfiles passed with an ASCII temporary build context; no application workaround or user manual-copy startup step was introduced.",
+    "current_containers": "read-only: 9 running total, 8 acceptance containers healthy, one db-init exited, pg-crud-demo unchanged",
+    "review_token": "React state only, request header, not storage/URL/bundle"
+  },
+  "sse": {
+    "source_file": [
+      "app/main.py",
+      "frontend/src/api/sse.js",
+      "frontend/src/pages/ChatPage.jsx",
+      "frontend/nginx.conf",
+      "data/evaluation/results/safe_sse_streaming_v1.json"
+    ],
+    "endpoint": "POST /api/agent/chat/stream",
+    "events": [
+      "status",
+      "answer_start",
+      "answer_delta",
+      "review_required",
+      "done",
+      "error",
+      "heartbeat_comment"
+    ],
+    "heartbeat_s": 9,
+    "chunk_chars": 14,
+    "provider_streaming": false,
+    "client_sse_streaming": true,
+    "mode": "buffer_then_release",
+    "nginx": {
+      "loaded": true,
+      "exact_sse_location": true,
+      "http11": true,
+      "buffering_off": true,
+      "cache_off": true,
+      "read_timeout_180": true,
+      "accel_buffering_no": true
+    },
+    "case_A_first_ms": 110.0,
+    "case_A_done_ms": 9407.0,
+    "precheck_delta": 0,
+    "review_required_delta": 0,
+    "max_review_delta": 1,
+    "memory_writes_per_request": 1,
+    "nginx_e2e_pass": true,
+    "limitation": "first event is status; abort may leave worker running",
+    "legacy_summary_conflict": false
+  },
+  "safety": [
+    {
+      "measure": "Citation/Money/Personal Runtime Audit",
+      "source_file": "app/services/grounded_qa.py",
+      "boundary": "valid citation not entailment"
+    },
+    {
+      "measure": "Static source boundary",
+      "source_file": "app/services/static_knowledge_boundary.py",
+      "boundary": "limited rules"
+    },
+    {
+      "measure": "Semantic grounding fail closed",
+      "source_file": "app/services/semantic_grounding_gate.py",
+      "boundary": "LLM judge, failure review"
+    },
+    {
+      "measure": "Safe abstention/program priority",
+      "source_file": "app/services/answer_release_policy.py",
+      "boundary": "block precedes gate"
+    },
+    {
+      "measure": "Explicit publication",
+      "source_file": [
+        "app/services/review_service.py",
+        "app/models.py"
+      ],
+      "boundary": "approved!=published; unpublished GET 404"
+    },
+    {
+      "measure": "Admin token",
+      "source_file": "app/main.py",
+      "boundary": "X-Review-Token and compare_digest"
+    },
+    {
+      "measure": "Frontend token",
+      "source_file": [
+        "frontend/src/pages/ReviewPage.jsx",
+        "frontend/src/api/client.js"
+      ],
+      "boundary": "state/header only"
+    },
+    {
+      "measure": "Untrusted Memory/tool query",
+      "source_file": [
+        "app/agent/react_graph.py",
+        "app/agent/tool_calling.py"
+      ],
+      "boundary": "user data, model arg not query control"
+    },
+    {
+      "measure": "SSE safe allowlist",
+      "source_file": "app/main.py",
+      "boundary": "answer deltas only after full safety processing"
+    }
+  ],
+  "frozen_components": [
+    {
+      "component": "Vector Store",
+      "stage": "V1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/t8_chroma_dense_ab_v1_results.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Scene Router",
+      "stage": "V2.1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/scene_router_v2_guard_results.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Troubleshooting",
+      "stage": "V1.2",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/troubleshooting_intake_v1_2_results.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Memory V1",
+      "stage": "V1",
+      "status": "IMPLEMENTED/TESTED",
+      "source_file": "app/agent/memory.py",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Memory V2",
+      "stage": "V2",
+      "status": "IMPLEMENTED/TESTED",
+      "source_file": "app/config.py",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Memory Lifecycle",
+      "stage": "V3",
+      "status": "IMPLEMENTED/TESTED",
+      "source_file": "app/memory/lifecycle.py",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "RAG Evaluation",
+      "stage": "V1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/results/rag_evaluation_summary_v1.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Final System E2E",
+      "stage": "V1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/results/final_system_e2e_v1.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Deployment",
+      "stage": "V1.1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/results/deployment_v1_1_e2e.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Frontend",
+      "stage": "V1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/results/frontend_v1_e2e.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Answer Release",
+      "stage": "V1.1.5",
+      "status": "IMPLEMENTED/TESTED",
+      "source_file": "tests/test_static_knowledge_boundary.py",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    },
+    {
+      "component": "Safe SSE",
+      "stage": "V1",
+      "status": "RESULT_PRESENT",
+      "source_file": "data/evaluation/results/safe_sse_streaming_v1.json",
+      "freeze_approval": "UNVERIFIED: no standalone repository approval artifact"
+    }
+  ],
+  "known_limitations": [
+    "Static Boundary是有限规则，不是通用中文parser。",
+    "Semantic Gate/RAGAS依赖模型Judge，不是人工事实准确率且不保证零幻觉。",
+    "长期Memory注入默认false。",
+    "Session Memory单进程，重启丢失，多实例不共享。",
+    "client session_id及memory_owner_id不是身份认证。",
+    "SSE Abort不能保证取消后台同步任务。",
+    "buffer_then_release不降低模型完成和安全核验耗时。",
+    "Windows中文路径BuildKit shared-key限制未解决，ASCII context已验。",
+    "知识源仅T8说明书，无价格/设备遥测/用户历史记录。",
+    "第12页部分图标纯文本缺失，不能猜按键。",
+    "60题Golden及50 answerable为小样本，不代表跨设备/开放用户泛化。",
+    "Top5只是诊断，production evidence Top3。",
+    "不同hash新语义近重复事实并发不保证幂等。",
+    "Memory cleanup显式调用，无后台调度。",
+    "Review共享口令无正式登录/RBAC/多租户。",
+    "QAService close异常仍可能覆盖commit结果；ReviewService已best effort。",
+    "历史构建日志报告3依赖漏洞(1中2高)，当前处理未核验。",
+    "本轮没有重建容器，healthy不证明容器源码等于当前仓库。"
+  ],
+  "metric_conflicts": [
+    {
+      "item": "引用指标口径",
+      "finding": "编号合法60/60、answerable presence50/50、严格引用要求56/60=.9333是三种检查，不合并成100%。",
+      "source_file": [
+        "data/evaluation/results/generation_eval_v1.json",
+        "data/evaluation/results/rag_evaluation_summary_v1.json"
+      ]
+    },
+    {
+      "item": "Release V1.1.5",
+      "finding": "没有单独结果JSON；本次当前Audit/Boundary/Policy重放V1.1.3缓存Gate，非真实模型复测。",
+      "source_file": "data/evaluation/results/answer_release_policy_v1_1_3.json"
+    },
+    {
+      "item": "Case B",
+      "finding": "真实V1.1.3 Case B是review_required；早期修复验收/replay用不同草稿，auto不能覆盖现场结果。",
+      "source_file": [
+        "data/evaluation/results/answer_release_policy_v1_1_3.json",
+        "data/evaluation/results/answer_release_diagnostics_v1.json"
+      ]
+    },
+    {
+      "item": "SSE汇总字段",
+      "finding": "overall_pass=true但all_cases_have_received_processing_done=false；同文件后续mock/frame-order验证通过，保留旧observer冲突。",
+      "source_file": "data/evaluation/results/safe_sse_streaming_v1.json"
+    },
+    {
+      "item": "测试数量",
+      "finding": "旧407/29为历史，本次实跑470/48。",
+      "source_file": [
+        "tests",
+        "frontend/tests"
+      ]
+    },
+    {
+      "item": "npm版本",
+      "finding": "package.json semver范围不是安装版本；按package-lock报告。",
+      "source_file": [
+        "frontend/package.json",
+        "frontend/package-lock.json"
+      ]
+    }
+  ],
+  "unverified": [
+    {
+      "item": "逐模块冻结批准",
+      "reason": "缺少独立仓库批准记录，不能因PASS标COMPLETE/FROZEN。"
+    },
+    {
+      "item": "当前容器源码/镜像尺寸一致性",
+      "reason": "未重建并对照；镜像大小用历史正式结果。"
+    },
+    {
+      "item": "Nginx/Postgres精确patch",
+      "reason": "nginx:alpine、postgres:16为浮动标签。"
+    },
+    {
+      "item": "V1.1.5独立60题真实Gate评测",
+      "reason": "无结果JSON；本次仅本地policy replay。"
+    },
+    {
+      "item": "依赖漏洞修复状态",
+      "reason": "有历史构建告警，本轮未联网审计。"
+    }
+  ],
+  "resume_safe_claims": [
+    {
+      "claim": "T8知识库",
+      "evidence_file": [
+        "data/processed/t8_pages.jsonl",
+        "data/raw/roborock/Roborock_T8_User_Manual_ZH.pdf"
+      ],
+      "metric_meaning": "26页/41记录由当前文件计数",
+      "safe_wording": "构建基于26页官方说明书的41条可追溯知识记录。"
+    },
+    {
+      "claim": "Hybrid retrieval",
+      "evidence_file": [
+        "data/evaluation/results/retrieval_ablation_v1.json",
+        "app/retrieval/t8_retrieval.py"
+      ],
+      "metric_meaning": "50 answerable Hit@3 49/50 MRR .9307",
+      "safe_wording": "BM25+Chroma Dense+RRF+Reranker在50条可回答Golden上Hit@3为98%，MRR0.9307。"
+    },
+    {
+      "claim": "Retrieval ablation",
+      "evidence_file": [
+        "data/evaluation/results/retrieval_ablation_v1.json"
+      ],
+      "metric_meaning": "RRF .88到Reranker .98",
+      "safe_wording": "对BM25/Dense/RRF/Reranker做固定集消融，重排后Hit@3为98%。"
+    },
+    {
+      "claim": "Router eval",
+      "evidence_file": [
+        "data/evaluation/scene_router_v2_guard_results.json"
+      ],
+      "metric_meaning": "65/70分类；contract另69/70",
+      "safe_wording": "Router在70题分类准确率92.86%，Macro F1 93.88%。"
+    },
+    {
+      "claim": "Troubleshooting intake",
+      "evidence_file": [
+        "data/evaluation/troubleshooting_intake_v1_2_results.json"
+      ],
+      "metric_meaning": "原集30/30+hard20/20+multi5",
+      "safe_wording": "故障信息Workflow在30条原集和20条hard无false-ready/false-clarify，5组多轮通过。"
+    },
+    {
+      "claim": "Bounded ReAct",
+      "evidence_file": [
+        "app/agent/react_graph.py",
+        "app/agent/tool_calling.py"
+      ],
+      "metric_meaning": "代码+单测支持架构声明",
+      "safe_wording": "实现有界LangGraph ReAct和只读说明书Tool，单请求固定Evidence Snapshot。"
+    },
+    {
+      "claim": "Layered safety",
+      "evidence_file": [
+        "app/services/grounded_qa.py",
+        "app/services/static_knowledge_boundary.py",
+        "app/services/semantic_grounding_gate.py",
+        "app/services/answer_release_policy.py"
+      ],
+      "metric_meaning": "层有独立职责",
+      "safe_wording": "实现确定性Audit、Static Boundary、Semantic Gate及Release决策分层。"
+    },
+    {
+      "claim": "Live delivery replay",
+      "evidence_file": [
+        "data/evaluation/results/answer_release_policy_v1_1_3.json",
+        "app/services/answer_release_policy.py"
+      ],
+      "metric_meaning": "保存Gate replay 49/50，不是accuracy",
+      "safe_wording": "缓存Gate结果策略重放中，可回答自动交付49/50，无答案10题零错误自动放行。"
+    },
+    {
+      "claim": "Review/publication",
+      "evidence_file": [
+        "app/services/review_service.py",
+        "app/models.py",
+        "data/evaluation/results/frontend_v1_e2e.json"
+      ],
+      "metric_meaning": "approved和published分离",
+      "safe_wording": "实现Postgres草稿审核及显式发布分离，未发布公共GET 404。"
+    },
+    {
+      "claim": "Session memory",
+      "evidence_file": [
+        "app/agent/memory.py"
+      ],
+      "metric_meaning": "6消息/100 session进程内",
+      "safe_wording": "实现按会话串行的短期滑动记忆与会话隔离。"
+    },
+    {
+      "claim": "Long-term facts",
+      "evidence_file": [
+        "app/memory/service.py",
+        "app/memory/filtering.py",
+        "app/memory/lifecycle.py"
+      ],
+      "metric_meaning": "auto injection default false",
+      "safe_wording": "实现用户原文事实过滤、去重及TTL生命周期，自动注入默认关闭。"
+    },
+    {
+      "claim": "SSE",
+      "evidence_file": [
+        "data/evaluation/results/safe_sse_streaming_v1.json",
+        "app/main.py"
+      ],
+      "metric_meaning": "110ms first status / 9407ms done",
+      "safe_wording": "实现安全完成后SSE分块，真实Case A首状态110ms，done约9.4s。"
+    },
+    {
+      "claim": "Tests",
+      "evidence_file": [
+        "tests",
+        "frontend/tests"
+      ],
+      "metric_meaning": "470 backend +48 frontend, not model accuracy",
+      "safe_wording": "维护470项Python及48项前端测试，当前全套通过。"
+    },
+    {
+      "claim": "Real E2E",
+      "evidence_file": [
+        "data/evaluation/results/final_system_e2e_v1.json"
+      ],
+      "metric_meaning": "historical 12 first-pass",
+      "safe_wording": "历史12个真实系统验收案例首次通过，含审核/发布和多场景。"
+    },
+    {
+      "claim": "Deployment",
+      "evidence_file": [
+        "data/evaluation/results/deployment_v1_1_e2e.json",
+        "Dockerfile",
+        "docker-compose.yml"
+      ],
+      "metric_meaning": "ASCII context deployment evidence",
+      "safe_wording": "验收Postgres、幂等db-init、非root API和Nginx Compose结构。"
+    }
+  ],
+  "claims_to_avoid": [
+    {
+      "claim": "准确率98%",
+      "reason": "Hit@3或自动交付率不是答案准确率。"
+    },
+    {
+      "claim": "RAG准确率98%",
+      "reason": "检索命中不证明生成正确。"
+    },
+    {
+      "claim": "Router 98.57% accuracy",
+      "reason": "98.57%为69/70契约，分类65/70。"
+    },
+    {
+      "claim": "100%无幻觉",
+      "reason": "小样本Judge/规则不能证明。"
+    },
+    {
+      "claim": "Production-grade SaaS",
+      "reason": "缺正式身份、租户、扩缩容及生产负载验收。"
+    },
+    {
+      "claim": "毫秒级回答",
+      "reason": "110ms首状态，Case A done 9407ms。"
+    },
+    {
+      "claim": "真实LLM Token Streaming",
+      "reason": "provider stream=false，服务端安全后分块。"
+    },
+    {
+      "claim": "默认长期记忆个性化",
+      "reason": "注入默认false。"
+    },
+    {
+      "claim": "全自动审核",
+      "reason": "Gate是模型Judge，仍有人工Review/Publication。"
+    },
+    {
+      "claim": "RRF显著提升",
+      "reason": "RRF Hit3 .88低于BM25 .90。"
+    },
+    {
+      "claim": "当前chunk全局最优",
+      "reason": "有限实验且MRR/Hit不一致。"
+    },
+    {
+      "claim": "测试数量等于模型准确率",
+      "reason": "程序测试和模型benchmark是不同指标。"
+    },
+    {
+      "claim": "auto release就是published",
+      "reason": "即时交付不改变pending/unpublished。"
+    },
+    {
+      "claim": "任意Windows一键部署",
+      "reason": "中文路径BuildKit限制仍存在。"
+    }
+  ],
+  "interview_topics": [
+    "read-only ReAct tool vs side-effect QA",
+    "program-controlled retrieval query",
+    "snapshot consistency and finalize once",
+    "same-session lock/LRU",
+    "untrusted user memory and default-off injection",
+    "Audit/Boundary/Gate/Release layering",
+    "instant delivery vs approval vs publication",
+    "SSE buffer then release and abort",
+    "Chroma fingerprint/dimension/index mapping",
+    "conditional SQL updates",
+    "atomic seen_count and semantic race limit",
+    "Golden/Judge metric scope"
+  ],
+  "source_files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "7085439a7c8d78bd2143cf7ee5efe446be357a69d2e2b67ce0c4eb149ed0362a"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "bfbf2dfac98c1abc729695d6e47a71528237883c7181340cf9e6fbb6069ae437"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "b70ebd04a1a33fba4595ce0b205528d9fc3d11b15e560eb7deb68a2ad8536afa"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "ea092c7d8c2de696a363a70fe71392cdbbcc236d9f8b0b71f123da3bbfb524cc"
+    },
+    {
+      "path": "app/__init__.py",
+      "sha256": "68202285399bc7b1e0b8c40dc3867612c0f6ed1e5b0218addf750c0642d7cf93"
+    },
+    {
+      "path": "app/agent/__init__.py",
+      "sha256": "eb6573293dba80dc6b5662abe35e3fdb405813e2dd969b89225c843e74f96fdf"
+    },
+    {
+      "path": "app/agent/ambiguity.py",
+      "sha256": "918838dd461add51965b1a426352fa723ffe44588197b75dd0a8dad50af6d8f7"
+    },
+    {
+      "path": "app/agent/contextual_query.py",
+      "sha256": "917149fb1f1712a0d7e5d84b2da84575133fbb89bcc07ba46dc772442fdaff6e"
+    },
+    {
+      "path": "app/agent/graph.py",
+      "sha256": "70b58d256ecb9921939678c764a309a28c402c123ec3fb0d3c209077bc1f3c04"
+    },
+    {
+      "path": "app/agent/llm_router.py",
+      "sha256": "cc72e7921cd704d0cd0a8c97c3016c566b5506b35b1dffa8ae29fc180599d7f6"
+    },
+    {
+      "path": "app/agent/memory.py",
+      "sha256": "4ec55410a605e3682abc4794df37bca433f3d0d2679c190cc5076f000d61046a"
+    },
+    {
+      "path": "app/agent/react_graph.py",
+      "sha256": "9802686a689e650c3de6418f1dfbff04a242d09adc5902810e020bdbed88421e"
+    },
+    {
+      "path": "app/agent/router.py",
+      "sha256": "7701af33d7e158c05724db12c8396d5430a0caea112f46296f54a8697dd92a6b"
+    },
+    {
+      "path": "app/agent/scene_policy.py",
+      "sha256": "c87b14145bef252761d202d4f22363d68efa882c2e2077ad5f5abc4b3d5f2379"
+    },
+    {
+      "path": "app/agent/state.py",
+      "sha256": "5cf06c546cf52856491d2ba22f20bc0dd03a558f1d9608698a95627a230fdcdf"
+    },
+    {
+      "path": "app/agent/tool_calling.py",
+      "sha256": "ec55fdf4e786716061ce762abed4a530a47a9f18e3f012bbaaf0761e206870c9"
+    },
+    {
+      "path": "app/agent/tools.py",
+      "sha256": "0b1f4793e9e27708712090cca42b56af0ef0785929af25fb9041432380cdf2c1"
+    },
+    {
+      "path": "app/agent/troubleshooting.py",
+      "sha256": "35b8d23159c5502359b0e1cda84c40a89095f41f06c4a30d9d6bab546e75c507"
+    },
+    {
+      "path": "app/agent/troubleshooting_signals.py",
+      "sha256": "ddcaf4e7ffc8df75f806f3c0e45c15853fb289c57f0c9d75f01f0a5d04292a63"
+    },
+    {
+      "path": "app/config.py",
+      "sha256": "543e0d6880b521da38529d08e16d8af4bcb1d7409437998a4f8d3edaa9408dfd"
+    },
+    {
+      "path": "app/database.py",
+      "sha256": "0790820f1e7e2bbdc1633d80337a2a08fb426d477fb5c6c818181a1ae27e56d0"
+    },
+    {
+      "path": "app/main.py",
+      "sha256": "61c7becd2a8cafc85723b6f9e8e451ca2c848414e18a5d9499b2a155a4b5cca2"
+    },
+    {
+      "path": "app/memory/__init__.py",
+      "sha256": "9350244672d5cdd8d3158dd0b511a19bf16856475b70a31a5431490f9d764e83"
+    },
+    {
+      "path": "app/memory/applicability.py",
+      "sha256": "cdbfa8718d03f3abe10b048f8cb99233fa42daa081a28b481e91b16d850e0acf"
+    },
+    {
+      "path": "app/memory/embeddings.py",
+      "sha256": "9cf324094131bfe61d6f41df543aa9487e41f9137f0702bf374c5b1d77445939"
+    },
+    {
+      "path": "app/memory/extractor.py",
+      "sha256": "7e0ff0e28010857d60513470ef2a1cbc844666a58966935f2314f1e026fc568a"
+    },
+    {
+      "path": "app/memory/facts.py",
+      "sha256": "96a561e0e4f7640fab24c442ca7fad4e4e46a0f0de07225a89fa91a1e058b9fc"
+    },
+    {
+      "path": "app/memory/filtering.py",
+      "sha256": "37479005ec87fa614b52770edc1c722dde5b86d863129d149a735b83c33b3a7e"
+    },
+    {
+      "path": "app/memory/lifecycle.py",
+      "sha256": "60067ac26fce6571273d2c9e924e948df072d22853530c6375431c4a3c649b95"
+    },
+    {
+      "path": "app/memory/runtime.py",
+      "sha256": "72848759e02f5d122b308829d7f127a457eecc1cba5d31c9eeda517040aca641"
+    },
+    {
+      "path": "app/memory/schemas.py",
+      "sha256": "86b3f2ea468723aa05ee622044295cdab91bea6a9599d67ded7dc0306b56c270"
+    },
+    {
+      "path": "app/memory/service.py",
+      "sha256": "2d6cdcef1257435266837496d54296a5a227d3d399ebf20de839d3f9345314b5"
+    },
+    {
+      "path": "app/models.py",
+      "sha256": "bc97448e96fad05e684993267b2a91700808aefeffcd6834b4a2e4fe2a9d6d64"
+    },
+    {
+      "path": "app/retrieval/__init__.py",
+      "sha256": "bbb30d12e01308f0b85a56d69f767f46117556a7100b65eca28b2bb12cfeabf2"
+    },
+    {
+      "path": "app/retrieval/t8_retrieval.py",
+      "sha256": "1190fdb247d24d9d876fa284f56dce8f4b6483ff6c8f81587c9bc7741406d7a7"
+    },
+    {
+      "path": "app/retrieval/t8_vector_store.py",
+      "sha256": "465814a9c6439afd869bf299656da413d333a25c86df0fad4bc45571581a517a"
+    },
+    {
+      "path": "app/schemas.py",
+      "sha256": "497526505a1dc4d546e592daf342f8e553add14ab3159f23c0a50df551ebe881"
+    },
+    {
+      "path": "app/services/__init__.py",
+      "sha256": "d971005fc33c01bf9203c23067dab556e8ccc352d754f450acfae6fcace3a2c2"
+    },
+    {
+      "path": "app/services/answer_release_policy.py",
+      "sha256": "8a5b01c7bd5f440c572819aee4a0be9c0c32698950a4c869efacb10c6bcdc2ac"
+    },
+    {
+      "path": "app/services/grounded_qa.py",
+      "sha256": "11116bf8c4ed76852a7d47cb9be7536e11bf0c9a8f34e43f5db11f8ea1f2c9de"
+    },
+    {
+      "path": "app/services/qa_service.py",
+      "sha256": "e26163bc6ca8a620f53d25cc75d2dbf954da3f51db0878d6c297d70005aac388"
+    },
+    {
+      "path": "app/services/readiness.py",
+      "sha256": "6ec8e7a745fa64a5702b1ecb0e61376f503d29930ee078aa69fffe9517d64d80"
+    },
+    {
+      "path": "app/services/review_service.py",
+      "sha256": "e0a3d1b564e9641d27b6c97ee1e1dce9386dd9cc88f0f395ecb48f536198b2b0"
+    },
+    {
+      "path": "app/services/semantic_grounding_gate.py",
+      "sha256": "1049d8cf992bea0114b27df4e0e4c7aee38afb8dd52ae87dd361d00525c9de95"
+    },
+    {
+      "path": "app/services/static_knowledge_boundary.py",
+      "sha256": "b0a02fd67a20565b7e81fd1bfac505ce0bf1db6dabf933dd8b24741540613d38"
+    },
+    {
+      "path": "data/evaluation/RAG_EVALUATION_V1.md",
+      "sha256": "e2e0cc5ca8b92cdc26f57f6b08752974bb65d49864f70fec179ee0d6c223e149"
+    },
+    {
+      "path": "data/evaluation/business_scenes_tool_burst_fix_e2e_results.json",
+      "sha256": "cbc5c593e3665a9d57720a2250556eb5addd85c71026cee8ae03566be9dd8ff8"
+    },
+    {
+      "path": "data/evaluation/business_scenes_v1_e2e_results.json",
+      "sha256": "a1a3d512d38d49ed8bb6520cc3e3ee52aa9a140ae02693a35b220a314d80d48f"
+    },
+    {
+      "path": "data/evaluation/deepseek_memory_need_results_v1.json",
+      "sha256": "26a87d25151e2d0f0427a60a3925f158b7b3880f73409bf75ade8250cc9e63b7"
+    },
+    {
+      "path": "data/evaluation/long_term_memory_hybrid_results_v1.json",
+      "sha256": "398d815290312df0edc429bd2220adaf37edde07c125d465943d6a33f356e68e"
+    },
+    {
+      "path": "data/evaluation/long_term_memory_retrieval_v1.json",
+      "sha256": "3a91629b5e85d3fc00267ebc2fe284ca727c758611a692e943c338c032b282c9"
+    },
+    {
+      "path": "data/evaluation/long_term_memory_retrieval_v2.json",
+      "sha256": "fde7c9b5429cf3e660f6723b6428df0bbe1f71c50b0069ce55d8d5bb144cf8c1"
+    },
+    {
+      "path": "data/evaluation/long_term_memory_retrieval_v2_results.json",
+      "sha256": "262b27523d6efa4b8da0ab16d414b05862f5491183c39ad1d3fd16d0054162ff"
+    },
+    {
+      "path": "data/evaluation/memory_applicability_gate_results_v1.json",
+      "sha256": "42b47e0fce1ac01798ffbf8317fa7679dbcc2d2bd108889a5de65526ca9b58c7"
+    },
+    {
+      "path": "data/evaluation/memory_applicability_guardrail_results_v1.json",
+      "sha256": "3a375b51bb8fa15a51503de7e4ab929192e587f34fdc0ca7ccf375995aa1ea64"
+    },
+    {
+      "path": "data/evaluation/memory_applicability_reliability_v1.json",
+      "sha256": "76a45ef4f25a427568edee318987adec708cebc5022644a0a55cabcff99948e4"
+    },
+    {
+      "path": "data/evaluation/memory_applicability_semantic_ab_results_v1.json",
+      "sha256": "4edb748882362b6275143213fbc97803389aa1720304b730df1f0d2d35ec5e19"
+    },
+    {
+      "path": "data/evaluation/memory_applicability_semantic_v1.json",
+      "sha256": "22c44e6048a4f65d1e3a5a9de992006ec07d89b75c82a59f52271db9366adc41"
+    },
+    {
+      "path": "data/evaluation/memory_extractor_focused_v1.json",
+      "sha256": "55782ce63ebd209f99d82d8bd40ea84613e0b69c8b77e8e697e484314d264202"
+    },
+    {
+      "path": "data/evaluation/memory_extractor_reliability_results_v1.json",
+      "sha256": "2961e075b7a6e5bdb303ee3050438791a39f084ecfdeab36b7a5ef31f918ea46"
+    },
+    {
+      "path": "data/evaluation/memory_need_classification_results_v1.json",
+      "sha256": "8f91b3baeee03269aa51e169709d9698ee4554a356b2c3093224f5b984d56c66"
+    },
+    {
+      "path": "data/evaluation/memory_need_classification_v1.json",
+      "sha256": "9c060d4ad121fcc123ec7bd6ad5b8e0c77bb00bfae9cd8eb5adc5b2d4c4d7d27"
+    },
+    {
+      "path": "data/evaluation/memory_need_contract_diagnosis_v1.json",
+      "sha256": "657a4c0a2629bcef8c8919d1de101337c8b4250d73749e26a7f57b5033d016db"
+    },
+    {
+      "path": "data/evaluation/requirements-ragas-lock.txt",
+      "sha256": "91511a397f8f636c0e860475666541e2c8bea65ac93d80c624fa05904bfd617c"
+    },
+    {
+      "path": "data/evaluation/requirements-ragas.txt",
+      "sha256": "f9e7d92737ad62ce0087310aab33a6275b46c810995dbbf0e6a671a878424777"
+    },
+    {
+      "path": "data/evaluation/results/answer_release_diagnostics_v1.json",
+      "sha256": "5e23981c1f424b9c73d7b3eec7609e3605216023f482df93a9cf03d5b121d631"
+    },
+    {
+      "path": "data/evaluation/results/answer_release_policy_v1.json",
+      "sha256": "2a0f8383f873b642ef15df545fca79181a9142b90153c4085304c63e7aeec001"
+    },
+    {
+      "path": "data/evaluation/results/answer_release_policy_v1_1.json",
+      "sha256": "878dce44e38d2cacbafe3e496ecc136cf74203531b903869f54d5dd5c990ff19"
+    },
+    {
+      "path": "data/evaluation/results/answer_release_policy_v1_1_1.json",
+      "sha256": "37d8d33b7c8be5a36855dbd9aa708ef12ad5fd299fbf1c9e20ce8960d76a745a"
+    },
+    {
+      "path": "data/evaluation/results/answer_release_policy_v1_1_2.json",
+      "sha256": "be610759b27e0eeb812417ea0ba7d5833cfe81d3e7248e16a249b4560f833997"
+    },
+    {
+      "path": "data/evaluation/results/answer_release_policy_v1_1_3.json",
+      "sha256": "13b48b261284d62aeeca5b8504d8033237783b22c7e84cbd89430ac538715455"
+    },
+    {
+      "path": "data/evaluation/results/audit_order_regression_v1_1_1.json",
+      "sha256": "75798f725eefc33f49797a25cf6c83a155dba6c920f69720848d33a22eca30d0"
+    },
+    {
+      "path": "data/evaluation/results/chunk_ablation_v1.json",
+      "sha256": "f2f587d86abe11e38619e1764a6e5cb69880cad729e68bae3a0ef006b125090d"
+    },
+    {
+      "path": "data/evaluation/results/deployment_v1_1_e2e.json",
+      "sha256": "98d2b5239737b5d97601c61521c4990e43399fe832dc1342af9965b2f873a9b5"
+    },
+    {
+      "path": "data/evaluation/results/deployment_v1_e2e.json",
+      "sha256": "a0c9de8805759fbc36508bfd113d6140361b5ddc08bfe84c037c88a26e4de54a"
+    },
+    {
+      "path": "data/evaluation/results/final_system_e2e_v1.json",
+      "sha256": "f62924bec577b608581e7f96cd34257d0b7a16d7b7e0c85389fc87862c9e7bc4"
+    },
+    {
+      "path": "data/evaluation/results/frontend_v1_e2e.json",
+      "sha256": "b1a8f7ff882d472a2bfe86d6c7b1839cb82fd30240e9e7bbc6eb422af9d99e58"
+    },
+    {
+      "path": "data/evaluation/results/generation_eval_v1.json",
+      "sha256": "f29e24981349c8f4ee0e0ac8bff78f8ba2442592bc96ae7eae38ee3a3c06d085"
+    },
+    {
+      "path": "data/evaluation/results/production_state_guard_v1.json",
+      "sha256": "e446ad897b5d9b889dc8a8d7006103756b5bef7c278e5a53a4a2317e8b1c8ef3"
+    },
+    {
+      "path": "data/evaluation/results/rag_evaluation_summary_v1.json",
+      "sha256": "f0e7a0928c05914bf7494c3f8a9e230ceb95f4c856be0cbed7cd7e9f5cd3a838"
+    },
+    {
+      "path": "data/evaluation/results/ragas_eval_v1.json",
+      "sha256": "f856fbf339dd833fd630fd398339c043fc79bebefcd6946a7910fb9976870375"
+    },
+    {
+      "path": "data/evaluation/results/ragas_eval_v1_adapter_failure.json",
+      "sha256": "a0de5df6e0dfd056c5e557348cdea4d941e42b36cfb81a380221e0273388eae2"
+    },
+    {
+      "path": "data/evaluation/results/ragas_eval_v1_before_abstention_context_recheck.json",
+      "sha256": "3d6108e1a3b143e69f1a47af9a3de9087c0e51098c956419f6d93a85b365c9fc"
+    },
+    {
+      "path": "data/evaluation/results/retrieval_ablation_v1.json",
+      "sha256": "5779626d0d0eb101e7000e3ae6c1fec743f4b1b80f1359b1acc01ead48ed44c8"
+    },
+    {
+      "path": "data/evaluation/results/safe_sse_streaming_v1.json",
+      "sha256": "4b3356b40a8cea473d3cece8229df600be495ecc0b81881097d7262cd7a5b432"
+    },
+    {
+      "path": "data/evaluation/results/static_knowledge_boundary_v1.json",
+      "sha256": "b277eb9d758dea5eb7cdc8548b8b349775e78d30253fd6a6ef81e8a43c5d0e41"
+    },
+    {
+      "path": "data/evaluation/scene_router_hard_v1.json",
+      "sha256": "f9886ec9f83b90aecddb18c6d76d1032f5a98df54a6d0781bcc4f4e8ce788a33"
+    },
+    {
+      "path": "data/evaluation/scene_router_hard_v1_guard_results.json",
+      "sha256": "ffacdff3d972b67e7d90b6da9355b2560f5a8750d2db3c2cadd32bae91b7b592"
+    },
+    {
+      "path": "data/evaluation/scene_router_hard_v1_results.json",
+      "sha256": "df1ddce3d7cbaf99538fc4b38f30f6f2796efdda593893ba66499c0dd8b77a68"
+    },
+    {
+      "path": "data/evaluation/scene_router_v1.json",
+      "sha256": "3628cc0060a55c09484dd8db82f70747b9771c08cb001caed8c08adcb17de1a7"
+    },
+    {
+      "path": "data/evaluation/scene_router_v1_results.json",
+      "sha256": "e2b2a3791e5c86b438dcc61f9505ad8aaa3d813906755804bb3c1e2efd6c0701"
+    },
+    {
+      "path": "data/evaluation/scene_router_v2_api_regression_results.json",
+      "sha256": "8738be4fcbb97653a1dc1118d228a00b943fbcc4aa95524ebf445b63074f4602"
+    },
+    {
+      "path": "data/evaluation/scene_router_v2_comparison.json",
+      "sha256": "c80f9954735044908462bfac4704e3e3eb20c65ddf8a6111dc6f23957cc9fbd6"
+    },
+    {
+      "path": "data/evaluation/scene_router_v2_guard_comparison.json",
+      "sha256": "8cebbf861bb9f9247e414aba060b23d6321568a3474c8a67a7776379672b3f39"
+    },
+    {
+      "path": "data/evaluation/scene_router_v2_guard_results.json",
+      "sha256": "fd54ca138e8c953557bdc226820b28e30546b2fe4ce1905ed72d3cd0836f8b8a"
+    },
+    {
+      "path": "data/evaluation/scene_router_v2_prompt_only_results.json",
+      "sha256": "e9b61e9c36264f4f1d54f85f548e7616e2e39aa824a98d0070f3aef10b230688"
+    },
+    {
+      "path": "data/evaluation/t8_chat_model_rag_ablation_v1_results.json",
+      "sha256": "835169ec9c82fc3c83cb8e7b6f5e360aa1c416870a1cbf70dea645573d5c55a6"
+    },
+    {
+      "path": "data/evaluation/t8_chroma_dense_ab_v1_results.json",
+      "sha256": "601185f62a9a41c2935817c5a943757302268788cc341c2510980f75a7c6e0c6"
+    },
+    {
+      "path": "data/evaluation/t8_query_normalization_regression_v1.json",
+      "sha256": "b0bdfe1efbcecc1977d5a524e57f5c45fcf537f0ccb51167faf4df10ba3ce90d"
+    },
+    {
+      "path": "data/evaluation/t8_rag_golden_v1.json",
+      "sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386"
+    },
+    {
+      "path": "data/evaluation/t8_retrieval_candidates_v1.json",
+      "sha256": "cc8ace4596d1f119d8a8b7c8e92237b85d4daafe9b3bb94caf6e0862910f9dd4"
+    },
+    {
+      "path": "data/evaluation/troubleshooting_intake_hard_v1.json",
+      "sha256": "c45b3fca954315fb1db9eeb3c26b3ee1cb98d0803588d496acfe849a0226abb2"
+    },
+    {
+      "path": "data/evaluation/troubleshooting_intake_v1.json",
+      "sha256": "50224ddbcd5428161b5ededc1dad3f1e03add1231e1682e544df0a5a431c6a3d"
+    },
+    {
+      "path": "data/evaluation/troubleshooting_intake_v1_1_results.json",
+      "sha256": "82e5cff2ec9f2deed17d154f2ab9206ce365205f2b923e6b41f2c67082770bf8"
+    },
+    {
+      "path": "data/evaluation/troubleshooting_intake_v1_2_results.json",
+      "sha256": "7b47fc80eb80f04722c3003a3f8f6585a9d1dca1e540ad4c6ca7e589f4445c28"
+    },
+    {
+      "path": "data/evaluation/troubleshooting_intake_v1_results.json",
+      "sha256": "32584bd876f61b466b53ed210c6f757332e3dd6ee721220b8e6099fe602ca196"
+    },
+    {
+      "path": "data/evaluation/troubleshooting_workflow_v1_e2e_results.json",
+      "sha256": "26468988c287cdf8798e1dde2416528d1383526a809238e64a0dda7cc9ca4c40"
+    },
+    {
+      "path": "data/processed/t8_pages.jsonl",
+      "sha256": "a8be9a479c1bfc7438d79cbc03c954b18fd52b4863468ff0bbfcbf40eaad7d12"
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "7252a3918def31123857641b8ff331726f3cf5f0efe161dae8813b3d82e7f846"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "af1fc5a0340defa3adafc92831cb1849c098ea132c9448711613758a78d82703"
+    },
+    {
+      "path": "frontend/nginx.conf",
+      "sha256": "552e6e33959a9c897a1acce28359f3cc5641f6f717ee470d5cec9e6c8791443f"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "64bdb36999a41010c063b5cbe0e4bab960fc7e939676a22a2ee19adcfabb9c6a"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "549cfda97616d65f431f21cc099fd4dd57134237a2153c88578ff7e35b516f6c"
+    },
+    {
+      "path": "frontend/src/App.jsx",
+      "sha256": "00901dffc9c6644c6be150dcdcdf9b23f1202d3e4be0911db657f0ed91155f80"
+    },
+    {
+      "path": "frontend/src/api/client.js",
+      "sha256": "b1d0eea8735443af953b9e17eb6eba8fabd2f37e298f5485f0306a0d79eddb7a"
+    },
+    {
+      "path": "frontend/src/api/sse.js",
+      "sha256": "c86d714cb7638bc7826e2a1a1409d475c461a838d4cda9105a915226e645e5a6"
+    },
+    {
+      "path": "frontend/src/components/AppShell.jsx",
+      "sha256": "f4ab521bd1f9a6ffbe1dc930a63ef8b5af75ed455936204b65f066bd5bee4e8a"
+    },
+    {
+      "path": "frontend/src/components/Badges.jsx",
+      "sha256": "cf20f38e9dccd42df127cddcf2e57ae3c7b8e81bd8305c5aa694a03fa0db671d"
+    },
+    {
+      "path": "frontend/src/main.jsx",
+      "sha256": "52c26d0c8acd3ab6b657d290a2e8c27b51417da0c3b15a4d17c9195df010cc64"
+    },
+    {
+      "path": "frontend/src/pages/ChatPage.jsx",
+      "sha256": "8a51572f003f9625b4ad0c3dd6f7266f0f3f82c7c5e5701ef423627e29965187"
+    },
+    {
+      "path": "frontend/src/pages/PublishedPage.jsx",
+      "sha256": "a1142298d63b97b422652f80e1246d8714b0fab96d91352541433f0084225b05"
+    },
+    {
+      "path": "frontend/src/pages/ReviewPage.jsx",
+      "sha256": "7623ec933542461fffcb9b70ed0bb273273a7f059e050ee614b135209fa4c471"
+    },
+    {
+      "path": "frontend/src/styles/app.css",
+      "sha256": "cb11801461b6011db5c4ca971ccbefd86b6a813433503b373702d498ac7f2244"
+    },
+    {
+      "path": "frontend/tests/setup.js",
+      "sha256": "ae4b6b92c8c0f06526032b2dedeb4fb0e93b85af2a138a423386f2e36894a685"
+    },
+    {
+      "path": "frontend/tests/sse.test.js",
+      "sha256": "ef9f2a94f0b15fa0587bdac65042118d37059b5b5d67610f493df0eaaa237fb2"
+    },
+    {
+      "path": "frontend/tests/workbench.test.jsx",
+      "sha256": "0fce33b393f84123ae33b451aa0ca73cacd9d3f45d312e029b5e41761c86132d"
+    },
+    {
+      "path": "frontend/vite.config.js",
+      "sha256": "01ce20baf22b1bdc648f287fa95b1c2382912ca6178aad9e9da421159bb7aabd"
+    },
+    {
+      "path": "requirements-runtime.txt",
+      "sha256": "5beae9d00d1a747dcc95b164063954bb925632469ea85b93bd4d44b79188526b"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "ea09f8ed2bf14c9f531afa57aeae36cb5c82d7198b36c303b3bb1e7f7ecf2ae3"
+    },
+    {
+      "path": "scripts/03_build_page_corpus.py",
+      "sha256": "80446eeab39013ae42021a27670592ce65e454ecc86ed2ea5b07748e177a224c"
+    },
+    {
+      "path": "scripts/04_search_pages.py",
+      "sha256": "b72015d8b5275106190824995bce2c5c186253c888e77a80f2fc329ef26f721f"
+    },
+    {
+      "path": "scripts/05_bm25_search.py",
+      "sha256": "4a5ed7356f00648376a988f89ca48c5bedafa91d8f66c0a1a51eaf8af22c576b"
+    },
+    {
+      "path": "scripts/06_embedding_search.py",
+      "sha256": "89b8f03bd07f2e7e0aa550b61abc457c6a69a498a43426818056dce5126d9f56"
+    },
+    {
+      "path": "scripts/07_hybrid_search.py",
+      "sha256": "3c82b5ddb7e1b8dea3ef5e052ae355108b84665f6c34e838ca1fad233560225d"
+    },
+    {
+      "path": "scripts/08_evaluate_retrieval.py",
+      "sha256": "2e9de2953ad822678c2e7721deb495c4a6a3215b90b290aae94d146f4cd72e24"
+    },
+    {
+      "path": "scripts/09_analyze_bad_cases.py",
+      "sha256": "98c533ecbd2dc1a0f3619bb919c24f9cc908841cb5964e3cf32b9f42447a57b3"
+    },
+    {
+      "path": "scripts/10_rrf_candidate_ablation.py",
+      "sha256": "817c67072670a3b17a6498c87ad963ea568c3080804524f5aa95126d70a8b35a"
+    },
+    {
+      "path": "scripts/11_rerank_experiment.py",
+      "sha256": "5f3a0279c3b98e805833d58f25bd9acd7aa342fdaf69c286a32a6f03f83369da"
+    },
+    {
+      "path": "scripts/12_grounded_qa.py",
+      "sha256": "014c92c0b4a2d76e0d4740e9ed025122dd7a2e6d74fc565d4fc4764dbe9a796a"
+    },
+    {
+      "path": "scripts/13_test_db_connection.py",
+      "sha256": "5074d401bf8d861e869606617f3d2a972ddf95dc631f3dc238dc2aa3b44c9f12"
+    },
+    {
+      "path": "scripts/14_create_review_table.py",
+      "sha256": "c8aa245ed938731bdccfb1c246ace5c62be2703fe2c700434d9be9eb6041b95d"
+    },
+    {
+      "path": "scripts/15_test_review_record.py",
+      "sha256": "7acaf9c0d4378079a4110a28fb79afa6183f292cf3eff2f2476a7646258bbc76"
+    },
+    {
+      "path": "scripts/16_debug_retrieval_case.py",
+      "sha256": "529928754be6b16fc7f26476b4417297bb2e967aeea56ac86f2a9a286a39fd46"
+    },
+    {
+      "path": "scripts/17_retrieval_improvement_ablation.py",
+      "sha256": "e6d438e3d5898fda77ce814749743dc5e3a078464e45885b658f3c1a15992b47"
+    },
+    {
+      "path": "scripts/18_query_normalization_regression.py",
+      "sha256": "6e0899f54bc05016bce1c0b2b3f63a61f85e5f8d49f982b46ea8a764aa5d4636"
+    },
+    {
+      "path": "scripts/19_query_normalization_rule_ablation.py",
+      "sha256": "ad0ae406a744ac92d78e61d9979d78eba1382fc0c847833877a960cad7477ccf"
+    },
+    {
+      "path": "scripts/20_chat_model_rag_ablation.py",
+      "sha256": "74248dc66ed19f58158fbd1d1f92e1545e835f26fd4bc950707573425ef3afcf"
+    },
+    {
+      "path": "scripts/21_create_memory_facts_table.py",
+      "sha256": "d322c65e71ee2882c2e15994c8ad8bb810e1c173001468eec255bea1062ea1ac"
+    },
+    {
+      "path": "scripts/22_memory_retrieval_calibration.py",
+      "sha256": "fd10914741c096245cc252f3a83843d9101b93c0fe28904e02624a1396d60b04"
+    },
+    {
+      "path": "scripts/23_memory_extractor_reliability.py",
+      "sha256": "19130cf7da738056e697a75d9379167dc99b090a430d19e7a6926dde01e96abf"
+    },
+    {
+      "path": "scripts/24_memory_hybrid_retrieval_experiment.py",
+      "sha256": "bc2bfc4751485b86863518edcddd2ca8ada96f99f3a81f3929fc4f59c85b8d84"
+    },
+    {
+      "path": "scripts/24_memory_retrieval_expansion.py",
+      "sha256": "f47ed04b69808b2832e970ebea24d4dfd2841add0554ad9b572c7545c24c0302"
+    },
+    {
+      "path": "scripts/25_memory_applicability_gate_experiment.py",
+      "sha256": "21ce0255325e4bc2460b8f4bcb9c1137b981a7a0475e13de28e385698ab511dd"
+    },
+    {
+      "path": "scripts/26_memory_applicability_reliability.py",
+      "sha256": "be8260e929c4085813833eac3c2533d41209b607c557cf63f616017c6fa81ca9"
+    },
+    {
+      "path": "scripts/27_memory_applicability_semantic_ab.py",
+      "sha256": "e574c5f81b2833371688561754009944511b39f0fe6694fd3f9d582aed10b0f8"
+    },
+    {
+      "path": "scripts/28_memory_applicability_guardrail_experiment.py",
+      "sha256": "d851a7e5abc71b7b4415c9693ae9c8f343515596ccf82681af3dc2a0a5120596"
+    },
+    {
+      "path": "scripts/29_memory_need_classification_experiment.py",
+      "sha256": "082e68d1d3b5280084dcc5b488d7071497663c0c52a8d155eccdeaa3f1d82f07"
+    },
+    {
+      "path": "scripts/30_memory_need_contract_diagnosis.py",
+      "sha256": "38986743ad73e5691f61f4eec370e90257ce7dcb802051ea5179ac063eb632b5"
+    },
+    {
+      "path": "scripts/31_deepseek_memory_need_experiment.py",
+      "sha256": "28dae56d2b1478ebfab29b842c62c7258c799813b7f43c25816c0395dda2ebd0"
+    },
+    {
+      "path": "scripts/32_upgrade_review_publication.py",
+      "sha256": "5db978c0db0b40df7ecfe5c8257e7e7906ea66044e6ecd3a210e37e8b2418bb6"
+    },
+    {
+      "path": "scripts/33_build_t8_chroma_index.py",
+      "sha256": "cfda30e128932679ecaff0e9ec25d6d0618a481224b8cd8dbccaf3f125c22517"
+    },
+    {
+      "path": "scripts/34_chroma_dense_ab.py",
+      "sha256": "1e98967291f3b0d41629596a07062ad6f484b1d9095d29392e98ea1cffdb1694"
+    },
+    {
+      "path": "scripts/35_scene_router_evaluation.py",
+      "sha256": "908eeb9dc6c5ee64f35c36e8275d891f285dc80b0c25fca8c61f88b69ba9138e"
+    },
+    {
+      "path": "scripts/36_scene_router_v2_evaluation.py",
+      "sha256": "44320a92e10b0342cbe4b792d01d29c0b1de2ec93e84d48ccd5bd287ca70fd70"
+    },
+    {
+      "path": "scripts/37_troubleshooting_intake_evaluation.py",
+      "sha256": "e97e6abbf391420421a39b235f3ff8b34c4a316cabe10314acdfcf8ff809c206"
+    },
+    {
+      "path": "scripts/39_troubleshooting_intake_v1_2_evaluation.py",
+      "sha256": "09700e1222085639e28117d7e27d1b4b83f663fa103ee6d625e92b25fea71c35"
+    },
+    {
+      "path": "scripts/40_upgrade_memory_lifecycle.py",
+      "sha256": "045a6a12badf7e9a2fc0d45bd1c50a658fba24e55679f6980061e5ae54cdc090"
+    },
+    {
+      "path": "scripts/41_cleanup_expired_memory.py",
+      "sha256": "b0f42b0b2534b0060af7cca17d9baea0c2023865bc6011bb4f02b6d1e0bae8ad"
+    },
+    {
+      "path": "scripts/42_validate_rag_golden.py",
+      "sha256": "51135fcd59b13441ddaa1e8ccf896d6376cd02367ce4b0ccc55e816c066231f3"
+    },
+    {
+      "path": "scripts/43_retrieval_ablation.py",
+      "sha256": "a6af40d68eb4d9d092c01982a5e480f765fe6b8593904fbd910165ea8053b869"
+    },
+    {
+      "path": "scripts/44_chunk_ablation.py",
+      "sha256": "5cba5a427568a83393f534ea5073775ff74b4df310da9225ef719ff3d30c3b00"
+    },
+    {
+      "path": "scripts/45_rag_generation_eval.py",
+      "sha256": "bfad91b7e99470ee60279d90343cffd394fb01ee15d552fc60b870879310713b"
+    },
+    {
+      "path": "scripts/46_ragas_judge_eval.py",
+      "sha256": "ff149fae3808fc822d2e7aac1de97dee960222f716a6dbda12538d906b687206"
+    },
+    {
+      "path": "scripts/47_summarize_rag_evaluation.py",
+      "sha256": "82514508f9699826dd48cbc20c32b6df0759f8c426bfbfbb31fa9320cb887383"
+    },
+    {
+      "path": "scripts/50_initialize_database.py",
+      "sha256": "6e7c7aa4a920116117a7748109f00fd85b391ada7091993e9e8435326528cc87"
+    },
+    {
+      "path": "scripts/57_answer_release_policy_eval.py",
+      "sha256": "2ae97d2610a73d091e1b018f8c01be05d1a87b9faf8daf66a8d53a3e46bf0d8c"
+    },
+    {
+      "path": "scripts/58_answer_release_diagnostics.py",
+      "sha256": "3c615b86bc97d49d4ea19cdab6cec9c6649e185467619941c4bdba3e1851e0fb"
+    },
+    {
+      "path": "scripts/rag_eval_common.py",
+      "sha256": "5a376cbef6b3174d1328aa8c83a5ed95a30146f7343c386878239c01f4c1103d"
+    },
+    {
+      "path": "tests/test_12_grounded_qa.py",
+      "sha256": "7461cd6926b9487553919b8296218932a6013a1f420341387bb3d90ca7e3baad"
+    },
+    {
+      "path": "tests/test_agent.py",
+      "sha256": "d6ac02b4f611e24a31645a40d08d5f77c73b95a08bbfdd7aee398f0f89139d39"
+    },
+    {
+      "path": "tests/test_agent_api.py",
+      "sha256": "2bde0c130e039d026e355c1e225167dcef057374469fed0a8112138b1264f87b"
+    },
+    {
+      "path": "tests/test_agent_memory.py",
+      "sha256": "13d769d5c6e3057a5504051f1f7fa5f141bec0b7c13b0562d4a65f4a9456c8d2"
+    },
+    {
+      "path": "tests/test_agent_sse_api.py",
+      "sha256": "325815c94911236072f855cd7920f4729db712bb96fefc628e621d7752ce5b7b"
+    },
+    {
+      "path": "tests/test_agent_tools.py",
+      "sha256": "9c0b77c2199b752fbc31caaa1d3e7fef814de67e354185d0a78fc92275d1fb26"
+    },
+    {
+      "path": "tests/test_agent_v3_api.py",
+      "sha256": "496d716d917b83f93e0faaaa0dbcbd99ce1adbf29702a0687665c6da35f85322"
+    },
+    {
+      "path": "tests/test_answer_release_policy.py",
+      "sha256": "8a617137b7804b927abef8307e21891b1462451f7cb0757f743c7bf4b0b350cb"
+    },
+    {
+      "path": "tests/test_api.py",
+      "sha256": "81c10940f1b2678d23b2b72684368af42274a27acb37f5b7808c2300c79499a1"
+    },
+    {
+      "path": "tests/test_contextual_memory.py",
+      "sha256": "4fa6677909ac018ef403ee848b5b097cb695292a6ff5c441604204729bf57da1"
+    },
+    {
+      "path": "tests/test_core_question_support.py",
+      "sha256": "124d69f03cb1c1d3f97ffdbb5af2ef9f9e2f04708b11cdf494bf3126e9c9a3da"
+    },
+    {
+      "path": "tests/test_deployment.py",
+      "sha256": "ff3d114c14ab2d1c28f2c9675525f850bfa6a8b954ce8f86ad6eaeb747b27522"
+    },
+    {
+      "path": "tests/test_frontend_deployment.py",
+      "sha256": "b6d19cc53864495bea600807acf699ac34a62b634030b9d9dc44f7d832d1ae3f"
+    },
+    {
+      "path": "tests/test_long_term_memory_feature_flag.py",
+      "sha256": "f37c32f4a8e8ef45181a56af0ff0da648c87494f8b834f0a12154f9ebddfad80"
+    },
+    {
+      "path": "tests/test_long_term_memory_integration.py",
+      "sha256": "9e9def60b26a92dafe3b4e5535edc89a892ed21850bc050cbbc1d4e14cffe753"
+    },
+    {
+      "path": "tests/test_memory_applicability.py",
+      "sha256": "41991b27d01ae4bd340321ab2d5643a6d860e60a183c934cd914b384884f7be0"
+    },
+    {
+      "path": "tests/test_memory_extraction.py",
+      "sha256": "c14a80cac341f06a3722c9da0746626d446b47b81e3c0e7d0c023feeea27044e"
+    },
+    {
+      "path": "tests/test_memory_facts.py",
+      "sha256": "8964fc8d2e22f8cbb1449e803707118c4d9bc4c44b3473bf3f261a68d1de9b85"
+    },
+    {
+      "path": "tests/test_memory_lifecycle.py",
+      "sha256": "3691237d099d796b43e824ed3a848d1c23277fd4b7b959309647035d3946de46"
+    },
+    {
+      "path": "tests/test_model_config.py",
+      "sha256": "be82784de1ff7ef0b9c064e39710614a45299a598fad49e018a9d0e216edc415"
+    },
+    {
+      "path": "tests/test_publication.py",
+      "sha256": "57e09cff94272d4ba1479f5563cb8e35ca0fe9fb260da744ce2779c23e0da282"
+    },
+    {
+      "path": "tests/test_query_normalization.py",
+      "sha256": "71130d0c73e9fa78921b23cbe3cb82ddbcc1531debd0a55d0eb2c132b8ce1527"
+    },
+    {
+      "path": "tests/test_rag_evaluation.py",
+      "sha256": "d8b55ba6dcfbdec9db11801cc07ce0161f9373afaab2305ae43361b91a9bc7c0"
+    },
+    {
+      "path": "tests/test_react_agent.py",
+      "sha256": "44c87c154844cf42a690d778f6370a603ef4ca0598738154de5a0fd4bb039803"
+    },
+    {
+      "path": "tests/test_retrieval_pipeline.py",
+      "sha256": "b10aa02a2482f3ce03149da075989e42c4cb353411ebcc0a67f1377ebf932c3d"
+    },
+    {
+      "path": "tests/test_review_api.py",
+      "sha256": "b5d5e9ef85f81823b5b8ef4055b644b8ed855a62ec905151bfce958426403e59"
+    },
+    {
+      "path": "tests/test_review_frontend_read_api.py",
+      "sha256": "3df7e3be5fa610ec59aa38b298f506171ef9b018ed3fe16332abb4fe7e0d22b2"
+    },
+    {
+      "path": "tests/test_scene_policy.py",
+      "sha256": "c76570ecc022ed16fa9eda2c6e35fb2ad3388ec2853c509660cc080dcf4c90c1"
+    },
+    {
+      "path": "tests/test_scene_router_v2.py",
+      "sha256": "66e547de24bc98a121e2ee83bed4db30d23badb8c732050a123bd3fa34d6a247"
+    },
+    {
+      "path": "tests/test_search_t8_manual_tool.py",
+      "sha256": "5ddea6bb047fe2088ce35f05b902012a96c0546d7af0671c34d203ee2de20bc3"
+    },
+    {
+      "path": "tests/test_static_knowledge_boundary.py",
+      "sha256": "9c15dfc07ac5f05a1bc4d2aa893bcfcecb541ca50609f461bec17eb94f49e674"
+    },
+    {
+      "path": "tests/test_t8_vector_store.py",
+      "sha256": "a900731fea6fcbe76f8ac3b70c0bd14702a37d3179b9f13a5160f9b3cbc989c9"
+    },
+    {
+      "path": "tests/test_tool_call_normalization.py",
+      "sha256": "a5a4b0440c2063d2c54ab783e1e900c357ce6e1b5a1678574c853cd6070c3960"
+    },
+    {
+      "path": "tests/test_troubleshooting_workflow.py",
+      "sha256": "ee19de6c5644777c27acab3d62f640ad13aa79617013e3be0b82fe84ce33c209"
+    }
+  ],
+  "artifact_secret_scan": {
+    "status": "PASS",
+    "secret_value_matches": 0,
+    "credential_pattern_matches": 0,
+    "raw_draft_evidence_payloads": false,
+    "source_hashes_unchanged": true
+  }
+}

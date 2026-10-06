@@ -1,0 +1,382 @@
+{
+  "project": "zhisaotong-deployment-v1-1-e2e",
+  "frozen_business_modified": false,
+  "events": [
+    {
+      "label": "compose_build_original_path",
+      "exit_code": 1,
+      "elapsed_seconds": 1.58,
+      "output_tail": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.97kB 0.0s done\n#1 DONE 0.0s\n Image zhisaotong-deployment-v1-1-e2e-frontend Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \n2026/10/06 17:35:13 http2: server: error reading preface from client //./pipe/dockerDesktopLinuxEngine: file has already been closed\n\n2026/10/06 17:35:13 http2: server: error reading preface from client //./pipe/dockerDesktopLinuxEngine: file has already been closed\n\n2026/10/06 17:35:13 http2: server: error reading preface from client //./pipe/dockerDesktopLinuxEngine: file has already been closed\n\nfailed to dial gRPC: rpc error: code = Internal desc = rpc error: code = Internal desc = header key \"x-docker-expose-session-sharedkey\" contains value with non-printable ASCII characters\n\n"
+    },
+    {
+      "label": "compose_build_ascii_context",
+      "exit_code": 1,
+      "elapsed_seconds": 24.37,
+      "output_tail": "ge\n#21 exporting layers 0.9s done\n#21 exporting manifest sha256:2eb5f2c218a3dd721b565a30c976f25553860313a16bc26bae2e47f376412e83 0.1s done\n#21 exporting config sha256:edff5c1c3a61065647e5362a787d577efcdff48baa229177ebcbf0c3cd83cef9 0.1s done\n#21 exporting attestation manifest sha256:7fb84c96ae6188be0e57035167924a39afaf9a13004d73ab35429449849733de 0.2s done\n#21 exporting manifest list sha256:34b1d63f9bdce6f6aad058801cdbff439fdbd9441986280692b5527bf08656f0 0.1s done\n#21 naming to docker.io/library/zhisaotong-deployment-v1-1-e2e-api:latest 0.0s done\n#21 unpacking to docker.io/library/zhisaotong-deployment-v1-1-e2e-api:latest 0.4s done\n#21 DONE 2.0s\n\n#14 [frontend internal] load metadata for docker.io/library/node:20-alpine\n#14 ...\n\n#22 [db-init] resolving provenance for metadata file\n#22 DONE 0.1s\n\n#23 [api] resolving provenance for metadata file\n#23 DONE 0.0s\n\n#14 [frontend internal] load metadata for docker.io/library/node:20-alpine\n#14 ERROR: failed to authorize: failed to fetch oauth token: Post \"https://auth.docker.io/token\": dial tcp 96.44.137.28:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.\n\n#16 [frontend internal] load metadata for docker.io/library/nginx:alpine\n#16 ERROR: failed to authorize: failed to fetch oauth token: Post \"https://auth.docker.io/token\": dial tcp 96.44.137.28:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.\n------\n > [frontend internal] load metadata for docker.io/library/nginx:alpine:\n------\n------\n > [frontend internal] load metadata for docker.io/library/node:20-alpine:\n------\n Image zhisaotong-deployment-v1-1-e2e-frontend Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \nDockerfile:1\n\n--------------------\n\n   1 | >>> FROM node:20-alpine AS build\n\n   2 |     WORKDIR /frontend\n\n   3 |     COPY package.json package-lock.json ./\n\n--------------------\n\ntarget frontend: failed to solve: failed to fetch oauth token: Post \"https://auth.docker.io/token\": dial tcp 96.44.137.28:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.\n\n"
+    },
+    {
+      "label": "compose_build_original_path",
+      "exit_code": 1,
+      "elapsed_seconds": 1.5,
+      "output_tail": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.97kB done\n#1 DONE 0.0s\n Image zhisaotong-deployment-v1-1-e2e-api Building \n Image zhisaotong-deployment-v1-1-e2e-frontend Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \nfailed to dial gRPC: rpc error: code = Internal desc = rpc error: code = Internal desc = header key \"x-docker-expose-session-sharedkey\" contains value with non-printable ASCII characters\n\n"
+    },
+    {
+      "label": "compose_build_ascii_context",
+      "exit_code": 0,
+      "elapsed_seconds": 9.75,
+      "output_tail": " run `npm fund` for details\n#29 4.810 \n#29 4.810 3 vulnerabilities (1 moderate, 2 critical)\n#29 4.810 \n#29 4.810 To address all issues (including breaking changes), run:\n#29 4.810   npm audit fix --force\n#29 4.810 \n#29 4.810 Run `npm audit` for details.\n#29 4.812 npm notice\n#29 4.812 npm notice New major version of npm available! 10.8.2 -> 12.2.0\n#29 4.812 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0\n#29 4.812 npm notice To update run: npm install -g npm@12.2.0\n#29 4.812 npm notice\n#29 DONE 5.0s\n\n#30 [frontend build 5/7] COPY index.html vite.config.js ./\n#30 DONE 0.1s\n\n#31 [frontend build 6/7] COPY src ./src\n#31 DONE 0.1s\n\n#32 [frontend build 7/7] RUN npm run build\n#32 0.326 \n#32 0.326 > zhisaotong-workbench@1.0.0 build\n#32 0.326 > vite build\n#32 0.326 \n#32 0.503 vite v7.3.7 building client environment for production...\n#32 0.545 transforming...\n#32 1.968 ✓ 47 modules transformed.\n#32 2.089 rendering chunks...\n#32 2.096 computing gzip size...\n#32 2.105 dist/index.html                   0.47 kB │ gzip:  0.35 kB\n#32 2.105 dist/assets/index-YG-bvahK.css   12.25 kB │ gzip:  3.56 kB\n#32 2.105 dist/assets/index-D4J4jZ-X.js   275.10 kB │ gzip: 88.12 kB\n#32 2.105 ✓ built in 1.58s\n#32 DONE 2.1s\n\n#33 [frontend runtime 3/3] COPY --from=build /frontend/dist /usr/share/nginx/html\n#33 DONE 0.1s\n\n#34 [frontend] exporting to image\n#34 exporting layers\n#34 exporting layers 0.2s done\n#34 exporting manifest sha256:0603e35be29c7471f54d32d307f1b58148d8492a493eaede0ee94441ea417b2f 0.0s done\n#34 exporting config sha256:01259f98115c042f9bdeffed19855a4eba9e56f980863d705b6be602a991aa4f 0.0s done\n#34 exporting attestation manifest sha256:8d355d2c56ce50eb6cd57b9629d41f02c995b5acb4747c7d904dc1bfebe10e77 0.0s done\n#34 exporting manifest list sha256:cedde49565ceb56f62c39ff695f5da27ed1db365909defe61899ecda07bed868 0.0s done\n#34 naming to docker.io/library/zhisaotong-deployment-v1-1-e2e-frontend:latest\n#34 naming to docker.io/library/zhisaotong-deployment-v1-1-e2e-frontend:latest done\n#34 unpacking to docker.io/library/zhisaotong-deployment-v1-1-e2e-frontend:latest 0.1s done\n#34 DONE 0.3s\n\n#35 [frontend] resolving provenance for metadata file\n#35 DONE 0.0s\n Image zhisaotong-deployment-v1-1-e2e-frontend Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \n Image zhisaotong-deployment-v1-1-e2e-api Building \n Image zhisaotong-deployment-v1-1-e2e-api Built \n Image zhisaotong-deployment-v1-1-e2e-frontend Built \n Image zhisaotong-deployment-v1-1-e2e-api Built \n"
+    },
+    {
+      "label": "compose_up_fresh",
+      "exit_code": 0,
+      "elapsed_seconds": 17.11,
+      "output_tail": " Network zhisaotong-deployment-v1-1-e2e_default Creating \n Network zhisaotong-deployment-v1-1-e2e_default Created \n Volume zhisaotong-deployment-v1-1-e2e_postgres-data Creating \n Volume zhisaotong-deployment-v1-1-e2e_postgres-data Created \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Created \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Created \n Container zhisaotong-deployment-v1-1-e2e-api-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-api-1 Created \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Created \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Started \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Started \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Exited \n Container zhisaotong-deployment-v1-1-e2e-api-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-api-1 Started \n Container zhisaotong-deployment-v1-1-e2e-api-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-api-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Started \n"
+    },
+    {
+      "label": "restart_frontend_api",
+      "exit_code": 0,
+      "elapsed_seconds": 2.39,
+      "output_tail": " Container zhisaotong-deployment-v1-1-e2e-api-1 Restarting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Restarting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Started \n Container zhisaotong-deployment-v1-1-e2e-api-1 Started \n"
+    },
+    {
+      "label": "compose_down_without_volumes",
+      "exit_code": 0,
+      "elapsed_seconds": 3.33,
+      "output_tail": " Container zhisaotong-deployment-v1-1-e2e-frontend-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Removed \n Container zhisaotong-deployment-v1-1-e2e-api-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-api-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-api-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-api-1 Removed \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Removed \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Removed \n Network zhisaotong-deployment-v1-1-e2e_default Removing \n Network zhisaotong-deployment-v1-1-e2e_default Removed \n"
+    },
+    {
+      "label": "compose_up_existing_volumes",
+      "exit_code": 0,
+      "elapsed_seconds": 16.68,
+      "output_tail": " Network zhisaotong-deployment-v1-1-e2e_default Creating \n Network zhisaotong-deployment-v1-1-e2e_default Created \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Created \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Created \n Container zhisaotong-deployment-v1-1-e2e-api-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-api-1 Created \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Created \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Started \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Started \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Exited \n Container zhisaotong-deployment-v1-1-e2e-api-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-api-1 Started \n Container zhisaotong-deployment-v1-1-e2e-api-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-api-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Started \n"
+    },
+    {
+      "label": "restart_frontend_api",
+      "exit_code": 0,
+      "elapsed_seconds": 2.6,
+      "output_tail": " Container zhisaotong-deployment-v1-1-e2e-api-1 Restarting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Restarting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Started \n Container zhisaotong-deployment-v1-1-e2e-api-1 Started \n"
+    },
+    {
+      "label": "compose_down_without_volumes",
+      "exit_code": 0,
+      "elapsed_seconds": 3.22,
+      "output_tail": " Container zhisaotong-deployment-v1-1-e2e-frontend-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Removed \n Container zhisaotong-deployment-v1-1-e2e-api-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-api-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-api-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-api-1 Removed \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Removed \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Stopping \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Stopped \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Removing \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Removed \n Network zhisaotong-deployment-v1-1-e2e_default Removing \n Network zhisaotong-deployment-v1-1-e2e_default Removed \n"
+    },
+    {
+      "label": "compose_up_existing_volumes",
+      "exit_code": 0,
+      "elapsed_seconds": 16.47,
+      "output_tail": " Network zhisaotong-deployment-v1-1-e2e_default Creating \n Network zhisaotong-deployment-v1-1-e2e_default Created \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Created \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Created \n Container zhisaotong-deployment-v1-1-e2e-api-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-api-1 Created \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Creating \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Created \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Started \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Started \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-postgres-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-db-init-1 Exited \n Container zhisaotong-deployment-v1-1-e2e-api-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-api-1 Started \n Container zhisaotong-deployment-v1-1-e2e-api-1 Waiting \n Container zhisaotong-deployment-v1-1-e2e-api-1 Healthy \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Starting \n Container zhisaotong-deployment-v1-1-e2e-frontend-1 Started \n"
+    }
+  ],
+  "build_note": "Original Windows non-ASCII BuildKit context failed; same Dockerfiles built from temporary ASCII context. No user manual-copy step added.",
+  "conclusion": "DEPLOYMENT_V1_1: PASS",
+  "build": "PASS",
+  "image_sizes_bytes": {
+    "api": 212971706,
+    "frontend": 26420107
+  },
+  "services": [
+    "api",
+    "db-init",
+    "frontend",
+    "postgres"
+  ],
+  "frontend_runtime_secret_environment": false,
+  "container_states": [
+    {
+      "Service": "api",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0
+    },
+    {
+      "Service": "db-init",
+      "State": "exited",
+      "Health": "",
+      "ExitCode": 0
+    },
+    {
+      "Service": "frontend",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0
+    },
+    {
+      "Service": "postgres",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0
+    }
+  ],
+  "initial_health": {
+    "/": 200,
+    "/health": 200,
+    "/ready": 200
+  },
+  "database_before": {
+    "database": "roborock",
+    "count": 0,
+    "records": []
+  },
+  "chroma_before": {
+    "collection_name": "t8_manual_qwen3_embedding_0_6b",
+    "source_record_count": 41,
+    "stored_record_count": 41,
+    "embedding_dimension": 1024,
+    "persist_path": "/opt/t8/data/vector_store/chroma"
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:28080",
+    "nginx_only": true,
+    "database_before": {
+      "count": 0,
+      "max_id": 0
+    },
+    "home": {
+      "status": 200,
+      "react_loaded": true,
+      "resource_responses": [
+        {
+          "url": "http://127.0.0.1:28080/assets/index-YG-bvahK.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:28080/assets/index-D4J4jZ-X.js",
+          "status": 200
+        }
+      ],
+      "failed_resources": [],
+      "cached_reload_revalidation": [
+        {
+          "url": "http://127.0.0.1:28080/assets/index-YG-bvahK.css",
+          "status": 304
+        },
+        {
+          "url": "http://127.0.0.1:28080/assets/index-D4J4jZ-X.js",
+          "status": 304
+        }
+      ]
+    },
+    "spa": {
+      "review": 200,
+      "published_route": 200,
+      "published_api": 404
+    },
+    "health": {
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "status": 200,
+      "body": {
+        "status": "ready"
+      }
+    },
+    "chat": {
+      "question": "主刷多久清理一次？",
+      "status": 200,
+      "response": {
+        "intent": "maintenance",
+        "answer": null,
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "published": false,
+        "safety_notice": "模型已生成回答，但语义依据未自动核验；需人工审核，未作为正式答案发布。"
+      },
+      "session_id": "d3b3f0f7-2f72-49bc-aef4-71bcbcfc10a0",
+      "review_delta": 1,
+      "new_record_id": 1
+    },
+    "approve_id": 1,
+    "troubleshooting": {
+      "first": {
+        "question": "机器人无法正常工作怎么办？",
+        "status": 200,
+        "response": {
+          "intent": "troubleshooting",
+          "answer": "请再描述一下具体异常现象，例如是否有错误码、语音提示，或机器人出现了什么行为异常。",
+          "published": false
+        },
+        "session_id": "3b54fc0c-7269-4178-8fc0-205e4a817e16",
+        "review_delta": 0,
+        "new_record_id": null
+      },
+      "second": {
+        "question": "扫着扫着会自己停下来。",
+        "status": 200,
+        "response": {
+          "intent": "troubleshooting",
+          "answer": null,
+          "generation_status": "generated",
+          "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+          "published": false,
+          "safety_notice": "模型已生成回答，但语义依据未自动核验；需人工审核，未作为正式答案发布。"
+        },
+        "session_id": "3b54fc0c-7269-4178-8fc0-205e4a817e16",
+        "review_delta": 1,
+        "new_record_id": 2
+      },
+      "same_session": true
+    },
+    "reject_id": 2,
+    "handoff": {
+      "question": "我要人工客服",
+      "status": 200,
+      "response": {
+        "intent": "human_handoff",
+        "answer": "已为你转入人工处理流程。",
+        "published": false
+      },
+      "session_id": "3b54fc0c-7269-4178-8fc0-205e4a817e16",
+      "review_delta": 0,
+      "new_record_id": null
+    },
+    "review_list": {
+      "status": 200,
+      "count": 2
+    },
+    "review_detail": {
+      "status": 200,
+      "id": 1,
+      "review_status": "pending_review",
+      "publication_status": "unpublished",
+      "evidence_count": 3
+    },
+    "token": {
+      "browser_storage": false,
+      "url": false,
+      "cookie": false,
+      "cleared_on_reload": true
+    },
+    "stage": "COMPLETE",
+    "approve": {
+      "status": 200,
+      "id": 1,
+      "review_status": "approved",
+      "publication_status": "unpublished"
+    },
+    "approved_public_status": 404,
+    "publish": {
+      "status": 200,
+      "record_id": 1,
+      "review_status": "approved",
+      "publication_status": "published",
+      "published_at": "2026-10-06T09:44:54.259327Z"
+    },
+    "public_answer": {
+      "status": 200,
+      "matches_approved_draft": true,
+      "published": true,
+      "displayed": true
+    },
+    "reject": {
+      "status": 200,
+      "id": 2,
+      "publish": 409,
+      "public": 404
+    },
+    "database_after": {
+      "count": 2,
+      "max_id": 2
+    },
+    "persisted_public_ui": {
+      "status": 200,
+      "displayed": true
+    }
+  },
+  "secret_scan": {
+    "dist_secret_matches": 0,
+    "browser_bundle_internal_api_host_matches": 0,
+    "image_checks": {
+      "api": {
+        "image_config_secret_matches": 0,
+        "image_history_secret_matches": 0
+      },
+      "frontend": {
+        "image_config_secret_matches": 0,
+        "image_history_secret_matches": 0
+      }
+    },
+    "frontend_image_layer_secret_matches": 0,
+    "decoded_compressed_image_members": 10,
+    "frontend_rendered_config_secret_matches": 0,
+    "source_secret_matches": 0,
+    "confirmed_synthetic_phone_false_positives": 1,
+    "confirmed_pristine_nginx_short_string_chunk_matches": 33,
+    "api_runtime_credentials": "Expected environment only; raw rendered config never saved.",
+    "status": "PASS"
+  },
+  "restart": {
+    "health": {
+      "/": 200,
+      "/health": 200,
+      "/ready": 200
+    },
+    "database_preserved": true,
+    "review_count": 2,
+    "chroma_preserved": true,
+    "chroma": {
+      "collection_name": "t8_manual_qwen3_embedding_0_6b",
+      "source_record_count": 41,
+      "stored_record_count": 41,
+      "embedding_dimension": 1024,
+      "persist_path": "/opt/t8/data/vector_store/chroma"
+    },
+    "real_chroma_search": {
+      "record14_first": true,
+      "candidate_count": 3
+    }
+  },
+  "down-up": {
+    "health": {
+      "/": 200,
+      "/health": 200,
+      "/ready": 200
+    },
+    "database_preserved": true,
+    "review_count": 2,
+    "chroma_preserved": true,
+    "chroma": {
+      "collection_name": "t8_manual_qwen3_embedding_0_6b",
+      "source_record_count": 41,
+      "stored_record_count": 41,
+      "embedding_dimension": 1024,
+      "persist_path": "/opt/t8/data/vector_store/chroma"
+    },
+    "real_chroma_search": {
+      "record14_first": true,
+      "candidate_count": 3
+    }
+  },
+  "independent_api_health": 200,
+  "original_pg_crud_demo_running": true,
+  "acceptance_ports": {
+    "frontend": 28080,
+    "api": 28000,
+    "postgres": 25433
+  },
+  "default_ports": {
+    "frontend": 8080,
+    "api": 8000,
+    "postgres": 5433
+  },
+  "tests": {
+    "python": {
+      "passing": 364,
+      "added": 4
+    },
+    "frontend": {
+      "passing": 25
+    },
+    "frontend_container_build": "PASS (npm ci + npm run build)"
+  },
+  "resolved_diagnostic_issues": [
+    "Transient Docker registry auth timeout resolved by official image pull.",
+    "Diagnostic Chroma assertion corrected to existing dictionary result; production unchanged.",
+    "Short local password substrings traced to synthetic phone fixture and pristine nginx base layers; no credential injection."
+  ],
+  "environment_limitation": "This Docker Desktop still fails BuildKit session setup for the non-ASCII project path. Identical Dockerfiles passed with an ASCII temporary build context; no application workaround or user manual-copy startup step was introduced."
+}

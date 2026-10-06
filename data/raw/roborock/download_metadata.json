@@ -1,0 +1,7 @@
+{
+  "model": "Roborock S7",
+  "source_url": "https://cdn.awsusor0.fds.api.mi-img.com/support/manuals/Roborock_S7_CE_User_Manual.pdf",
+  "bytes": 18886391,
+  "sha256": "a4d8c3be2670077e85e11ac855cc68366d430332cf2f288423ef7e85fdd60772",
+  "purpose": "Initial RAG source document; not a labeled QA dataset."
+}

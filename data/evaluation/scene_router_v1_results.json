@@ -1,0 +1,756 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "dataset_sha256": "3628cc0060a55c09484dd8db82f70747b9771c08cb001caed8c08adcb17de1a7",
+  "attempts": [
+    {
+      "case_id": "S01",
+      "question": "T8 支持地毯功能吗？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问T8是否支持地毯功能。",
+      "elapsed_seconds": 0.8177168999973219
+    },
+    {
+      "case_id": "S02",
+      "question": "T8 支持地毯增压吗？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问T8是否支持地毯增压功能。",
+      "elapsed_seconds": 0.6383185000158846
+    },
+    {
+      "case_id": "S03",
+      "question": "尘盒在哪里？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问尘盒的位置。",
+      "elapsed_seconds": 0.43694879999384284
+    },
+    {
+      "case_id": "S04",
+      "question": "拖地模式怎么开启？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问拖地模式的开启方法。",
+      "elapsed_seconds": 1.0303371000045445
+    },
+    {
+      "case_id": "S05",
+      "question": "机器人怎么开机？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问开机方法。",
+      "elapsed_seconds": 0.5470634000084829
+    },
+    {
+      "case_id": "S06",
+      "question": "如何重置 WiFi 并重新添加设备？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问如何重置WiFi并重新添加设备，属于产品功能咨询。",
+      "elapsed_seconds": 0.6745646000199486
+    },
+    {
+      "case_id": "S07",
+      "question": "怎么开启童锁？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问如何开启童锁功能。",
+      "elapsed_seconds": 0.5072715999849606
+    },
+    {
+      "case_id": "S08",
+      "question": "说明书里的 WiFi 指示灯是什么意思？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问说明书中的WiFi指示灯含义。",
+      "elapsed_seconds": 0.6723156999796629
+    },
+    {
+      "case_id": "S09",
+      "question": "怎样开始清扫？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何开始清扫，可能需要根据家庭环境或需求推荐合适的设置或模式。",
+      "elapsed_seconds": 1.1519750999868847
+    },
+    {
+      "case_id": "S10",
+      "question": "怎么暂停清扫？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问如何暂停清扫的功能操作。",
+      "elapsed_seconds": 0.5867603000078816
+    },
+    {
+      "case_id": "S11",
+      "question": "石头 T8 的按键有什么作用？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问石头 T8 的按键功能。",
+      "elapsed_seconds": 5.020443199988222
+    },
+    {
+      "case_id": "S12",
+      "question": "如何让机器人返回充电座？",
+      "expected_intent": "consult_qa",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问如何让机器人返回充电座，涉及具体操作方法。",
+      "elapsed_seconds": 0.6759094000153709
+    },
+    {
+      "case_id": "S13",
+      "question": "机器人一直卡住怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问机器人卡住的问题解决方法。",
+      "elapsed_seconds": 0.4827802999934647
+    },
+    {
+      "case_id": "S14",
+      "question": "出现 E4 怎么处理？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问如何处理特定错误码E4的问题。",
+      "elapsed_seconds": 2.8138349000073504
+    },
+    {
+      "case_id": "S15",
+      "question": "扫着扫着停了。",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了扫地机在清扫过程中停止的现象。",
+      "elapsed_seconds": 1.0180273999867495
+    },
+    {
+      "case_id": "S16",
+      "question": "清扫时有异响怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问清扫时出现异响的处理方法。",
+      "elapsed_seconds": 0.9296518999908585
+    },
+    {
+      "case_id": "S17",
+      "question": "WiFi 无法连接怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问关于WiFi无法连接的具体问题解决方法。",
+      "elapsed_seconds": 2.836064700008137
+    },
+    {
+      "case_id": "S18",
+      "question": "放上充电座也不充电怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问关于机器人吸尘器无法回充的问题。",
+      "elapsed_seconds": 0.9162328000238631
+    },
+    {
+      "case_id": "S19",
+      "question": "机器人无法回充怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问关于机器人无法回充的问题。",
+      "elapsed_seconds": 0.7138598999881651
+    },
+    {
+      "case_id": "S20",
+      "question": "机器一直漏水怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "ERROR",
+      "elapsed_seconds": 25.058410800003912
+    },
+    {
+      "case_id": "S21",
+      "question": "启动后不工作怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了设备启动后不工作的问题。",
+      "elapsed_seconds": 0.6475185999879614
+    },
+    {
+      "case_id": "S22",
+      "question": "清扫时吸力突然变小怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问清扫时吸力突然变小的解决方法。",
+      "elapsed_seconds": 0.8451193000073545
+    },
+    {
+      "case_id": "S23",
+      "question": "机器人一直提示主刷卡住。",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了机器人提示主刷卡住的具体异常现象。",
+      "elapsed_seconds": 0.5822330000228249
+    },
+    {
+      "case_id": "S24",
+      "question": "地图突然不见了怎么办？",
+      "expected_intent": "troubleshooting",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问地图突然消失的具体异常情况。",
+      "elapsed_seconds": 0.5910590999992564
+    },
+    {
+      "case_id": "S25",
+      "question": "主刷怎么清理？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问主刷清理方法。",
+      "elapsed_seconds": 0.41012899999623187
+    },
+    {
+      "case_id": "S26",
+      "question": "主刷多久清理一次？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问主刷的清理频率。",
+      "elapsed_seconds": 2.6938593999948353
+    },
+    {
+      "case_id": "S27",
+      "question": "滤网怎么维护？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问滤网的维护方法。",
+      "elapsed_seconds": 0.9017151999869384
+    },
+    {
+      "case_id": "S28",
+      "question": "尘盒怎么清洁？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问尘盒清洁方法。",
+      "elapsed_seconds": 1.09140699999989
+    },
+    {
+      "case_id": "S29",
+      "question": "边刷怎么拆下清理？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问边刷的拆卸和清理方法。",
+      "elapsed_seconds": 1.0389862000010908
+    },
+    {
+      "case_id": "S30",
+      "question": "轮子缠了头发怎么清理？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问清理轮子缠绕头发的方法。",
+      "elapsed_seconds": 1.1104882000072394
+    },
+    {
+      "case_id": "S31",
+      "question": "传感器要怎么擦？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问传感器的清洁方法。",
+      "elapsed_seconds": 1.0126567999832332
+    },
+    {
+      "case_id": "S32",
+      "question": "充电触点怎么清洁？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问充电触点的清洁方法。",
+      "elapsed_seconds": 0.6424621000187472
+    },
+    {
+      "case_id": "S33",
+      "question": "拖布多久洗一次？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问拖布的清洗频率。",
+      "elapsed_seconds": 0.9058095999935176
+    },
+    {
+      "case_id": "S34",
+      "question": "软胶主刷怎么装回？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问软胶主刷的安装方法。",
+      "elapsed_seconds": 1.9177740000013728
+    },
+    {
+      "case_id": "S35",
+      "question": "滤网能用洗洁精洗吗？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问滤网是否可以用洗洁精清洗。",
+      "elapsed_seconds": 0.6951829000026919
+    },
+    {
+      "case_id": "S36",
+      "question": "没干的滤网能装回吗？",
+      "expected_intent": "maintenance",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问未干的滤网是否可以重新安装。",
+      "elapsed_seconds": 1.6863855000119656
+    },
+    {
+      "case_id": "S37",
+      "question": "帮我生成日常维护清单。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求提供日常维护清单。",
+      "elapsed_seconds": 0.46406719999504276
+    },
+    {
+      "case_id": "S38",
+      "question": "帮我整理一份 T8 维护清单。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户明确要求提供维护清单。",
+      "elapsed_seconds": 0.47609209999791346
+    },
+    {
+      "case_id": "S39",
+      "question": "生成一份日常维护报告。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求生成一份日常维护报告。",
+      "elapsed_seconds": 0.8926110999891534
+    },
+    {
+      "case_id": "S40",
+      "question": "给我列一份保养计划。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户明确要求提供一份保养计划。",
+      "elapsed_seconds": 1.3454281000012998
+    },
+    {
+      "case_id": "S41",
+      "question": "整理主刷和滤网的维护汇总。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求提供主刷和滤网的维护清单。",
+      "elapsed_seconds": 0.6669494000088889
+    },
+    {
+      "case_id": "S42",
+      "question": "做一份机器人清洁保养报告。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求提供一份机器人清洁保养报告。",
+      "elapsed_seconds": 0.6843419999931939
+    },
+    {
+      "case_id": "S43",
+      "question": "请输出维护项目和注意事项清单。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户明确要求输出维护项目和注意事项清单。",
+      "elapsed_seconds": 0.8606268000148702
+    },
+    {
+      "case_id": "S44",
+      "question": "帮我把说明书保养要求整理成报告。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求整理保养清单成报告。",
+      "elapsed_seconds": 0.5056717999977991
+    },
+    {
+      "case_id": "S45",
+      "question": "给我一份每周维护计划。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求提供一份每周的维护计划。",
+      "elapsed_seconds": 0.5659119999909308
+    },
+    {
+      "case_id": "S46",
+      "question": "生成 T8 耗材维护汇总表。",
+      "expected_intent": "maintenance_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求生成T8耗材的维护汇总表。",
+      "elapsed_seconds": 0.8043143000104465
+    },
+    {
+      "case_id": "S47",
+      "question": "我家有地毯和宠物，应该怎么设置？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问针对有地毯和宠物的家庭环境设置建议。",
+      "elapsed_seconds": 0.6107014000008348
+    },
+    {
+      "case_id": "S48",
+      "question": "晚上怕吵，清扫怎么设置？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何设置清扫模式以避免夜间噪音。",
+      "elapsed_seconds": 0.7426581000036094
+    },
+    {
+      "case_id": "S49",
+      "question": "我家是木地板，应该选什么清扫方式？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问适合木地板的清扫方式。",
+      "elapsed_seconds": 2.000415000016801
+    },
+    {
+      "case_id": "S50",
+      "question": "家里猫毛很多，怎么配置清扫？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何配置扫地机器人以应对家中的猫毛问题。",
+      "elapsed_seconds": 0.6929780000064056
+    },
+    {
+      "case_id": "S51",
+      "question": "我希望声音小一点，该选哪种模式？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何设置适合声音小的模式。",
+      "elapsed_seconds": 0.6938594999955967
+    },
+    {
+      "case_id": "S52",
+      "question": "我更偏好拖地，怎么安排使用？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何设置更适合拖地的使用方案。",
+      "elapsed_seconds": 0.7964544999995269
+    },
+    {
+      "case_id": "S53",
+      "question": "家里有小孩，怎么设置更合适？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何根据家庭环境（有小孩）设置扫地机器人。",
+      "elapsed_seconds": 0.6532792999933008
+    },
+    {
+      "case_id": "S54",
+      "question": "我家有多种地面，怎么选择清扫方案？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何根据家庭地面类型选择清扫方案。",
+      "elapsed_seconds": 0.7038759000133723
+    },
+    {
+      "case_id": "S55",
+      "question": "客厅有地毯，卧室是木地板，怎么配置？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问针对不同地面类型的房间如何设置扫地机器人。",
+      "elapsed_seconds": 0.6400570000114385
+    },
+    {
+      "case_id": "S56",
+      "question": "我想每天定时清扫，应该怎么设置？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何设置定时清扫功能。",
+      "elapsed_seconds": 0.5617416999884881
+    },
+    {
+      "case_id": "S57",
+      "question": "家里养狗，如何选择清扫方案？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何根据养狗的家庭环境选择适合的清扫方案。",
+      "elapsed_seconds": 0.5948667000047863
+    },
+    {
+      "case_id": "S58",
+      "question": "我晚上想安静清扫，应该用什么设置？",
+      "expected_intent": "configuration_recommendation",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何在晚上设置安静清扫模式。",
+      "elapsed_seconds": 0.5462301000079606
+    },
+    {
+      "case_id": "S59",
+      "question": "这个怎么弄？",
+      "expected_intent": "clarify",
+      "status": "SUCCESS",
+      "intent": "clarify",
+      "reason": "用户问题过于模糊，缺少具体需要解决的问题或对象。",
+      "elapsed_seconds": 0.5459228999970946
+    },
+    {
+      "case_id": "S60",
+      "question": "它坏了怎么办？",
+      "expected_intent": "clarify",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问某个物品坏了怎么办，需要了解具体异常情况。",
+      "elapsed_seconds": 1.137033100007102
+    },
+    {
+      "case_id": "S61",
+      "question": "机器人好像有问题，那怎么办？",
+      "expected_intent": "clarify",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户提到机器人存在问题，需要处理。",
+      "elapsed_seconds": 0.6189631999877747
+    },
+    {
+      "case_id": "S62",
+      "question": "不对劲，帮我看看。",
+      "expected_intent": "clarify",
+      "status": "SUCCESS",
+      "intent": "clarify",
+      "reason": "用户问题过于模糊，缺少具体问题描述。",
+      "elapsed_seconds": 0.6102645999926608
+    },
+    {
+      "case_id": "S63",
+      "question": "那个用不了。",
+      "expected_intent": "clarify",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户表示某个功能无法使用。",
+      "elapsed_seconds": 1.2524940999865066
+    },
+    {
+      "case_id": "S64",
+      "question": "怎么解决？",
+      "expected_intent": "clarify",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户询问如何解决某个具体问题。",
+      "elapsed_seconds": 0.5122915000247303
+    },
+    {
+      "case_id": "S65",
+      "question": "我要人工客服。",
+      "expected_intent": "human_handoff",
+      "status": "SUCCESS",
+      "intent": "human_handoff",
+      "reason": "用户明确要求转人工客服。",
+      "elapsed_seconds": 1.1828035999787971
+    },
+    {
+      "case_id": "S66",
+      "question": "请转人工。",
+      "expected_intent": "human_handoff",
+      "status": "SUCCESS",
+      "intent": "human_handoff",
+      "reason": "用户明确要求转人工客服。",
+      "elapsed_seconds": 0.5835269999806769
+    },
+    {
+      "case_id": "S67",
+      "question": "帮我找人工客服。",
+      "expected_intent": "human_handoff",
+      "status": "SUCCESS",
+      "intent": "human_handoff",
+      "reason": "用户明确要求转人工客服。",
+      "elapsed_seconds": 0.6719741999986582
+    },
+    {
+      "case_id": "S68",
+      "question": "我要真人客服。",
+      "expected_intent": "human_handoff",
+      "status": "SUCCESS",
+      "intent": "human_handoff",
+      "reason": "用户明确要求转人工客服。",
+      "elapsed_seconds": 0.6204278000222985
+    },
+    {
+      "case_id": "S69",
+      "question": "我要人工服务。",
+      "expected_intent": "human_handoff",
+      "status": "SUCCESS",
+      "intent": "human_handoff",
+      "reason": "用户明确要求转人工服务。",
+      "elapsed_seconds": 0.7244758000015281
+    },
+    {
+      "case_id": "S70",
+      "question": "联系人工处理。",
+      "expected_intent": "human_handoff",
+      "status": "SUCCESS",
+      "intent": "human_handoff",
+      "reason": "用户明确要求转人工处理。",
+      "elapsed_seconds": 0.7600936000235379
+    }
+  ],
+  "summary": {
+    "total": 70,
+    "correct": 61,
+    "accuracy": 0.8714285714285714,
+    "contract_success": 69,
+    "macro": {
+      "precision": 0.920558608058608,
+      "recall": 0.8452380952380952,
+      "f1": 0.8554483611626468
+    },
+    "per_class": {
+      "consult_qa": {
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "troubleshooting": {
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "f1": 0.7857142857142857
+      },
+      "maintenance": {
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091
+      },
+      "maintenance_report": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "configuration_recommendation": {
+        "precision": 0.9230769230769231,
+        "recall": 1.0,
+        "f1": 0.9600000000000001
+      },
+      "clarify": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5
+      },
+      "human_handoff": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "confusion_matrix": {
+      "consult_qa": {
+        "consult_qa": 10,
+        "troubleshooting": 1,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 1,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "troubleshooting": {
+        "consult_qa": 0,
+        "troubleshooting": 11,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 1
+      },
+      "maintenance": {
+        "consult_qa": 2,
+        "troubleshooting": 0,
+        "maintenance": 10,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "maintenance_report": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 10,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "configuration_recommendation": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 12,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "clarify": {
+        "consult_qa": 0,
+        "troubleshooting": 4,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 2,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "human_handoff": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 6,
+        "ERROR": 0
+      }
+    },
+    "avg_latency": 1.2860668085723383,
+    "p95_latency": 2.8138349000073504
+  }
+}

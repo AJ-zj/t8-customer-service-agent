@@ -1,0 +1,192 @@
+{
+  "frontend_version": "1.0.0",
+  "api_base_for_acceptance": "http://127.0.0.1:8001",
+  "api_endpoints_used": [
+    "/api/agent/chat",
+    "/internal/reviews?scope=all&limit=50",
+    "/internal/reviews/{id}",
+    "/internal/reviews/{id}/decision",
+    "/internal/reviews/{id}/publish",
+    "/api/published/{id}",
+    "/health",
+    "/ready"
+  ],
+  "frontend_tests": 25,
+  "python_tests": 360,
+  "build": "PASS",
+  "real_backend": true,
+  "real_browser": true,
+  "database_before": {
+    "count": 48,
+    "max_id": 54
+  },
+  "chat": {
+    "question": "主刷多久清理一次？",
+    "request": {
+      "question": "主刷多久清理一次？",
+      "session_id": "bc1105c5-b125-4ecc-b610-37cacd5cebc0"
+    },
+    "status": 200,
+    "response": {
+      "intent": "maintenance",
+      "answer": null,
+      "generation_status": "generated",
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "published": false,
+      "safety_notice": "模型已生成回答，但语义依据未自动核验；需人工审核，未作为正式答案发布。"
+    }
+  },
+  "database_after_maintenance": {
+    "count": 49,
+    "max_id": 55
+  },
+  "approve_record_id": 57,
+  "troubleshooting": {
+    "first": {
+      "question": "机器人无法正常工作怎么办？",
+      "request": {
+        "question": "机器人无法正常工作怎么办？",
+        "session_id": "072ef6d1-a1d2-41f7-9697-55284cb06576"
+      },
+      "status": 200,
+      "response": {
+        "intent": "troubleshooting",
+        "answer": "请再描述一下具体异常现象，例如是否有错误码、语音提示，或机器人出现了什么行为异常。",
+        "published": false
+      }
+    },
+    "second": {
+      "question": "扫着扫着会自己停下来。",
+      "request": {
+        "question": "扫着扫着会自己停下来。",
+        "session_id": "072ef6d1-a1d2-41f7-9697-55284cb06576"
+      },
+      "status": 200,
+      "response": {
+        "intent": "troubleshooting",
+        "answer": null,
+        "generation_status": "generated",
+        "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "published": false,
+        "safety_notice": "模型已生成回答，但语义依据未自动核验；需人工审核，未作为正式答案发布。"
+      }
+    },
+    "same_session": true
+  },
+  "database_after_troubleshooting": {
+    "count": 50,
+    "max_id": 56
+  },
+  "reject_record_id": 56,
+  "human_handoff": {
+    "question": "我要人工客服",
+    "request": {
+      "question": "我要人工客服",
+      "session_id": "072ef6d1-a1d2-41f7-9697-55284cb06576"
+    },
+    "status": 200,
+    "response": {
+      "intent": "human_handoff",
+      "answer": "已为你转入人工处理流程。",
+      "published": false
+    }
+  },
+  "review_list": {
+    "status": 200,
+    "count": 50
+  },
+  "review_detail": {
+    "status": 200,
+    "id": 55,
+    "review_status": "pending_review",
+    "publication_status": "unpublished",
+    "evidence_count": 3
+  },
+  "token_storage": {
+    "local_storage": false,
+    "session_storage": false,
+    "cleared_on_reload": true
+  },
+  "stage": "COMPLETE",
+  "publication_test_chat": {
+    "status": 200,
+    "response": {
+      "intent": "maintenance",
+      "answer": null,
+      "generation_status": "generated",
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "published": false,
+      "safety_notice": "模型已生成回答，但语义依据未自动核验；需人工审核，未作为正式答案发布。"
+    }
+  },
+  "original_maintenance_record_id": 55,
+  "approve": {
+    "status": 200,
+    "review_status": "approved",
+    "publication_status": "unpublished"
+  },
+  "approved_unpublished_public_status": 404,
+  "publish": {
+    "status": 200,
+    "response": {
+      "record_id": 57,
+      "review_status": "approved",
+      "publication_status": "published",
+      "published_at": "2026-10-06T09:10:21.585036Z"
+    }
+  },
+  "published_page": {
+    "status": 200,
+    "response": {
+      "record_id": 57,
+      "question": "软胶主刷的清理和更换周期分别是什么？",
+      "answer": "根据石头 T8 官方说明书，软胶主刷的维护周期如下：\n\n- **清理频率**：每 2 周清理一次 [E1]\n- **更换频率**：每 6–12 个月更换 [E1]\n\n**清理步骤** [E2]：\n1. 翻转机器人，压下卡扣取下软胶主刷罩\n2. 取出软胶主刷，拔出软胶主刷轴承\n3. 按解锁标志方向旋转并取下软胶主刷盖，清除两端缠绕的毛发或赃物后按锁定方向装回\n4. 将软胶主刷及主刷罩装回机器人，确保罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位，然后压紧固定卡扣\n\n**注意事项** [E2]：\n- 软胶主刷脏污建议用湿布擦拭；如浸水，务必晾干并防止暴晒\n- 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷\n- 更换频率可能因实际情况而定，如出现异常磨损应更换零件 [E1]",
+      "published": true,
+      "published_at": "2026-10-06T09:10:21.585036Z"
+    }
+  },
+  "reject": {
+    "status": 200,
+    "response": {
+      "id": 56,
+      "review_status": "rejected",
+      "review_note": "前端V1验收：本轮测试草稿暂不发布，演示驳回状态并保留记录。",
+      "reviewed_at": "2026-10-06T09:10:21.861747Z",
+      "published": false
+    }
+  },
+  "database_after": {
+    "count": 51,
+    "max_id": 57
+  },
+  "conclusion": "FRONTEND_V1: PASS",
+  "visual_check": {
+    "desktop": true,
+    "mobile_no_horizontal_overflow": true,
+    "sidebar_new_session": true
+  },
+  "versions": {
+    "react": "19.3.0",
+    "vite": "7.3.7",
+    "vitest": "3.2.7",
+    "react-router-dom": "7.18.4"
+  },
+  "npm_install": "PASS",
+  "npm_test": "25/25 PASS",
+  "npm_build": "PASS",
+  "secret_scan": {
+    "files_scanned": 3,
+    "actual_secret_matches": 0,
+    "marker_matches": {
+      "SILICONFLOW": 0,
+      "API KEY": 0,
+      "REVIEW_ADMIN_TOKEN": 0,
+      "DATABASE_URL": 0
+    },
+    "status": "PASS"
+  },
+  "production_business_changes": false,
+  "backend_changes": "Read-only scope=pending/all and publication state fields; existing authentication and mutation rules unchanged.",
+  "original_maintenance_record_disposition": "ID55 remains pending: incidental claims have insufficient citations; not published.",
+  "publication_inspection": "ID57: cleaning every 2 weeks and replacement every 6-12 months supported by E1; cleaning steps and precautions supported by E2."
+}

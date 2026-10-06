@@ -1,0 +1,307 @@
+{
+  "golden_sha256": "547fd0f48197bc150640100fb07ba6287fee5d0f4439c1e96c2950c2167e9386",
+  "order_regressions": [
+    {
+      "name": "answer_before_caveat",
+      "answer": "主刷每两周清理一次。[E1] 说明书未明确是否每天检查。",
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "caveat_before_answer",
+      "answer": "说明书未明确是否每天检查，但主刷每两周清理一次。[E1]",
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "pure_abstention",
+      "answer": "根据当前提供的说明书资料无法确认。",
+      "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "cited_abstention",
+      "answer": "说明书未提及该错误码含义。[E1]",
+      "audit_status": "MODEL_ABSTAINED_NEEDS_REVIEW",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "price_caveat",
+      "answer": "无法确认具体价格；主刷每两周清理一次。[E1]",
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "normal_answer",
+      "answer": "主刷每两周清理一次。[E1]",
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "missing_citation",
+      "answer": "主刷每两周清理一次。",
+      "audit_status": "PROGRAM_BLOCKED_MISSING_CITATION",
+      "semantic_support": "NOT_VERIFIED"
+    },
+    {
+      "name": "invalid_citation",
+      "answer": "说明书未明确是否每天检查，但主刷每两周清理一次。[E4]",
+      "audit_status": "PROGRAM_BLOCKED_INVALID_CITATION",
+      "semantic_support": "NOT_VERIFIED"
+    }
+  ],
+  "frozen_60_summary": {
+    "total_cases": 60,
+    "answerable": {
+      "count": 50,
+      "auto_release_count": 46,
+      "review_required_count": 4,
+      "safe_abstention_count": 0
+    },
+    "unanswerable": {
+      "count": 10,
+      "safe_abstention_count": 4,
+      "review_required_count": 5,
+      "incorrect_auto_release_count": 1
+    },
+    "auto_release_rate": 0.7833333333333333,
+    "safe_abstention_rate_unanswerable": 0.4,
+    "incorrect_auto_release_count": 1,
+    "gate_call_count": 56,
+    "gate_failure_count": 1,
+    "review_required_count": 9
+  },
+  "key_cases": {
+    "A": {
+      "source": "Same saved development draft/evidence from isolated V1.1 acceptance; not a new API request",
+      "question": "主刷多久清理一次？",
+      "draft_answer": "**主刷（软胶主刷）维护建议** [E1]\n\n- **清理频率**：建议**每 2 周清理一次** [E1]\n- **更换频率**：建议**每 6–12 个月更换**\n- 更换周期可能因实际使用情况而定，如出现异常磨损，应及时更换零件 [E1]\n\n**其他相关提示** [E2]\n- 若清扫时有异响，可能是主刷、边刷或主轮缠绕异物，请停机后清理 [E2]\n\n**其他部件维护频率参考** [E1]\n- 边刷：每 1 个月清理，每 3–6 个月更换\n- 可水洗滤网：每 2 周清理，每 6–12 个月更换\n- 拖布：每次使用后清理，按需更换\n- 万向轮、二合一尘盒水箱：按需清理\n- 回充传感器、悬崖传感器、沿墙传感器、主轮、充电触片、充电座充电弹片等：每 1 个月清理 [E1]\n\n如需某部件更具体的清理步骤，可以继续告诉我。",
+      "evidence": [
+        {
+          "text": "使用说明 日常维护\nAPP功能介绍 为使机器人保持最佳使用性能，建议参考下表进行日常维护：\n部 件 维护频率 更换频率\n清洁地图\n万向轮 按需清理 /\n多地图管理｜实时扫拖路线｜地图分区｜地图编辑\n二合一尘盒水箱 按需清理 /\n个性清洁方式\n软胶主刷 每 2 周清理 每 6-12 个月\n定时清洁｜选区清洁｜划区清洁｜禁区虚拟墙｜定制顺序｜ 地\n边 刷 每 1 个月清理 每 3-6 个月\n毯增压模式\n可水洗滤网 每 2 周清理 每 6-12 个月\n清洁模式调节 拖布 每次使用后 按需更换\n清扫吸力｜拖地水量｜定制模式 回充传感器 每 1 个月清理 /\n悬崖传感器 每 1 个月清理 /\n机器人信息\n沿墙传感器 每 1 个月清理 /\n清洁记录｜机器人电量｜保养与维护\n回充传感器 每 1 个月清理 /\n更多特色功能 主 轮 每 1 个月清理 /\n固件升级｜音量调节｜个性化语音｜勿扰模式｜智能音箱语 充电触片 每 1 个月清理 /\n控等更多功能 充电座充电弹片、\n信号发射区、电极自 每 1 个月清理 /\n提示：因 APP 持续开发升级，功能和细节可能有细微调整，请以实际版本为准。\n清洁毛束及机身\n提示：更换频率可能因实际情况而定，如出现异常磨损，应更换零件。\n14",
+          "title": "",
+          "section": "使用说明 日常维护",
+          "pdf_page": 14,
+          "evidence_id": "E1",
+          "record_index": 13
+        },
+        {
+          "text": "问题：清扫时有异响。解决方法：主刷、边刷或主轮可能缠绕异物，请停机后清理；万向轮清扫中进灰或被缠绕，建议使用螺丝刀撬出并冲洗干净。",
+          "title": "清扫时有异响",
+          "section": "常见问题",
+          "pdf_page": 23,
+          "evidence_id": "E2",
+          "record_index": 27
+        },
+        {
+          "text": "日常维护\n边 刷 2.冲洗轮体和轮轴上的毛发或脏物。\n1.拆下边刷固定螺丝。\n2.清理边刷后装回并锁紧螺丝。\n3.晾干后装回轮体并压紧。\n主 轮\n用柔软干布擦拭清理主轮。\n万向轮\n1.借助小螺丝刀等工具撬出轮轴，拔出轮体。\n提示：万向轮支架不可取出。\n16",
+          "title": "",
+          "section": "日常维护",
+          "pdf_page": 16,
+          "evidence_id": "E3",
+          "record_index": 15
+        }
+      ],
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_called": true,
+      "gate_outcome": {
+        "status": "supported",
+        "reason_code": "SUPPORTED",
+        "unsupported_claims": []
+      },
+      "delivery_status": "auto_released",
+      "release_reason_code": "SEMANTICALLY_GROUNDED"
+    },
+    "B": {
+      "source": "Same saved development draft/evidence from isolated V1.1 acceptance; not a new API request",
+      "question": "主刷怎么清理？",
+      "draft_answer": "根据说明书，以下是石头 T8 软胶主刷的清理方法：\n\n**清理步骤** [E2]\n1. 翻转机器人，压下卡扣取下软胶主刷罩。\n2. 取出软胶主刷，拔出软胶主刷轴承。\n3. 按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两端缠绕的毛发或脏物后按锁定方向装回。\n4. 将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软胶主刷罩固定卡扣。\n\n**注意事项** [E2]\n- 软胶主刷脏污建议用**湿布擦拭**；如果浸水，务必晾干并防止暴晒。\n- **请勿使用具有腐蚀性的清洁液或消毒剂**清洗软胶主刷。\n\n**其他提示** [E1]\n- 如果清扫时有异响，主刷、边刷或主轮可能缠绕了异物，请停机后清理。\n\n另外，主轮可用柔软干布擦拭清理，万向轮可用小螺丝刀撬出轮轴、拔出轮体后冲洗轮体和轮轴上的毛发或脏物（万向轮支架不可取出）[E3]。",
+      "evidence": [
+        {
+          "text": "问题：清扫时有异响。解决方法：主刷、边刷或主轮可能缠绕异物，请停机后清理；万向轮清扫中进灰或被缠绕，建议使用螺丝刀撬出并冲洗干净。",
+          "title": "清扫时有异响",
+          "section": "常见问题",
+          "pdf_page": 23,
+          "evidence_id": "E1",
+          "record_index": 27
+        },
+        {
+          "text": "日常维护\n软胶主刷\n软胶主刷罩\n卡 扣\n软胶主刷\n软胶主刷\n轴承 软胶主刷盖\n1.翻转机器人，压下卡扣取下软胶主刷罩。\n2.取出软胶主刷，拔出软胶主刷轴承。\n3.按解锁标志方向旋转并取下软胶主刷盖，清除软胶主刷两\n端缠绕的毛发或赃物后按锁定方向装回。\n4.将软胶主刷及主刷罩装回机器人，确保软胶主刷罩 4 齿插\n入对应卡槽中，4 齿未露出即代表安装到位，然后压紧软\n胶主刷罩固定卡扣。\n提示：\n• 软胶主刷脏污建议用湿布擦拭。如果浸水，务必晾干防止暴晒。\n• 请勿使用具有腐蚀性的清洁液或消毒剂清洗软胶主刷。",
+          "title": "",
+          "section": "日常维护",
+          "pdf_page": 15,
+          "evidence_id": "E2",
+          "record_index": 14
+        },
+        {
+          "text": "日常维护\n边 刷 2.冲洗轮体和轮轴上的毛发或脏物。\n1.拆下边刷固定螺丝。\n2.清理边刷后装回并锁紧螺丝。\n3.晾干后装回轮体并压紧。\n主 轮\n用柔软干布擦拭清理主轮。\n万向轮\n1.借助小螺丝刀等工具撬出轮轴，拔出轮体。\n提示：万向轮支架不可取出。\n16",
+          "title": "",
+          "section": "日常维护",
+          "pdf_page": 16,
+          "evidence_id": "E3",
+          "record_index": 15
+        }
+      ],
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_called": true,
+      "gate_outcome": {
+        "status": "supported",
+        "reason_code": "SUPPORTED",
+        "unsupported_claims": []
+      },
+      "delivery_status": "auto_released",
+      "release_reason_code": "SEMANTICALLY_GROUNDED"
+    },
+    "C": {
+      "source": "Same saved development draft/evidence from isolated V1.1 acceptance; not a new API request",
+      "question": "错误码401是什么意思？",
+      "draft_answer": "请确认以下信息，以便进一步排查：\n\n根据当前提供的石头 T8 说明书资料，**无法确认错误码 401 的具体含义**。[E1][E2]\n\n说明书资料中仅包含产品基本信息与常见问题（如\"无法回充\"的处理方法），未列出 401 错误码的定义。[E1][E3]\n\n为更准确地帮助您，请提供以下信息：\n- 机器人出现 401 错误码时的**具体行为表现**（如是否停止工作、无法启动等）\n- 是否有**语音提示**或屏幕上的其他提示文字\n- 错误码出现前执行了什么操作\n\n如果您有其他明确症状（如无法回充、无法启动等），我可以帮您检索对应的排查方案。您也可以拨打服务热线 400-900-1755 或联系石头官方微信服务号，由技术支持专家为您解答。[E1]",
+      "evidence": [
+        {
+          "text": "使用产品前请仔细阅读本使用说明书，并妥善保存。\n欢迎使用\n感谢您选择石头。\n本说明书将引导您全面了解和快速安装扫拖机器人(下文简称“机器人”)，并详细提供了有关使用和维护的重要信息，以帮助\n您获得最佳的产品体验。\n您在使用过程中如有任何问题，请拨打服务热线或联系微信官方服务号，石头技术支持专家将为您解答。\n400-900-1755\n公众号：石头科技roborock\nwww.roborock.com\n扫码下载APP 微信扫一扫，查看视频教程 微信扫描二维码，添加产品服务专家\n优先享受福利活动\n*产品以实物为准，具体细节可能与所示不同。\n02",
+          "title": "",
+          "section": "使用产品前请仔细阅读本使用说明书，并妥善保存。",
+          "pdf_page": 2,
+          "evidence_id": "E1",
+          "record_index": 1
+        },
+        {
+          "text": "官方网站：http://www.roborock.com\n服务电话：400-900-1755\n制造商：北京石头世纪科技股份有限公司\n地 址：北京市海淀区黑泉路8号1幢康健宝盛广场C座六层6016、6017、6018号",
+          "title": "",
+          "section": "官方网站：http://www.roborock.com",
+          "pdf_page": 26,
+          "evidence_id": "E2",
+          "record_index": 40
+        },
+        {
+          "text": "问题：无法回充。解决方法：充电座附近障碍物太多，请将充电座放到开阔区域；机器人距离充电座太远，请将机器人放到充电座附近尝试。",
+          "title": "无法回充",
+          "section": "常见问题",
+          "pdf_page": 23,
+          "evidence_id": "E3",
+          "record_index": 25
+        }
+      ],
+      "audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_called": true,
+      "gate_outcome": {
+        "status": "unsupported",
+        "reason_code": "UNSUPPORTED_FACT",
+        "unsupported_claims": [
+          "无法确认错误码 401 的具体含义"
+        ]
+      },
+      "delivery_status": "review_required",
+      "release_reason_code": "SEMANTICALLY_UNSUPPORTED"
+    }
+  },
+  "incorrect_auto_releases": [
+    {
+      "id": "T8-G054",
+      "question": "我家机器人现在电量是多少？",
+      "answerable": false,
+      "category": "无答案边界",
+      "scene": "consult_qa",
+      "relevant_record_indices": [],
+      "actual_evidence_indices": [
+        3,
+        8,
+        21
+      ],
+      "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+      "citation_status": "VALID",
+      "gate_status": "supported",
+      "gate_reason_code": "SUPPORTED",
+      "gate_unsupported_claims": [],
+      "gate_latency_seconds": 0.725,
+      "delivery_status": "auto_released",
+      "release_reason_code": "SEMANTICALLY_GROUNDED",
+      "draft_answer": "根据当前提供的说明书资料，无法确认你家机器人此刻的实际电量数值。不过，说明书说明了机器人电源指示灯颜色与电量的对应关系：白色表示电量≥20%，红色表示电量＜20% [E1][E2]。你观察机器人指示灯颜色，可据此判断电量大致范围。",
+      "actual_evidence": [
+        {
+          "evidence_id": "E1",
+          "record_index": 3,
+          "pdf_page": 4,
+          "title": "",
+          "section": "产品介绍",
+          "text": "产品介绍\n配件清单 机器人\n局部清扫 / 童 锁\n• 短按启动局部清扫\n• 长按3S开启/\n关闭童锁功能\n清扫 / 开关机键\n• 长按开机或关机\n• 短按启动清扫\n充电座 防水垫\n电源指示灯\n• 白 色：电量≥20%\n• 红 色：电量＜20%\n• 呼吸闪烁：充电或启动中\n• 红色快闪：异常状态\n电源线\n回充键\n• 短按启动回充\n拖布支架 拖 布\n提示：在清扫或回充时按任意键暂停。\n04"
+        },
+        {
+          "evidence_id": "E2",
+          "record_index": 8,
+          "pdf_page": 9,
+          "title": "",
+          "section": "产品安装",
+          "text": "产品安装\n1 放置充电座\n在水平地面靠墙放置充电座，将电源线连接至充电座，\n多余线材收入线槽。为了获得更好的手机APP使用体验，\n请将充电座放在WiFi 覆盖范围内。\n提示：\n• 木质地板务必与防水垫搭配使用。\n• 在移除双面胶时，请缓慢移除，以减少残胶。\n• 光滑水平地面粘贴效果更好。\n大于0.5米 3 开机并充电\n大于0.5米\n大于1.5米 长按 键开机，等待电源指示灯长亮后将机器人靠上充\n电座充电。机器人内置高性能锂离子充电电池组，为维\n提示：\n• 确保充电座两侧有 0.5 米以上、前方有 1.5 米以上空间。 持电池性能，日常使用请将机器人保持充电状态。\n• 电源线垂于地面可能被机器人拖拽，引起充电座移位或断电。\n• 充电座指示灯通电时长亮，机器人充电时熄灭。\n• 请勿将充电座放置于阳光直晒的地方或用任何物体遮挡信号发射区，否则\n可能会造成机器人无法自动返回充电座。\n2 固定防水垫\n充电座位置确定之后，将如图所示防水垫放置区域用干布 电源指示灯颜色表示电量\n擦拭干净，撕开防水垫底部双面胶后，将防水垫按图示位 • 白色：电量≥20%\n置贴在地面上。 • 红色：电量＜20%\n提示：电量不足时可能无法开机，请将机器人直接靠上充电座。\n09"
+        },
+        {
+          "evidence_id": "E3",
+          "record_index": 21,
+          "pdf_page": 22,
+          "title": "",
+          "section": "环保说明 异常排除",
+          "text": "环保说明 异常排除\n取下电池步骤 当机器人运行中出现异常时，电源指示灯红色快闪并语音提\n示，请按照语音及APP提示解决异常。\n下述信息仅在丢弃本机器人时适用，并非日常操作说明。\n本产品内置的锂离子电池所含的化学物质可能会对环境造成\n污染，在报废之前请将其拆下，并交由专业的电池回收站进\n行集中处置。\n1.让机器人在不接触基座的情况下运行至无法清扫的低电量\n状态。\n2.将机器人关机。\n3.将机器人电池盖板螺丝卸下。\n4.取下电池盖板。\n5.按下卡扣拔出电池的连接器插头并取下电池。\n提示：\n• 如无法排除异常\n• 拆卸电池时请确保电量用尽并在断开基座的情况下操作。 可拨打石头科技服务电话：400-900-1755\n请将整个电池组一起拆卸，请勿损坏电池组外壳，以免造成短路或者危险物质泄漏。\n• 或扫描右方石头科技官方微信二维码联系客服\n如果电池有渗出物并不慎接触到，请用大量清水冲洗并及时就医。\n22"
+        }
+      ],
+      "verification_basis": {
+        "method": "machine_assisted_not_human_truth",
+        "reference_answer": null,
+        "relevant_record_indices": [],
+        "actual_evidence": [
+          {
+            "evidence_id": "E1",
+            "record_index": 3,
+            "pdf_page": 4,
+            "title": "",
+            "section": "产品介绍",
+            "text": "产品介绍\n配件清单 机器人\n局部清扫 / 童 锁\n• 短按启动局部清扫\n• 长按3S开启/\n关闭童锁功能\n清扫 / 开关机键\n• 长按开机或关机\n• 短按启动清扫\n充电座 防水垫\n电源指示灯\n• 白 色：电量≥20%\n• 红 色：电量＜20%\n• 呼吸闪烁：充电或启动中\n• 红色快闪：异常状态\n电源线\n回充键\n• 短按启动回充\n拖布支架 拖 布\n提示：在清扫或回充时按任意键暂停。\n04"
+          },
+          {
+            "evidence_id": "E2",
+            "record_index": 8,
+            "pdf_page": 9,
+            "title": "",
+            "section": "产品安装",
+            "text": "产品安装\n1 放置充电座\n在水平地面靠墙放置充电座，将电源线连接至充电座，\n多余线材收入线槽。为了获得更好的手机APP使用体验，\n请将充电座放在WiFi 覆盖范围内。\n提示：\n• 木质地板务必与防水垫搭配使用。\n• 在移除双面胶时，请缓慢移除，以减少残胶。\n• 光滑水平地面粘贴效果更好。\n大于0.5米 3 开机并充电\n大于0.5米\n大于1.5米 长按 键开机，等待电源指示灯长亮后将机器人靠上充\n电座充电。机器人内置高性能锂离子充电电池组，为维\n提示：\n• 确保充电座两侧有 0.5 米以上、前方有 1.5 米以上空间。 持电池性能，日常使用请将机器人保持充电状态。\n• 电源线垂于地面可能被机器人拖拽，引起充电座移位或断电。\n• 充电座指示灯通电时长亮，机器人充电时熄灭。\n• 请勿将充电座放置于阳光直晒的地方或用任何物体遮挡信号发射区，否则\n可能会造成机器人无法自动返回充电座。\n2 固定防水垫\n充电座位置确定之后，将如图所示防水垫放置区域用干布 电源指示灯颜色表示电量\n擦拭干净，撕开防水垫底部双面胶后，将防水垫按图示位 • 白色：电量≥20%\n置贴在地面上。 • 红色：电量＜20%\n提示：电量不足时可能无法开机，请将机器人直接靠上充电座。\n09"
+          },
+          {
+            "evidence_id": "E3",
+            "record_index": 21,
+            "pdf_page": 22,
+            "title": "",
+            "section": "环保说明 异常排除",
+            "text": "环保说明 异常排除\n取下电池步骤 当机器人运行中出现异常时，电源指示灯红色快闪并语音提\n示，请按照语音及APP提示解决异常。\n下述信息仅在丢弃本机器人时适用，并非日常操作说明。\n本产品内置的锂离子电池所含的化学物质可能会对环境造成\n污染，在报废之前请将其拆下，并交由专业的电池回收站进\n行集中处置。\n1.让机器人在不接触基座的情况下运行至无法清扫的低电量\n状态。\n2.将机器人关机。\n3.将机器人电池盖板螺丝卸下。\n4.取下电池盖板。\n5.按下卡扣拔出电池的连接器插头并取下电池。\n提示：\n• 如无法排除异常\n• 拆卸电池时请确保电量用尽并在断开基座的情况下操作。 可拨打石头科技服务电话：400-900-1755\n请将整个电池组一起拆卸，请勿损坏电池组外壳，以免造成短路或者危险物质泄漏。\n• 或扫描右方石头科技官方微信二维码联系客服\n如果电池有渗出物并不慎接触到，请用大量清水冲洗并及时就医。\n22"
+          }
+        ],
+        "draft_answer": "根据当前提供的说明书资料，无法确认你家机器人此刻的实际电量数值。不过，说明书说明了机器人电源指示灯颜色与电量的对应关系：白色表示电量≥20%，红色表示电量＜20% [E1][E2]。你观察机器人指示灯颜色，可据此判断电量大致范围。",
+        "program_audit_status": "NEEDS_HUMAN_SEMANTIC_REVIEW",
+        "citation_status": "VALID",
+        "gate_status": "supported",
+        "gold_relevant_record_retrieved": false,
+        "delivery_status": "auto_released"
+      }
+    }
+  ],
+  "source_changes": [
+    "app\\services\\grounded_qa.py"
+  ],
+  "generation_prompt_unchanged": true,
+  "frontend_test_mirror_matches_source": true,
+  "python_tests": {
+    "passed": 415,
+    "total": 415,
+    "new_tests": 8
+  },
+  "frontend_tests": {
+    "passed": 29,
+    "total": 29
+  },
+  "new_answer_generation_calls": 0,
+  "new_retrieval_calls": 0,
+  "database_writes": 0,
+  "real_api_requests_this_round": 0,
+  "final_result": "ANSWER_RELEASE_POLICY_V1_1_1: FAIL"
+}

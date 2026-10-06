@@ -1,0 +1,389 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "variant": "prompt_only",
+  "temperature": 0,
+  "dataset_sha256": "f9886ec9f83b90aecddb18c6d76d1032f5a98df54a6d0781bcc4f4e8ce788a33",
+  "prompt_sha256": "3e3751d09d53f203d01bcb273305afb03d1793ceb2d1c2bb0bb7823c76e77e48",
+  "attempts": [
+    {
+      "case_id": "H01",
+      "question": "机器人有问题怎么办？",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "clarify",
+      "reason": "用户描述了机器人存在问题，但未具体说明问题症状。",
+      "elapsed_seconds": 0.6667947000241838,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H02",
+      "question": "机器人无法回充怎么办？",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了具体异常现象，即机器人无法回充。",
+      "elapsed_seconds": 0.6417117000091821,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H03",
+      "question": "怎么回事？",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "clarify",
+      "reason": "用户问题过于模糊，缺少具体问题描述。",
+      "elapsed_seconds": 0.846834800002398,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H04",
+      "question": "扫到一半就停了。",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了机器人扫到一半就停了的具体异常现象。",
+      "elapsed_seconds": 0.6638900999969337,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H05",
+      "question": "帮我看看这个",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "clarify",
+      "reason": "用户未提供具体问题或对象，表示模糊求助。",
+      "elapsed_seconds": 0.7241314999992028,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H06",
+      "question": "主刷不转了怎么办？",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了主刷不转的具体异常现象。",
+      "elapsed_seconds": 0.7491620999935549,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H07",
+      "question": "出现 E4。",
+      "expected_intent": "troubleshooting",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "troubleshooting",
+      "reason": "用户描述了具体异常现象E4，但未提供错误码详细信息。",
+      "elapsed_seconds": 0.737293000012869,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H08",
+      "question": "它不正常，怎么办？",
+      "expected_intent": "clarify",
+      "boundary": "vague_vs_fault",
+      "status": "SUCCESS",
+      "intent": "clarify",
+      "reason": "用户描述了问题但未明确具体异常现象或对象。",
+      "elapsed_seconds": 0.8862856999912765,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H09",
+      "question": "滤网清洗后要晾多久？",
+      "expected_intent": "maintenance",
+      "boundary": "maintenance_vs_consult",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问滤网清洗后的晾干时间。",
+      "elapsed_seconds": 1.7658344999945257,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H10",
+      "question": "滤网在哪里？",
+      "expected_intent": "consult_qa",
+      "boundary": "maintenance_vs_consult",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问滤网的位置。",
+      "elapsed_seconds": 0.5729828999901656,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H11",
+      "question": "主刷上的毛发怎么去掉？",
+      "expected_intent": "maintenance",
+      "boundary": "maintenance_vs_consult",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问如何清理主刷上的毛发。",
+      "elapsed_seconds": 1.7779461999889463,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H12",
+      "question": "主刷是什么材质？",
+      "expected_intent": "consult_qa",
+      "boundary": "maintenance_vs_consult",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问主刷的材质信息。",
+      "elapsed_seconds": 0.583492000005208,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H13",
+      "question": "清扫模式怎么切换？",
+      "expected_intent": "consult_qa",
+      "boundary": "consult_vs_configuration",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问如何切换清扫模式。",
+      "elapsed_seconds": 0.7425206000043545,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H14",
+      "question": "我希望清扫声音更小，选什么设置？",
+      "expected_intent": "configuration_recommendation",
+      "boundary": "consult_vs_configuration",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何设置清扫声音更小的模式或方案。",
+      "elapsed_seconds": 0.7824970000074245,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H15",
+      "question": "T8 有没有定时清扫功能？",
+      "expected_intent": "consult_qa",
+      "boundary": "consult_vs_configuration",
+      "status": "SUCCESS",
+      "intent": "consult_qa",
+      "reason": "用户询问T8是否有定时清扫功能。",
+      "elapsed_seconds": 1.4361411999852862,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H16",
+      "question": "我想每天晚上清扫，怎么安排设置？",
+      "expected_intent": "configuration_recommendation",
+      "boundary": "consult_vs_configuration",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户询问如何设置晚上每天清扫的方案。",
+      "elapsed_seconds": 1.0620588999881875,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H17",
+      "question": "边刷多久清理？",
+      "expected_intent": "maintenance",
+      "boundary": "maintenance_vs_report",
+      "status": "SUCCESS",
+      "intent": "maintenance",
+      "reason": "用户询问边刷的清理频率。",
+      "elapsed_seconds": 0.4636674000066705,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H18",
+      "question": "把边刷和滤网维护要求整理成清单。",
+      "expected_intent": "maintenance_report",
+      "boundary": "maintenance_vs_report",
+      "status": "SUCCESS",
+      "intent": "maintenance_report",
+      "reason": "用户要求整理边刷和滤网的维护清单。",
+      "elapsed_seconds": 2.738707400014391,
+      "diagnostics": {
+        "http_status": 200
+      }
+    },
+    {
+      "case_id": "H19",
+      "question": "整理日常保养报告。",
+      "expected_intent": "maintenance_report",
+      "boundary": "maintenance_vs_report",
+      "status": "ERROR",
+      "elapsed_seconds": 25.04120150001836,
+      "diagnostics": {
+        "failure_type": "TIMEOUT"
+      }
+    },
+    {
+      "case_id": "H20",
+      "question": "我家有猫和地毯，推荐清扫配置。",
+      "expected_intent": "configuration_recommendation",
+      "boundary": "configuration_vs_consult",
+      "status": "SUCCESS",
+      "intent": "configuration_recommendation",
+      "reason": "用户根据家庭环境（有猫和地毯）询问清扫配置建议。",
+      "elapsed_seconds": 0.5626269000058528,
+      "diagnostics": {
+        "http_status": 200
+      }
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "correct": 19,
+    "accuracy": 0.95,
+    "contract_success": 19,
+    "macro": {
+      "precision": 0.8571428571428571,
+      "recall": 0.7857142857142857,
+      "f1": 0.8095238095238095
+    },
+    "per_class": {
+      "consult_qa": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "troubleshooting": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "maintenance": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "maintenance_report": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "configuration_recommendation": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "clarify": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "human_handoff": {
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "confusion_matrix": {
+      "consult_qa": {
+        "consult_qa": 4,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "troubleshooting": {
+        "consult_qa": 0,
+        "troubleshooting": 4,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "maintenance": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 3,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "maintenance_report": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 1,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 1
+      },
+      "configuration_recommendation": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 3,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "clarify": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 4,
+        "human_handoff": 0,
+        "ERROR": 0
+      },
+      "human_handoff": {
+        "consult_qa": 0,
+        "troubleshooting": 0,
+        "maintenance": 0,
+        "maintenance_report": 0,
+        "configuration_recommendation": 0,
+        "clarify": 0,
+        "human_handoff": 0,
+        "ERROR": 0
+      }
+    },
+    "avg_latency": 2.1722890050019488,
+    "p95_latency": 2.738707400014391
+  }
+}

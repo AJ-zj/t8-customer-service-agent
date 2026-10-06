@@ -1,0 +1,227 @@
+{
+  "status": "frozen_before_model_evaluation",
+  "cases": [
+    {
+      "case_id": "I01",
+      "question": "机器人一直卡住怎么办？",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I02",
+      "question": "机器人无法回充。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I03",
+      "question": "机器一直漏水怎么办？",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I04",
+      "question": "出现 E4 怎么处理？",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I05",
+      "question": "提示 E2。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I06",
+      "question": "清扫时有异常声音。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I07",
+      "question": "扫着扫着停了。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I08",
+      "question": "主刷不转了。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I09",
+      "question": "按开机键无法启动。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I10",
+      "question": "放到充电座不充电。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I11",
+      "question": "WiFi 无法连接。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I12",
+      "question": "清扫吸力突然变小。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I13",
+      "question": "机器人清扫时一直撞墙。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I14",
+      "question": "拖地时不出水。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I15",
+      "question": "边刷停止转动。",
+      "expected_status": "ready",
+      "note": "已有具体可检索症状或错误码"
+    },
+    {
+      "case_id": "I16",
+      "question": "机器人无法正常工作怎么办？",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I17",
+      "question": "机器运行异常。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I18",
+      "question": "T8 故障了，怎么办？",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I19",
+      "question": "机器人工作不正常。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I20",
+      "question": "石头 T8 好像坏了。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I21",
+      "question": "T8 清扫有问题。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I22",
+      "question": "T8 运行出现异常。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I23",
+      "question": "机器好像有故障。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I24",
+      "question": "我的机器人出问题了。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I25",
+      "question": "T8 工作异常。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I26",
+      "question": "我的石头 T8 不太正常。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I27",
+      "question": "机器人发生故障了。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I28",
+      "question": "石头 T8 运行不正常，请帮忙。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I29",
+      "question": "我的 T8 故障了，需要排查。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    },
+    {
+      "case_id": "I30",
+      "question": "机器人不能正常运行，帮我看看。",
+      "expected_status": "needs_clarification",
+      "note": "明确设备故障但只有泛化异常描述"
+    }
+  ],
+  "multi_turn_cases": [
+    {
+      "case_id": "M01",
+      "turn1": "机器人无法正常工作怎么办？",
+      "turn2": "扫着扫着会自己停下来。",
+      "expected_turn1": "needs_clarification",
+      "expected_turn2": "ready",
+      "coverage": "current_symptom"
+    },
+    {
+      "case_id": "M02",
+      "turn1": "机器人出问题了。",
+      "turn2": "提示 E4。",
+      "expected_turn1": "needs_clarification",
+      "expected_turn2": "ready",
+      "coverage": "error_code"
+    },
+    {
+      "case_id": "M03",
+      "turn1": "T8 运行异常。",
+      "turn2": "它一直回不了充电座。",
+      "expected_turn1": "needs_clarification",
+      "expected_turn2": "ready",
+      "coverage": "pronoun_behavior"
+    },
+    {
+      "case_id": "M04",
+      "turn1": "机器人工作不对劲。",
+      "turn2": "主刷不转了。",
+      "expected_turn1": "needs_clarification",
+      "expected_turn2": "ready",
+      "coverage": "part_symptom"
+    },
+    {
+      "case_id": "M05",
+      "turn1": "我的 T8 似乎有故障。",
+      "turn2": "它清扫时发出异响。",
+      "expected_turn1": "needs_clarification",
+      "expected_turn2": "ready",
+      "coverage": "pronoun_and_session_isolation"
+    }
+  ]
+}

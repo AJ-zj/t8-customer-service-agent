@@ -1,0 +1,357 @@
+{
+  "question": "地毯环境下，主刷多久清理一次？",
+  "rows": [
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 1,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content"
+      ],
+      "reasoning_content_present": false,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 1.031
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 2,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content"
+      ],
+      "reasoning_content_present": false,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 2.703
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 3,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content"
+      ],
+      "reasoning_content_present": false,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 0.813
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 4,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content",
+        "reasoning_content"
+      ],
+      "reasoning_content_present": true,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 4.656
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 5,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content"
+      ],
+      "reasoning_content_present": false,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 1.328
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 6,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content",
+        "reasoning_content"
+      ],
+      "reasoning_content_present": true,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 3.297
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 7,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content"
+      ],
+      "reasoning_content_present": false,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 2.672
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 8,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content",
+        "reasoning_content"
+      ],
+      "reasoning_content_present": true,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 0.906
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 9,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 12,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 0,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content"
+      ],
+      "reasoning_content_present": false,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [],
+      "accepted": [],
+      "rejected": [],
+      "elapsed_seconds": 1.407
+    },
+    {
+      "case_id": "FOCUSED_CARPET",
+      "attempt": 10,
+      "user_message": "地毯环境下，主刷多久清理一次？",
+      "http_success": true,
+      "http_status": 200,
+      "envelope_json_valid": true,
+      "content_exists": true,
+      "content_type": "str",
+      "content_length": 90,
+      "content_json_valid": true,
+      "pydantic_valid": true,
+      "facts_count": 1,
+      "finish_reason": "stop",
+      "message_keys": [
+        "role",
+        "content",
+        "reasoning_content"
+      ],
+      "reasoning_content_present": true,
+      "content_shape": {
+        "markdown_fence": false,
+        "think_tag": false,
+        "empty_string": false,
+        "json_prefix_text": false,
+        "json_suffix_text": false,
+        "multiple_json_objects": false
+      },
+      "status": "SUCCESS",
+      "facts": [
+        {
+          "fact_text": "用户家中为地毯环境",
+          "category": "home_environment",
+          "source_quote": "地毯环境下"
+        }
+      ],
+      "accepted": [],
+      "rejected": [
+        {
+          "fact_text": "用户家中为地毯环境",
+          "category": "home_environment",
+          "source_quote": "地毯环境下",
+          "accepted": false,
+          "reason": "REJECTED_CATEGORY",
+          "memory_text": null
+        }
+      ],
+      "elapsed_seconds": 7.859
+    }
+  ],
+  "status_counts": {
+    "SUCCESS": 10
+  }
+}
