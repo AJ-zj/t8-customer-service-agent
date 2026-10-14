@@ -64,7 +64,7 @@ flowchart TD
     LTM -.默认不注入 Agent.-> AGENT
     REVIEWDB --> ADMIN[内部 Review UI<br/>X-Review-Token]
     ADMIN -->|approved 后显式 publish| PUB[(Published Answer)]
-    PUB -->|GET /api/published/{id}| U
+    PUB -->|"GET /api/published/{id}"| U
     CLARIFY --> API
     FLOW --> API
 ```
